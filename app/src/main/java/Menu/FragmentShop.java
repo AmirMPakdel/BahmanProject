@@ -9,21 +9,16 @@ import android.view.ViewGroup;
 
 import com.blackcoin.packdel.bahmanproject.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FragmentShop extends Fragment {
 
 
-    public FragmentShop() {
-        // Required empty public constructor
-    }
+    public FragmentShop() {}
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu_shop, container, false);
     }
 
