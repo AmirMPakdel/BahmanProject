@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/relativeLayout"
     tools:context="SplashScreen.SplashScreenFragment"
-    android:background="@color/splashScreenBackground">
+    android:background="@color/colorMainTheme">
 
     <TextView
         android:layout_width="wrap_content"
