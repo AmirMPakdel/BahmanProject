@@ -9,15 +9,11 @@ import android.view.ViewGroup;
 
 import com.blackcoin.packdel.bahmanproject.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FragmentArchives extends Fragment {
 
 
-    public FragmentArchives() {
-        // Required empty public constructor
-    }
+    public FragmentArchives() {}
 
 
     @Override
