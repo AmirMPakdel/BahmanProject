@@ -1,23 +1,12 @@
 package com.blackcoin.packdel.bahmanproject;
 
 
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import Menu.FragmentArchives;
-import Menu.FragmentCompetition;
-import Menu.FragmentHome;
-import Menu.FragmentSetting;
-import Menu.FragmentShop;
-import Menu.ViewPagerAdapter;
 import SplashScreen.SplashScreen;
 import Toolbar.MenuToolbar;
 
