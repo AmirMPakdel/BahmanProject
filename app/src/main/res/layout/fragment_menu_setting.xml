@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/setting_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="@drawable/background_setting_tablayout">
 
