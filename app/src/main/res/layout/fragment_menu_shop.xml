@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     tools:context="Menu.FragmentShop">
 
+    <LinearLayout
+        android:id="@+id/setting_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@drawable/background_shop_tablayout">
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

@@ -29,5 +29,7 @@ public class MainActivity extends AppCompatActivity {
         // Setup MenuToolbar
         new MenuToolbar(findViewById(R.id.relativeLayout), getSupportFragmentManager()).setup();
 
+
+
     }
 }
