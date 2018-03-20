@@ -15,6 +15,7 @@
         android:id="@+id/archives_tabLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
         android:gravity="center">
 

@@ -1,6 +1,40 @@
 <resources>
     <string name="app_name">QG</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Field strings-->
+    <string name="OmoumiADABIAT">ادبیات</string>
+    <string name="OmoumiARABI">عربی</string>
+    <string name="OmoumiDINI">دینی</string>
+    <string name="OmoumiENGELISI">انگلیسی</string>
+
+    <string name="RiaziRIAZI">ریاضی</string>
+    <string name="RiaziFIZIK">فیزیک</string>
+    <string name="RiaziSHIMI">شیمی</string>
+
+    <string name="TajrobiZAMINSHENASI">زمین شناسی</string>
+    <string name="TajrobiRIAZI">ریاضی</string>
+    <string name="TajrobiZISTSHENASI">زیست شناسی</string>
+    <string name="TajrobiFIZIK">فیزیک</string>
+    <string name="TajrobiSHIMI">شیمی</string>
+
+    <string name="EnsaniRIAZI">ریاضی</string>
+    <string name="EnsaniEGHTESAD">اقتصاد</string>
+    <string name="EnsaniADABIAT">ادبیات</string>
+    <string name="EnsaniARABI">عربی</string>
+    <string name="EnsaniTARIKH">تاریخ</string>
+    <string name="EnsaniJOGHRAFIA">جغرافیا</string>
+    <string name="EnsaniEjtemaie">اجتماعی</string>
+    <string name="EnsaniFALSAFE">فلسفه</string>
+    <string name="EnsaniMANTEGH">منطق</string>
+    <string name="EnsaniRAVANSHENASI">روانشناسی</string>
+
+    <string name="HonarDARKEHONAR">درک هنر</string>
+    <string name="HonarRIAZIFIZIK">ریاضی فیزیک</string>
+    <string name="HonarTARSIMEFANI">ترسیم فنی</string>
+    <string name="HonarKHALAGHIATETASVIRI">خلافیت تصویری</string>
+    <string name="HonarKHALAGHIATENAMAYESHI">خلاقیت نمایشی</string>
+    <string name="HonarKHALAGHIATEMOSIGHI">خلاقیت موسیقی</string>
+    <string name="HonarKHAVASEMAVAD">خواص مواد</string>
 
 
 </resources>

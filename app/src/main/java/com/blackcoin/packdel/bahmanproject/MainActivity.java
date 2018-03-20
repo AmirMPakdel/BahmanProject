@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import DataFaker.Faker;
 import SplashScreen.SplashScreen;
 import Toolbar.MenuToolbar;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // Setup MenuToolbar
         new MenuToolbar(findViewById(R.id.relativeLayout), getSupportFragmentManager()).setup();
 
-
+        // test ground
 
     }
 }

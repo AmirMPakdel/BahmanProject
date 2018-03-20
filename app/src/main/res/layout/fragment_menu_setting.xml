@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
+        android:layoutDirection="ltr"
         android:background="@drawable/background_setting_tablayout">
 
     </LinearLayout>

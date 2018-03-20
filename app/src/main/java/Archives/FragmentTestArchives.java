@@ -30,38 +30,38 @@ public class FragmentTestArchives extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu_archives_test, container, false);
 
-        Spinner dars_spinner = (Spinner) view.findViewById(R.id.dars_spinner);
+        Spinner field_spinner = (Spinner) view.findViewById(R.id.dars_spinner);
 
-        List<String> dars_list = new ArrayList<>();
-        dars_list.add("همه دروس");
-        dars_list.add("ادبیات");
-        dars_list.add("معارف اسلامی");
-        dars_list.add("عربی");
-        dars_list.add("انگلیسی");
-        dars_list.add("ریاضی");
-        dars_list.add("فیزیک");
-        dars_list.add("شیمی");
+        List<String> field_list = new ArrayList<>();
+        field_list.add("همه دروس");
+        field_list.add("ادبیات");
+        field_list.add("عربی");
+        field_list.add("دینی");
+        field_list.add("انگلیسی");
+        field_list.add("ریاضی");
+        field_list.add("فیزیک");
+        field_list.add("شیمی");
 
-        ArrayAdapter<String> dars_spinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, dars_list);
+        ArrayAdapter<String> field_spinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, field_list);
 
-        dars_spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        field_spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
-        dars_spinner.setAdapter(dars_spinnerAdapter);
+        field_spinner.setAdapter(field_spinnerAdapter);
 
-        Spinner tartib_spinner = (Spinner) view.findViewById(R.id.tartib_spinner);
+        Spinner orderBy_spinner = (Spinner) view.findViewById(R.id.tartib_spinner);
 
-        List<String> tartib_list = new ArrayList<>();
-        tartib_list.add("اسم");
-        tartib_list.add("تاریخ");
-        tartib_list.add("شماره");
-        tartib_list.add("درس");
-        tartib_list.add("دشواری");
+        List<String> orderBy_list = new ArrayList<>();
+        orderBy_list.add("اسم");
+        orderBy_list.add("تاریخ");
+        orderBy_list.add("شماره");
+        orderBy_list.add("درس");
+        orderBy_list.add("دشواری");
 
-        ArrayAdapter<String> tartib_spinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, tartib_list);
+        ArrayAdapter<String> orderBy_spinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, orderBy_list);
 
-        tartib_spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        orderBy_spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
 
-        tartib_spinner.setAdapter(tartib_spinnerAdapter);
+        orderBy_spinner.setAdapter(orderBy_spinnerAdapter);
 
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.archives_test_recyclerView);

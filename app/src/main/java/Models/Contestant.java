@@ -5,6 +5,8 @@ class Contestant {
 
     private String username = "empty";
 
+    private String major = "empty";
+
     private String grade = "empty";
 
     private String city = "empty";
@@ -13,11 +15,14 @@ class Contestant {
 
     private long score = 0;
 
-    // Getters
+
+// Getters
 
     public String getUsername() {
         return username;
     }
+
+    public String getMajor() { return major; }
 
     public String getGrade() {
         return grade;
@@ -40,6 +45,8 @@ class Contestant {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public void setMajor(String major) { this.major = major; }
 
     public void setGrade(String grade) {
         this.grade = grade;

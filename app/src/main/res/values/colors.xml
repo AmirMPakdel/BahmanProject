@@ -2,7 +2,45 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#42c197</color>
     <color name="colorMainTheme">#42c197</color>
     <color name="colorMainDark">#329675</color>
+
+
+    <!-- Field colors-->
+    <color name="OmoumiADABIAT">#ccc547</color>
+    <color name="OmoumiARABI">#47ccb6</color>
+    <color name="OmoumiDINI">#cc8a47</color>
+    <color name="OmoumiENGELISI">#7f6b96</color>
+
+    <color name="RiaziRIAZI">#33ca2b</color>
+    <color name="RiaziFIZIK">#478acc</color>
+    <color name="RiaziSHIMI">#ce2822</color>
+
+    <color name="TajrobiZAMINSHENASI">#ed3993</color>
+    <color name="TajrobiRIAZI">#33ca2b</color>
+    <color name="TajrobiZISTSHENASI">#f78d24</color>
+    <color name="TajrobiFIZIK">#478acc</color>
+    <color name="TajrobiSHIMI">#ce2822</color>
+
+    <color name="EnsaniRIAZI">#33ca2b</color>
+    <color name="EnsaniEGHTESAD">#ed3993</color>
+    <color name="EnsaniADABIAT">#ccc547</color>
+    <color name="EnsaniARABI">#47ccb6</color>
+    <color name="EnsaniTARIKH">#f78d24</color>
+    <color name="EnsaniJOGHRAFIA">#7543ff</color>
+    <color name="EnsaniEjtemaie">#478acc</color>
+    <color name="EnsaniFALSAFE">#ce2822</color>
+    <color name="EnsaniMANTEGH">#529971</color>
+    <color name="EnsaniRAVANSHENASI">#9c6764</color>
+
+    <color name="HonarDARKEHONAR">#478acc</color>
+    <color name="HonarRIAZIFIZIK">#33ca2b</color>
+    <color name="HonarTARSIMEFANI">#ce2822</color>
+    <color name="HonarKHALAGHIATETASVIRI">#ed3993</color>
+    <color name="HonarKHALAGHIATENAMAYESHI">#7543ff</color>
+    <color name="HonarKHALAGHIATEMOSIGHI">#f78d24</color>
+    <color name="HonarKHAVASEMAVAD">#ccc547</color>
+
+
 </resources>

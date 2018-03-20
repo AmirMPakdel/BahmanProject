@@ -5,29 +5,55 @@ import java.util.Random;
 
 public class Faker {
 
-    Character[] Fa_char_array;
+    private Random random;
+
+    private Character[] Fa_sentence_char_array;
+
+    private Character[] Fa_word_char_array;
 
     public Faker(){
 
-        Fa_char_array = new Character[]{' ', 'آ', 'ب', 'پ', 'ت', ' ', 'ث', 'ج', 'چ', 'ح', 'خ', ' ', 'د', 'ذ', 'ر', 'ز', ' ', 'س', 'ش', 'ص', 'ض', ' ', 'ق', 'ف', 'ک', 'ع', 'غ', ' ', 'ه', 'گ', 'ط', 'ظ', ' ', 'و', 'م', 'ن', 'ل', 'ی', ' ', 'آ', 'ی', 'م', 'ن', 'ه', 'د', 'ر', 'آ', 'م', ' ', 'ی', 'ن', ' '};
-
+        random = new Random();
+        Fa_sentence_char_array = new Character[]{' ', 'آ', 'ب', 'پ', 'ت', ' ', 'ث', 'ج', 'چ', 'ح', 'خ', ' ', 'د', 'ذ', 'ر', 'ز', ' ', 'س', 'ش', 'ص', 'ض', ' ', 'ق', 'ف', 'ک', 'ع', 'غ', ' ', 'ه', 'گ', 'ط', 'ظ', ' ', 'و', 'م', 'ن', 'ل', 'ی', ' ', 'آ', 'ی', 'م', 'ن', 'ه', 'د', 'ر', 'آ', 'م', ' ', 'ی', 'ن', ' '};
+        Fa_word_char_array = new Character[]{'آ', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ق', 'ف', 'ک', 'ع', 'غ', 'ه', 'گ', 'ط', 'ظ', 'و', 'م', 'ن', 'ل', 'ی', 'آ', 'ی', 'م', 'ن', 'ه', 'د', 'ر', 'آ', 'م', 'ی', 'ن'};
 
     }
 
-    public String getFakeString(int size){
 
-        String s;
+    public String getFakeFarsiWord(int size){
+        String s ="";
+        for(int i=0; i<size; i++){
+            int randomNum = random.nextInt(Fa_word_char_array.length-1);
+            s += Fa_word_char_array[randomNum];
+        }
+        return s;
+    }
+    public String getFakeFarsiWord(int min, int max) {
 
-        Character[] c;
+        if(min<max) {
+            int randomNum = (random.nextInt(max)) - min;
+            return getFakeFarsiWord(randomNum);
+        }else {
+            return "";
+        }
+    }
 
-        /*for(int i=0; i<size; i++){
 
-            Random random = new Random();
+    public String getFakeFarsiSentence(int size){
+        String s = "";
+        for(int i=0; i<size; i++){
+            int randomNum = random.nextInt(Fa_sentence_char_array.length-1);
+                s += Fa_sentence_char_array[randomNum];
+        }
+        return s;
+    }
+    public String getFakeFarsiSentence(int min, int max) {
 
-            random.nextInt(Fa_char_array.length-1);
-                s+=Fa_char_array[i];
-        }*/
-
-        return null;
+        if(min<max) {
+            int randomNum = random.nextInt(max)-min;
+            return getFakeFarsiSentence(randomNum);
+        }else {
+            return "";
+        }
     }
 }

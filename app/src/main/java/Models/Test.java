@@ -7,7 +7,9 @@ public class Test {
 
     private String id;
 
-    private String dars; // math or physics or eng or ...
+    private String name; // user can set name for a test
+
+    private String field; // math or physics or eng or ...
 
     private int year; // if it's Konkurs then which year?
 
@@ -25,9 +27,10 @@ public class Test {
 
     private String CompleteAnswer; // answer with information and formula
 
-    public Test(String id, String dars, int year, String major, int grade, int difficulty, String question, List<String> possibleAnswers, String correctAnswer, String completeAnswer) {
+    public Test(String id, String name, String field, int year, String major, int grade, int difficulty, String question, List<String> possibleAnswers, String correctAnswer, String completeAnswer) {
         this.id = id;
-        this.dars = dars;
+        this.name = name;
+        this.field = field;
         this.year = year;
         this.major = major;
         this.grade = grade;
@@ -45,8 +48,8 @@ public class Test {
         return id;
     }
 
-    public String getDars() {
-        return dars;
+    public String getField() {
+        return field;
     }
 
     public int getYear() {
@@ -84,13 +87,12 @@ public class Test {
 
     // Setters
 
-
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setDars(String dars) {
-        this.dars = dars;
+    public void setField(String field) {
+        this.field = field;
     }
 
     public void setYear(int year) {
