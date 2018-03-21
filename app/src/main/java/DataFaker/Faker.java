@@ -1,5 +1,7 @@
 package DataFaker;
 
+import com.blackcoin.packdel.bahmanproject.MainActivity;
+
 import java.util.Random;
 
 
@@ -14,7 +16,7 @@ public class Faker {
     public Faker(){
 
         random = new Random();
-        Fa_sentence_char_array = new Character[]{' ', 'آ', 'ب', 'پ', 'ت', ' ', 'ث', 'ج', 'چ', 'ح', 'خ', ' ', 'د', 'ذ', 'ر', 'ز', ' ', 'س', 'ش', 'ص', 'ض', ' ', 'ق', 'ف', 'ک', 'ع', 'غ', ' ', 'ه', 'گ', 'ط', 'ظ', ' ', 'و', 'م', 'ن', 'ل', 'ی', ' ', 'آ', 'ی', 'م', 'ن', 'ه', 'د', 'ر', 'آ', 'م', ' ', 'ی', 'ن', ' '};
+        Fa_sentence_char_array = new Character[]{' ', 'آ', 'ب', 'پ', 'ت', ' ', 'ث', 'ج', 'چ', 'ح', 'خ', ' ', 'د', 'ذ',' ', 'ر', 'ز', ' ', 'س', 'ش',' ', 'ص', 'ض', ' ', 'ق', 'ف', 'ک',' ', 'ع', 'غ', ' ', 'ه', 'گ', 'ط',' ', 'ظ', ' ', 'و', 'م', 'ن',' ', 'ل', 'ی', ' ', 'آ', 'ی', ' ','م', 'ن', 'ه', 'د', ' ','ر', 'آ', 'م', ' ', 'ی', 'ن', ' '};
         Fa_word_char_array = new Character[]{'آ', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ق', 'ف', 'ک', 'ع', 'غ', 'ه', 'گ', 'ط', 'ظ', 'و', 'م', 'ن', 'ل', 'ی', 'آ', 'ی', 'م', 'ن', 'ه', 'د', 'ر', 'آ', 'م', 'ی', 'ن'};
 
     }
@@ -31,7 +33,12 @@ public class Faker {
     public String getFakeFarsiWord(int min, int max) {
 
         if(min<max) {
-            int randomNum = (random.nextInt(max)) - min;
+            int num = max - min;
+
+            int randomNum = random.nextInt(num);
+
+            randomNum += min;
+
             return getFakeFarsiWord(randomNum);
         }else {
             return "";
@@ -50,7 +57,12 @@ public class Faker {
     public String getFakeFarsiSentence(int min, int max) {
 
         if(min<max) {
-            int randomNum = random.nextInt(max)-min;
+            int num = max - min;
+
+            int randomNum = random.nextInt(num);
+
+            randomNum += min;
+            
             return getFakeFarsiSentence(randomNum);
         }else {
             return "";

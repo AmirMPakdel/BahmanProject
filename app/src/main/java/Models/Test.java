@@ -11,6 +11,10 @@ public class Test {
 
     private String field; // math or physics or eng or ...
 
+    private int fieldColor;
+
+    private int fieldString;
+
     private int year; // if it's Konkurs then which year?
 
     private String major; // mathematics major or biology major or arts major or ...
@@ -39,7 +43,11 @@ public class Test {
         this.possibleAnswers = possibleAnswers;
         CorrectAnswer = correctAnswer;
         CompleteAnswer = completeAnswer;
+        fieldColor = Field.setFieldColor(field);
+        fieldString = Field.setFieldString(field);
+
     }
+
 
 
     // Getters
@@ -48,8 +56,20 @@ public class Test {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getField() {
         return field;
+    }
+
+    public int getFieldColor() {
+        return fieldColor;
+    }
+
+    public int getFieldString() {
+        return fieldString;
     }
 
     public int getYear() {
@@ -91,8 +111,18 @@ public class Test {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setField(String field) {
         this.field = field;
+    }
+
+    public void setFieldColor(int fieldColor) { this.fieldColor = fieldColor; }
+
+    public void setFieldString(int fieldString) {
+        this.fieldString = fieldString;
     }
 
     public void setYear(int year) {

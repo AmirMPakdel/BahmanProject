@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,51 +6,72 @@
     android:orientation="vertical"
     tools:context="Menu.FragmentArchives">
 
-    <ImageView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/colorMainTheme"/>
+        android:layout_height="45dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorMainTheme"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="صندوق تست من"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
 
     <LinearLayout
-        android:id="@+id/archives_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layoutDirection="ltr"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="end"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
-        <ImageView
-            android:id="@+id/videos_list_btn"
-            android:layout_width="100dp"
+
+        <Spinner
+            android:id="@+id/dars_spinner"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="2dp"
-            android:src="@drawable/ic_videocam"
-            android:background="@drawable/background_archives_tablayout_btn"/>
+            android:layout_marginEnd="25dp"
+            android:layout_gravity="start"/>
 
-
-        <ImageView
-            android:id="@+id/tests_list_btn"
-            android:layout_width="100dp"
+        <Spinner
+            android:id="@+id/tartib_spinner"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:padding="5dp"
-            android:src="@drawable/ic_format_list_numbered"
-            android:background="@drawable/background_archives_tablayout_btn"/>
+            android:layout_gravity="end"/>
 
-        <ImageView
-            android:id="@+id/brochures_list_btn"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:padding="6dp"
-            android:src="@drawable/ic_book"
-            android:background="@drawable/background_archives_tablayout_btn"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMainDark"
+            android:text="ترتیب : "
+            android:textSize="20sp"
+            android:layout_gravity="end|center_vertical"/>
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/archives_viewPager"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/archives_test_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="55dp">
-    </android.support.v4.view.ViewPager>
+        android:paddingBottom="50dp">
+    </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+
+</LinearLayout>
