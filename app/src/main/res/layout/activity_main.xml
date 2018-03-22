@@ -40,8 +40,8 @@
                 android:id="@+id/archives_btn"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:padding="3dp"
                 android:layout_marginStart="4dp"
+                android:padding="5dp"
                 android:src="@drawable/ic_chest"/>
 
             <Space
