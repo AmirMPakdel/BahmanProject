@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layoutDirection="ltr"
     android:gravity="end"
-    android:orientation="horizontal">
+    android:layoutDirection="ltr"
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteY="25dp">
 
-    <Layout.RoundedCornerLayout
-        android:id="@+id/test_field_layout"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
+    <android.support.v7.widget.CardView
+        android:id="@+id/test_number_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/test_field"
-            android:layout_width="80dp"
+            android:id="@+id/test_number"
+            android:layout_width="50dp"
             android:layout_height="30dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </Layout.RoundedCornerLayout>
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/test_text"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/test_edit_ico"
-        app:layout_constraintStart_toEndOf="@+id/test_field_layout"
+        app:layout_constraintEnd_toStartOf="@+id/test_number_parent"
+        app:layout_constraintStart_toEndOf="@+id/test_edit_ico"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -51,11 +50,11 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_edit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/test_delete_ico"
+        app:layout_constraintStart_toEndOf="@+id/test_delete_ico"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -63,20 +62,21 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_delete"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@color/colorMainDark"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="69dp"
+        tools:ignore="MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>

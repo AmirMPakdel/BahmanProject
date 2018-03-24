@@ -6,7 +6,7 @@
     android:singleLine="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textSize="18sp"
+    android:textSize="20sp"
     android:textColor="@color/colorMainDark"
     android:padding="6dp"
     android:layoutDirection="rtl"
