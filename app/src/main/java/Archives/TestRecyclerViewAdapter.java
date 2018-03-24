@@ -3,6 +3,7 @@ package Archives;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +19,7 @@ import com.blackcoin.packdel.bahmanproject.TestActivity;
 
 import java.util.List;
 
-import Models.Book;
+import Models.Field;
 import Models.Test;
 
 
@@ -44,7 +45,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
 
         View view;
 
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_test, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_test_item, parent, false);
 
         return new MyViewHolder(view);
     }
@@ -57,13 +58,12 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        // setting the color and font
-        holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(testList.get(position).getField())));
-        holder.test_number.setText(String.valueOf(position+1));
-        holder.test_number.setTypeface(MainActivity.myFont);
-        holder.test_name.setTypeface(MainActivity.myFont);
+        holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Field.setFieldColor(testList.get(position).getField())));
 
-        // TODO -> find a better way to show a brief sign of the test
+        holder.test_number.setText(String.valueOf(position+1));
+
+        holder.test_number.setTypeface(MainActivity.myFont);
+
         if(testList.get(position).getQuestion().length() >= 20){
 
             String s = testList.get(position).getQuestion().substring(0,20);
@@ -72,8 +72,8 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         }else{
             holder.test_name.setText(testList.get(position).getQuestion());
         }
+        holder.test_name.setTypeface(MainActivity.myFont);
 
-        // TODO -> show the whole the test in a TestActivity
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +82,6 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
             }
         });
 
-        // TODO -> delete the selected test
         holder.delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +89,6 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
             }
         });
 
-        // TODO -> edit the selected test
         holder.edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,15 +105,16 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         ImageView delete_btn;
         ImageView edit_btn;
 
+
         private MyViewHolder(View itemView) {
             super(itemView);
 
             view = itemView;
-            test_number_paernt = itemView.findViewById(R.id.test_number_parent);
-            test_number = itemView.findViewById(R.id.test_number);
-            test_name = itemView.findViewById(R.id.test_text);
-            delete_btn = itemView.findViewById(R.id.test_delete_ico);
-            edit_btn = itemView.findViewById(R.id.test_edit_ico);
+            test_number_paernt = (CardView) itemView.findViewById(R.id.test_number_parent);
+            test_number = (TextView) itemView.findViewById(R.id.test_number);
+            test_name = (TextView) itemView.findViewById(R.id.test_text);
+            delete_btn = (ImageView) itemView.findViewById(R.id.test_delete_ico);
+            edit_btn = (ImageView) itemView.findViewById(R.id.test_edit_ico);
         }
     }
 }

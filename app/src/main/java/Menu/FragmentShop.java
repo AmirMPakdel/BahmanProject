@@ -24,7 +24,7 @@ public class FragmentShop extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu_shop, container, false);
 
         // set the title
-        TextView title = view.findViewById(R.id.toolbar_title);
+        TextView title = (TextView) view.findViewById(R.id.toolbar_title);
         title.setText("فروشگاه");
         title.setTypeface(MainActivity.myFont);
 

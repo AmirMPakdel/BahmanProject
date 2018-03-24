@@ -24,7 +24,7 @@ public class FragmentSetting extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu_setting, container, false);
 
         // set the title
-        TextView title = view.findViewById(R.id.toolbar_title);
+        TextView title = (TextView) view.findViewById(R.id.toolbar_title);
         title.setText("تنظیمات");
         title.setTypeface(MainActivity.myFont);
 
