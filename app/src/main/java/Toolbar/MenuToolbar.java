@@ -27,18 +27,18 @@ public class MenuToolbar {
     public MenuToolbar(View view, FragmentManager SupportFragmentManager) {
 
         this.view = view;
-        viewPager = (ViewPager) view.findViewById(R.id.home_view_pager);
+        viewPager = view.findViewById(R.id.home_view_pager);
         viewPagerAdapter = new ViewPagerAdapter(SupportFragmentManager);
     }
 
 
     public void setup(){
 
-        final ImageView setting_btn = (ImageView) view.findViewById(R.id.setting_btn);
-        final ImageView archives_btn = (ImageView) view.findViewById(R.id.archives_btn);
-        final ImageView home_btn = (ImageView) view.findViewById(R.id.home_btn);
-        final ImageView competition_btn = (ImageView) view.findViewById(R.id.competition_btn);
-        final ImageView shop_btn = (ImageView) view.findViewById(R.id.shop_btn);
+        final ImageView setting_btn = view.findViewById(R.id.setting_btn);
+        final ImageView archives_btn = view.findViewById(R.id.archives_btn);
+        final ImageView home_btn = view.findViewById(R.id.home_btn);
+        final ImageView competition_btn = view.findViewById(R.id.competition_btn);
+        final ImageView shop_btn = view.findViewById(R.id.shop_btn);
 
         viewPagerAdapter.addFragment(new FragmentSetting(), "Setting");
         viewPagerAdapter.addFragment(new FragmentArchives(), "Archives");

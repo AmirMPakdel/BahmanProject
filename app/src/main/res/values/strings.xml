@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">QG</string>
 
-    <!-- Field strings-->
+    <!-- Book strings-->
     <string name="OmoumiADABIAT">ادبیات</string>
     <string name="OmoumiARABI">عربی</string>
     <string name="OmoumiDINI">دینی</string>
@@ -35,6 +35,19 @@
     <string name="HonarKHALAGHIATENAMAYESHI">خلاقیت نمایشی</string>
     <string name="HonarKHALAGHIATEMOSIGHI">خلاقیت موسیقی</string>
     <string name="HonarKHAVASEMAVAD">خواص مواد</string>
+
+
+    <!-- Field Strings -->
+    <string name="Riazi">ریاضی</string>
+    <string name="Tajrobi">تجربی</string>
+    <string name="Ensani">انسانی</string>
+    <string name="Honar">هنر</string>
+
+
+    <!-- Grade Strings -->
+    <string name="FirstGrade">اول متوسطه</string>
+    <string name="SecondGrade">دوم متوسطه</string>
+    <string name="ThirdGrade">سوم متوسطه</string>
 
 
 </resources>

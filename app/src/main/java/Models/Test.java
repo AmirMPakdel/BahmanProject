@@ -43,8 +43,8 @@ public class Test {
         this.possibleAnswers = possibleAnswers;
         CorrectAnswer = correctAnswer;
         CompleteAnswer = completeAnswer;
-        fieldColor = Field.setFieldColor(field);
-        fieldString = Field.setFieldString(field);
+        fieldColor = Book.setFieldColor(field);
+        fieldString = Book.setFieldString(field);
 
     }
 

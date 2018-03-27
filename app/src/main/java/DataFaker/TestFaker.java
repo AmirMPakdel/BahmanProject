@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import Models.Field;
+import Models.Book;
 import Models.Test;
 
 
@@ -27,13 +27,13 @@ public class TestFaker {
         String name =  faker.getFakeFarsiWord(5,12);
 
         List<String> fields = new ArrayList<>();
-        fields.add(Field.Omoumi.ADABIAT);
-        fields.add(Field.Omoumi.ARABI);
-        fields.add(Field.Omoumi.DINI);
-        fields.add(Field.Omoumi.ENGELISI);
-        fields.add(Field.Riazi.RIAZI);
-        fields.add(Field.Riazi.FIZIK);
-        fields.add(Field.Riazi.SHIMI);
+        fields.add(Book.Omoumi.ADABIAT);
+        fields.add(Book.Omoumi.ARABI);
+        fields.add(Book.Omoumi.DINI);
+        fields.add(Book.Omoumi.ENGELISI);
+        fields.add(Book.Riazi.RIAZI);
+        fields.add(Book.Riazi.FIZIK);
+        fields.add(Book.Riazi.SHIMI);
         String field =  fields.get(random.nextInt(7));
 
         String question = faker.getFakeFarsiSentence(40,50); // "اگر در مدار مقابل کلید را روشن کنیم مقدار ولتاژ لامپ دوم چقدر است؟"

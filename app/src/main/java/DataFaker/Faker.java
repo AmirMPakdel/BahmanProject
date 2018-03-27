@@ -5,6 +5,10 @@ import com.blackcoin.packdel.bahmanproject.MainActivity;
 import java.util.Random;
 
 
+/*
+ * DataFaker v0.4.1 made by AMP 2017
+ */
+
 public class Faker {
 
     private Random random;

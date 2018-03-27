@@ -1,353 +1,77 @@
 package Models;
 
 
+import android.content.res.Resources;
+import android.widget.Spinner;
+
 import com.blackcoin.packdel.bahmanproject.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Field {
 
+    public static String RIAZI_FIELD = "riazi";
 
-    public class Omoumi{
+    public static String TAJROBI_FIELD = "tajrobi";
 
-        public static final String ADABIAT = "adabiat";
+    public static String ENSANI_FIELD = "ensani";
 
-        public static final String ARABI = "arabi";
+    public static String HONAR_FIELD = "honar";
 
-        public static final String DINI = "dini";
+    static class Strings {
 
-        public static final String ENGELISI = "engilisi";
-    }
+        public static int RIAZI = R.string.Riazi;
 
-    public class Riazi{
+        public static int TAJROBI = R.string.Tajrobi;
 
-        public static final String RIAZI = "riazi";
+        public static int ENSANI = R.string.Ensani;
 
-        public static final String FIZIK = "fizik";
-
-        public static final String SHIMI = "shimi";
-    }
-
-
-    public class Tajrobi{
-
-        public static final String ZAMINSHENASI = "zaminshenasi";
-
-        public static final String RIAZI = "riazi";
-
-        public static final String ZISTSHENASI = "zistshenasi";
-
-        public static final String FIZIK = "fizik";
-
-        public static final String SHIMI = "shimi";
-    }
-
-
-    public class Ensani {
-
-        public static final String RIAZI = "riazi";
-
-        public static final String EGHTESAD = "eghtesad";
-
-        public static final String ADABIAT = "adabiat";
-
-        public static final String ARABI = "arabi";
-
-        public static final String TARIKH = "tarikh";
-
-        public static final String JOGHRAFIA = "joghrafia";
-
-        public static final String Ejtemaie = "ejtemaie";
-
-        public static final String FALSAFE = "falsafe";
-
-        public static final String MANTEGH = "mantegh";
-
-        public static final String RAVANSHENASI = "ravanshenasi";
+        public static int HONAR = R.string.Honar;
 
     }
 
-    public class Honar{
+    public List<String> getFieldsList(Resources resources){
 
-        public static final String DARKEHONAR = "darkehonar";
+        List<String> fieldsList = new ArrayList<>();
 
-        public static final String RIAZIFIZIK = "riazifizik";
+        fieldsList.add(resources.getString(Strings.RIAZI));
+        fieldsList.add(resources.getString(Strings.TAJROBI));
+        fieldsList.add(resources.getString(Strings.ENSANI));
+        fieldsList.add(resources.getString(Strings.HONAR));
 
-        public static final String TARSIMEFANI = "tarsimefani";
-
-        public static final String KHALAGHIATETASVIRI = "khalaghiatetasviri";
-
-        public static final String KHALAGHIATENAMAYESHI = "khalaghiatenamayeshi";
-
-        public static final String KHALAGHIATEMOSIGHI = "khalaghiatemosighi";
-
-        public static final String KHAVASEMAVAD = "khavasemavad";
+        return fieldsList;
     }
 
-    public class Colors{
+    public String getFieldName(String farsiString, Resources resources){
 
-        public static final int ADABIAT = R.color.OmoumiADABIAT;
+        String s = "empty";
 
-        public static final int ARABI = R.color.OmoumiARABI;
+        if(farsiString.equals(resources.getString(Strings.RIAZI))){
 
-        public static final int DINI = R.color.OmoumiDINI;
+            return RIAZI_FIELD;
 
-        public static final int ENGELISI = R.color.OmoumiENGELISI;
+        }else if(farsiString.equals(resources.getString(Strings.TAJROBI))){
 
-        public static final int RIAZI = R.color.EnsaniRIAZI;
+            return TAJROBI_FIELD;
 
-        public static final int FIZIK = R.color.RiaziFIZIK;
+        }else if (farsiString.equals(resources.getString(Strings.ENSANI))){
 
-        public static final int SHIMI = R.color.RiaziSHIMI;
+            return ENSANI_FIELD;
 
-        public static final int ZAMINSHENASI = R.color.TajrobiZAMINSHENASI;
+        }else if(farsiString.equals(resources.getString(Strings.HONAR))){
 
-        public static final int ZISTSHENASI = R.color.TajrobiZISTSHENASI;
-
-        public static final int EGHTESAD = R.color.EnsaniEGHTESAD;
-
-        public static final int TARIKH = R.color.EnsaniTARIKH;
-
-        public static final int JOGHRAFIA = R.color.EnsaniJOGHRAFIA;
-
-        public static final int Ejtemaie = R.color.EnsaniEjtemaie;
-
-        public static final int FALSAFE = R.color.EnsaniFALSAFE;
-
-        public static final int MANTEGH = R.color.EnsaniMANTEGH;
-
-        public static final int RAVANSHENASI = R.color.EnsaniRAVANSHENASI;
-
-        public static final int DARKEHONAR = R.color.HonarDARKEHONAR;
-
-        public static final int RIAZIFIZIK = R.color.HonarRIAZIFIZIK;
-
-        public static final int TARSIMEFANI = R.color.HonarTARSIMEFANI;
-
-        public static final int KHALAGHIATETASVIRI = R.color.HonarKHALAGHIATETASVIRI;
-
-        public static final int KHALAGHIATENAMAYESHI = R.color.HonarKHALAGHIATENAMAYESHI;
-
-        public static final int KHALAGHIATEMOSIGHI = R.color.HonarKHALAGHIATEMOSIGHI;
-
-        public static final int KHAVASEMAVAD = R.color.HonarKHAVASEMAVAD;
-
-    }
-
-    public class Strings{
-
-        public static final int ADABIAT = R.string.OmoumiADABIAT;
-
-        public static final int ARABI = R.string.OmoumiARABI;
-
-        public static final int DINI = R.string.OmoumiDINI;
-
-        public static final int ENGELISI = R.string.OmoumiENGELISI;
-
-        public static final int RIAZI = R.string.EnsaniRIAZI;
-
-        public static final int FIZIK = R.string.RiaziFIZIK;
-
-        public static final int SHIMI = R.string.RiaziSHIMI;
-
-        public static final int ZAMINSHENASI = R.string.TajrobiZAMINSHENASI;
-
-        public static final int ZISTSHENASI = R.string.TajrobiZISTSHENASI;
-
-        public static final int EGHTESAD = R.string.EnsaniEGHTESAD;
-
-        public static final int TARIKH = R.string.EnsaniTARIKH;
-
-        public static final int JOGHRAFIA = R.string.EnsaniJOGHRAFIA;
-
-        public static final int Ejtemaie = R.string.EnsaniEjtemaie;
-
-        public static final int FALSAFE = R.string.EnsaniFALSAFE;
-
-        public static final int MANTEGH = R.string.EnsaniMANTEGH;
-
-        public static final int RAVANSHENASI = R.string.EnsaniRAVANSHENASI;
-
-        public static final int DARKEHONAR = R.string.HonarDARKEHONAR;
-
-        public static final int RIAZIFIZIK = R.string.HonarRIAZIFIZIK;
-
-        public static final int TARSIMEFANI = R.string.HonarTARSIMEFANI;
-
-        public static final int KHALAGHIATETASVIRI = R.string.HonarKHALAGHIATETASVIRI;
-
-        public static final int KHALAGHIATENAMAYESHI = R.string.HonarKHALAGHIATENAMAYESHI;
-
-        public static final int KHALAGHIATEMOSIGHI = R.string.HonarKHALAGHIATEMOSIGHI;
-
-        public static final int KHAVASEMAVAD = R.string.HonarKHAVASEMAVAD;
-    }
-
-    public static int setFieldColor(String field){
-
-        switch (field){
-
-            case Omoumi.ADABIAT:
-                return Colors.ADABIAT;
-
-            case Omoumi.ARABI:
-                return Colors.ARABI;
-
-            case Omoumi.DINI:
-                return Colors.DINI;
-
-            case Omoumi.ENGELISI:
-                return Colors.ENGELISI;
-
-            //////////////////////
-
-            case Riazi.RIAZI:
-                return Colors.RIAZI;
-
-            case Riazi.FIZIK:
-                return Colors.FIZIK;
-
-            case Riazi.SHIMI:
-                return Colors.SHIMI;
-
-            //////////////////////
-
-            case Tajrobi.ZAMINSHENASI:
-                return Colors.ZAMINSHENASI;
-
-            case Tajrobi.ZISTSHENASI:
-                return Colors.ZISTSHENASI;
-
-            //////////////////////
-
-            case Ensani.EGHTESAD:
-                return Colors.EGHTESAD;
-
-            case Ensani.Ejtemaie:
-                return Colors.Ejtemaie;
-
-            case Ensani.FALSAFE:
-                return Colors.FALSAFE;
-
-            case Ensani.JOGHRAFIA:
-                return Colors.JOGHRAFIA;
-
-            case Ensani.MANTEGH:
-                return Colors.MANTEGH;
-
-            case Ensani.RAVANSHENASI:
-                return Colors.RAVANSHENASI;
-
-            case Ensani.TARIKH:
-                return Colors.TARIKH;
-
-            //////////////////////
-
-            case Honar.DARKEHONAR:
-                return Colors.DARKEHONAR;
-
-            case Honar.KHALAGHIATEMOSIGHI:
-                return Colors.KHALAGHIATEMOSIGHI;
-
-            case Honar.KHALAGHIATENAMAYESHI:
-                return Colors.KHALAGHIATENAMAYESHI;
-
-            case Honar.KHALAGHIATETASVIRI:
-                return Colors.KHALAGHIATETASVIRI;
-
-            case Honar.KHAVASEMAVAD:
-                return Colors.KHAVASEMAVAD;
-
-            case Honar.RIAZIFIZIK:
-                return Colors.RIAZIFIZIK;
-
-            case Honar.TARSIMEFANI:
-                return Colors.TARSIMEFANI;
-
+            return HONAR_FIELD;
         }
 
-        return 0;
+        return s;
     }
 
-    public static int setFieldString(String field) {
+    public String getFieldNameSpinner(Spinner spinner, Resources resources){
 
-        switch (field){
-            case Omoumi.ADABIAT:
-                return Strings.ADABIAT;
+        String si = spinner.getSelectedItem().toString();
 
-            case Omoumi.ARABI:
-                return Strings.ARABI;
-
-            case Omoumi.DINI:
-                return Strings.DINI;
-
-            case Omoumi.ENGELISI:
-                return Strings.ENGELISI;
-
-            //////////////////////
-
-            case Riazi.RIAZI:
-                return Strings.RIAZI;
-
-            case Riazi.FIZIK:
-                return Strings.FIZIK;
-
-            case Riazi.SHIMI:
-                return Strings.SHIMI;
-
-            //////////////////////
-
-            case Tajrobi.ZAMINSHENASI:
-                return Strings.ZAMINSHENASI;
-
-            case Tajrobi.ZISTSHENASI:
-                return Strings.ZISTSHENASI;
-
-            //////////////////////
-
-            case Ensani.EGHTESAD:
-                return Strings.EGHTESAD;
-
-            case Ensani.Ejtemaie:
-                return Strings.Ejtemaie;
-
-            case Ensani.FALSAFE:
-                return Strings.FALSAFE;
-
-            case Ensani.JOGHRAFIA:
-                return Strings.JOGHRAFIA;
-
-            case Ensani.MANTEGH:
-                return Strings.MANTEGH;
-
-            case Ensani.RAVANSHENASI:
-                return Strings.RAVANSHENASI;
-
-            case Ensani.TARIKH:
-                return Strings.TARIKH;
-
-            //////////////////////
-
-            case Honar.DARKEHONAR:
-                return Strings.DARKEHONAR;
-
-            case Honar.KHALAGHIATEMOSIGHI:
-                return Strings.KHALAGHIATEMOSIGHI;
-
-            case Honar.KHALAGHIATENAMAYESHI:
-                return Strings.KHALAGHIATENAMAYESHI;
-
-            case Honar.KHALAGHIATETASVIRI:
-                return Strings.KHALAGHIATETASVIRI;
-
-            case Honar.KHAVASEMAVAD:
-                return Strings.KHAVASEMAVAD;
-
-            case Honar.RIAZIFIZIK:
-                return Strings.RIAZIFIZIK;
-
-            case Honar.TARSIMEFANI:
-                return Strings.TARSIMEFANI;
-        }
-
-        return 0;
+        return getFieldName(si, resources);
     }
+
 }
