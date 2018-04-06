@@ -9,5 +9,4 @@
     android:textSize="20sp"
     android:textColor="@color/colorMainDark"
     android:padding="6dp"
-    android:layoutDirection="rtl"
     android:ellipsize="marquee"/>

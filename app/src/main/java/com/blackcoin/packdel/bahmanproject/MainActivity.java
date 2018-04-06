@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import SplashScreen.SplashScreen;
-import Toolbar.MenuToolbar;
+import Storage.StorageBox;
+import Storage.StorageLite;
 
 public class MainActivity extends AppCompatActivity {
 
     public static Typeface myFont;
+
+    public static StorageBox storageBox;
+
+    public static StorageLite storageLite;
 
     public static void log(String s){Log.i("Bahman!",s);}
 
@@ -30,11 +34,16 @@ public class MainActivity extends AppCompatActivity {
         // Set the Font
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
-        // Show The Splash Screen
-        new SplashScreen(getSupportFragmentManager()).show();
+        // Set the StorageBox
+        storageBox = new StorageBox(getSharedPreferences(StorageBox.SHARED_PREFERENCES_NAME, MODE_PRIVATE));
 
-        // Setup MenuToolbar
-        new MenuToolbar(findViewById(R.id.relativeLayout), getSupportFragmentManager()).setup();
+        // Set the StorageLite
+        storageLite = new StorageLite(this);
+
+        /* Show The Splash Screen
+         * Many important Things happen in SplashScreen
+         */
+        new SplashScreen(getSupportFragmentManager()).show();
 
         // test ground
 

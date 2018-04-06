@@ -7,23 +7,12 @@ public class User extends Contestant {
 
     private String email = "empty";
 
-    public User(String username, String major, String grade, String email){
-
-        this.setUsername(username);
-        this.setMajor(major);
-        this.setGrade(grade);
-        this.setScore(0);
+    public User(String major, String grade, String username, String city, String schoolName, long score, Number phoneNumber, String email) {
+        super(major, grade, username, city, schoolName, score);
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public User(String username, String major, String grade, String email, String city, String schoolName){
-
-        this(username, major, grade, email);
-        this.setCity(city);
-        this.setSchoolName(schoolName);
-    }
-
-    // Getters
 
     public Number getPhoneNumber() {
         return phoneNumber;
@@ -33,7 +22,6 @@ public class User extends Contestant {
         return email;
     }
 
-    // Setters
 
     public void setPhoneNumber(Number phoneNumber) {
         this.phoneNumber = phoneNumber;

@@ -1,13 +1,9 @@
 package Models;
 
 
-class Contestant {
+class Contestant extends Guest{
 
     private String username = "empty";
-
-    private String major = "empty";
-
-    private String grade = "empty";
 
     private String city = "empty";
 
@@ -15,17 +11,16 @@ class Contestant {
 
     private long score = 0;
 
-
-// Getters
+    public Contestant(String major, String grade, String username, String city, String schoolName, long score) {
+        super(major, grade);
+        this.username = username;
+        this.city = city;
+        this.schoolName = schoolName;
+        this.score = score;
+    }
 
     public String getUsername() {
         return username;
-    }
-
-    public String getMajor() { return major; }
-
-    public String getGrade() {
-        return grade;
     }
 
     public String getCity() {
@@ -40,16 +35,9 @@ class Contestant {
         return score;
     }
 
-    // Setters
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setMajor(String major) { this.major = major; }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
     }
 
     public void setCity(String city) {

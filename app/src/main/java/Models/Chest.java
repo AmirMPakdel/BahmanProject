@@ -3,6 +3,8 @@ package Models;
 
 public class Chest {
 
+    public static int START_CAPACITY = 20;
+
     private String field;
 
     private int capacity;
