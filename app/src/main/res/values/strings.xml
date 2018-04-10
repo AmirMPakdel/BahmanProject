@@ -51,12 +51,6 @@
 
     <!-- signing -->
     <string name="signup"><u>ثبت نام</u></string>
-    <string name="email">ایمیل (اختیاری)</string>
-    <string name="username">اسم</string>
-    <string name="password">رمز</string>
-    <string name="state">"استان :</string>
-    <string name="city">شهر :</string>
-    <string name="sign_up_btn">ثبت نام</string>
 
 
 </resources>

@@ -40,7 +40,7 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_archives_chest_item, parent, false));
+        return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cardview_archives_chest, parent, false));
     }
 
     @Override

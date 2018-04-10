@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import Server.Server;
 import SplashScreen.SplashScreen;
 import Toolbar.MenuToolbar;
 
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         new MenuToolbar(findViewById(R.id.relativeLayout), getSupportFragmentManager()).setup();
 
         // test ground
+
+        Server server = new Server(null);
+
+        server.signIn(this);
 
     }
 }

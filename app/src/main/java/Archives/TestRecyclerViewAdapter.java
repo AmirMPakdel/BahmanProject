@@ -45,7 +45,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
 
         View view;
 
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_test_item, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_test, parent, false);
 
         return new MyViewHolder(view);
     }

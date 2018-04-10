@@ -1,6 +1,3 @@
-//// TODO: 4/13/18 this class currently is not functional, might be deleted later
-
-
 package Server;
 
 import android.content.Context;
@@ -17,8 +14,6 @@ import com.blackcoin.packdel.bahmanproject.MainActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Utils.log;
-
 public class Server {
 
     private String domain;
@@ -28,7 +23,7 @@ public class Server {
         this.domain = domain;
     }
 
-    public void test(Context context){
+    public void signIn(Context context){
 
         String url;// = domain + "signup.php?...";
 
@@ -45,11 +40,11 @@ public class Server {
                 @Override
                 public void onResponse(JSONObject response) {
 
-                    log.print("respond!");
+                    MainActivity.log("respond!");
 
                     try {
 
-                        log.print(response.getString("respond"));
+                        MainActivity.log(response.getString("respond"));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -60,8 +55,8 @@ public class Server {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    log.print("error");
-                    log.print(error.toString());
+                    MainActivity.log("error");
+                    MainActivity.log(error.toString());
                 }
             });
 
