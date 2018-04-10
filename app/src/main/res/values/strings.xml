@@ -49,5 +49,8 @@
     <string name="SecondGrade">دوم متوسطه</string>
     <string name="ThirdGrade">سوم متوسطه</string>
 
+    <!-- signing -->
+    <string name="signup"><u>ثبت نام</u></string>
+
 
 </resources>

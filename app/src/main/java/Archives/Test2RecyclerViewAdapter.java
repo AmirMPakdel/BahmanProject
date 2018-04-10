@@ -3,11 +3,9 @@ package Archives;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,62 +13,49 @@ import android.widget.Toast;
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 import com.blackcoin.packdel.bahmanproject.TestActivity;
+import com.chad.library.adapter.base.BaseItemDraggableAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
 import Models.Book;
 import Models.Test;
 
+public class Test2RecyclerViewAdapter extends BaseItemDraggableAdapter<Test, Test2RecyclerViewAdapter.MyBaseViewHolder> {
 
-public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerViewAdapter.MyViewHolder>{
+    private View view;
 
     private Context context;
 
     private Resources resources;
 
-    private View view;
 
-    private List<Test> testList;
-
-    public TestRecyclerViewAdapter(Context context, List<Test> testList, Resources getResources){
-
+    public Test2RecyclerViewAdapter(Context context, int layoutResId, @Nullable List<Test> data) {
+        super(layoutResId, data);
         this.context = context;
-        this.testList = testList;
-        this.resources = getResources;
+        this.resources = context.getResources();
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    protected void convert(MyBaseViewHolder helper, Test item) {
 
-        View view;
-
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_test, parent, false);
-
-        return new MyViewHolder(view);
-    }
-
-    @Override
-    public int getItemCount() {
-        return testList.size();
-    }
-
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+        view = helper.itemView;
+        int position = helper.getLayoutPosition();
 
         // setting the color and font
-        holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(testList.get(position).getField())));
-        holder.test_number.setText(String.valueOf(position+1));
-        holder.test_number.setTypeface(MainActivity.myFont);
-        holder.test_name.setTypeface(MainActivity.myFont);
+        helper.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(item.getField())));
+        helper.test_number.setText(String.valueOf(position+1));
+        helper.test_number.setTypeface(MainActivity.myFont);
+        helper.test_name.setTypeface(MainActivity.myFont);
 
         // TODO -> find a better way to show a brief sign of the test
-        if(testList.get(position).getQuestion().length() >= 20){
+        if(item.getQuestion().length() >= 20){
 
-            String s = testList.get(position).getQuestion().substring(0,20);
+            String s = item.getQuestion().substring(0,20);
             s += "...";
-            holder.test_name.setText(s);
+            helper.test_name.setText(s);
         }else{
-            holder.test_name.setText(testList.get(position).getQuestion());
+            helper.test_name.setText(item.getQuestion());
         }
 
         // TODO -> show the whole the test in a TestActivity
@@ -83,7 +68,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         });
 
         // TODO -> delete the selected test
-        holder.delete_btn.setOnClickListener(new View.OnClickListener() {
+        helper.delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "DELETE", Toast.LENGTH_SHORT).show();
@@ -91,15 +76,16 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         });
 
         // TODO -> edit the selected test
-        holder.edit_btn.setOnClickListener(new View.OnClickListener() {
+        helper.edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "EDIT", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyBaseViewHolder extends BaseViewHolder {
 
         CardView test_number_paernt;
         TextView test_number;
@@ -107,10 +93,12 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         ImageView delete_btn;
         ImageView edit_btn;
 
-        private MyViewHolder(View itemView) {
+
+        public MyBaseViewHolder(View itemView) {
             super(itemView);
 
             view = itemView;
+
             test_number_paernt = itemView.findViewById(R.id.test_number_parent);
             test_number = itemView.findViewById(R.id.test_number);
             test_name = itemView.findViewById(R.id.test_text);

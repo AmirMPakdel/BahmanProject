@@ -70,9 +70,9 @@ public class FieldChoosingDialog extends Dialog {
         // Setup the Field Spinner
         List<String> fieldList = new Field().getFieldsList(getContext().getResources());
 
-        ArrayAdapter<String> fieldSpinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, fieldList);
+        ArrayAdapter<String> fieldSpinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.item_spinner, fieldList);
 
-        fieldSpinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        fieldSpinnerAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
 
         final Spinner fieldSpinner = findViewById(R.id.spinner_field);
 
@@ -81,9 +81,9 @@ public class FieldChoosingDialog extends Dialog {
         // Setup the Grade Spinner
         List<String> gradeList = new Grade().getGradeList(getContext().getResources());
 
-        ArrayAdapter<String> gradeSpinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.spinner_item, gradeList);
+        ArrayAdapter<String> gradeSpinnerAdapter = new ArrayAdapter<String>(getContext(), R.layout.item_spinner, gradeList);
 
-        gradeSpinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        gradeSpinnerAdapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
 
         final Spinner gradeSpinner = findViewById(R.id.spinner_grade);
 

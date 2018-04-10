@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import Server.Server;
 import SplashScreen.SplashScreen;
 import Storage.StorageBox;
 import Storage.StorageLite;
@@ -46,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         new SplashScreen(getSupportFragmentManager()).show();
 
         // test ground
+
+        Server server = new Server(null);
+
+        server.signIn(this);
 
     }
 }
