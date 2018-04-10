@@ -22,7 +22,7 @@ public class VolleySingleton {
         mImageLoader = new ImageLoader(mRequestQueue,
                 new ImageLoader.ImageCache() {
                     private final LruCache<String, Bitmap>
-                            cache = new LruCache<String, Bitmap>(20);
+                            cache = new LruCache<>(20);
 
                     @Override
                     public Bitmap getBitmap(String url) {
@@ -36,9 +36,17 @@ public class VolleySingleton {
                 });
     }
 
-    public static synchronized VolleySingleton getInstance(Context context) {
+    public static synchronized VolleySingleton init(Context context) {
         if (mInstance == null) {
             mInstance = new VolleySingleton(context);
+        }
+        return mInstance;
+    }
+    public static synchronized VolleySingleton getInstance()
+    {
+        if(mInstance == null)
+        {
+            throw new NullPointerException("Volley Singleton Must be initialized first => (call VolleySingleton.init(); )");
         }
         return mInstance;
     }

@@ -8,7 +8,12 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import Server.Server;
+import Server.Volley.Volley;
+import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
 import Storage.StorageBox;
 import Storage.StorageLite;
@@ -21,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static StorageLite storageLite;
 
-    public static void log(String s){Log.i("Bahman!",s);}
+    public static void log(String s) {
+        Log.i("Bahman!", s);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
