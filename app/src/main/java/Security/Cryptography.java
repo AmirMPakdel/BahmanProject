@@ -7,18 +7,21 @@ import com.blackcoin.packdel.bahmanproject.MainActivity;
 import java.security.MessageDigest;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Cryptography {
 
+    private static SecretKey Last_AES_Key;
+
     public static String decrypt(String EncryptedData) {
 
         try {
-            SecretKeySpec secretKeySpec = generateKey("AES");
 
             Cipher cipher = Cipher.getInstance("AES");
 
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+            cipher.init(Cipher.DECRYPT_MODE, Last_AES_Key);
 
             byte[] decryptedBytes = cipher.doFinal(Base64.decode(EncryptedData, Base64.DEFAULT));
 
@@ -36,11 +39,11 @@ public class Cryptography {
     public static String encrypt(String stringData){
 
         try {
-            SecretKeySpec secretKeySpec = generateKey("AES");
+            SecretKey secretKey = generateKey("AES");
 
             Cipher cipher = Cipher.getInstance("AES");
 
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 
             byte[] encryptedBytes = cipher.doFinal(stringData.getBytes());
 
@@ -55,18 +58,14 @@ public class Cryptography {
         return new String();
     }
 
-    private static SecretKeySpec generateKey(String aes) throws Exception{
+    private static SecretKey generateKey(String aes) throws Exception{
 
-        final MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        KeyGenerator keyGenerator = KeyGenerator.getInstance(aes);
 
-        byte[] bytes = aes.getBytes("UTF-8");
+        SecretKey secretKey = keyGenerator.generateKey();
 
-        digest.update(bytes, 0, bytes.length);
+        Last_AES_Key = secretKey;
 
-        byte[] key = digest.digest();
-
-        MainActivity.log("byte[] key :"+key);
-
-        return new SecretKeySpec(key, "AES");
+        return secretKey;
     }
 }
