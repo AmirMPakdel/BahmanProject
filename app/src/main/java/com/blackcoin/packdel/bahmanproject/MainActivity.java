@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Security.Cryptography;
 import Server.Server;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
@@ -55,9 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
         // test ground
 
-        Server server = new Server(null);
+        ///Server server = new Server(null);
 
-        server.signIn(this);
+        //server.signIn(this);
+
+        String st = "salam2647rلعنت بر ایران28hy9090@#$%^&*";
+        String en = Cryptography.encrypt(st);
+        MainActivity.log("en :"+en);
+
+        String de = Cryptography.decrypt(en);
+        MainActivity.log("de :"+de);
+
+        if(de.equals(st)){
+            MainActivity.log("Cool :)");
+        }
+
 
     }
 }
