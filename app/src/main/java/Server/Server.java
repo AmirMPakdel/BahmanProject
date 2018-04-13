@@ -1,3 +1,6 @@
+//// TODO: 4/13/18 this class currently is not functional, might be deleted later
+
+
 package Server;
 
 import android.content.Context;

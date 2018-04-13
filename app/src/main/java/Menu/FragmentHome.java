@@ -7,10 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
-
-import Security.StringUtil;
 
 
 public class FragmentHome extends Fragment {

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
         // Set the StorageBox
-        storageBox = new StorageBox(getSharedPreferences(StorageBox.SHARED_PREFERENCES_NAME, MODE_PRIVATE));
+        storageBox = new StorageBox(getApplicationContext());
 
         // Set the StorageLite
         storageLite = new StorageLite(this);
@@ -60,16 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         //server.signIn(this);
 
-        String st = "salam2647rلعنت بر ایران28hy9090@#$%^&*";
-        String en = Cryptography.encrypt(st);
-        MainActivity.log("en :"+en);
-
-        String de = Cryptography.decrypt(en);
-        MainActivity.log("de :"+de);
-
-        if(de.equals(st)){
-            MainActivity.log("Cool :)");
-        }
 
 
     }

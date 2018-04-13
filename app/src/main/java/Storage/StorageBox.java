@@ -1,65 +1,56 @@
+
+
+
 package Storage;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import Models.Guest;
 
 public class StorageBox {
 
-    public static String SHARED_PREFERENCES_NAME = "QGSP";
-    private String GUEST_FIELD = "Field";
-    private String GUEST_GRADE = "Grade";
+    //// TODO: 4/13/18 Move this Constants into the Constants.Java file
+    // constants
+    private final String SHARED_PREFERENCES_NAME = "QGSP";
+    private final String GUEST_FIELD = "Field";
+    private final String GUEST_GRADE = "Grade";
+
 
     public static boolean ThereIsGuest = false;
 
-    private SharedPreferences save;
-    private SharedPreferences.Editor editor;
+    private Storage storage;
 
+    public StorageBox(Context ctx)
+    {
+        storage = new Storage(ctx,SHARED_PREFERENCES_NAME);
 
-    public StorageBox(SharedPreferences sharedPreferences){
-
-        save = sharedPreferences;
-        editor = save.edit();
-
-
-        String Field = save.getString(GUEST_FIELD,null);
-        String Grade = save.getString(GUEST_GRADE, null);
-
-        MainActivity.log("storage constructor : grade : "+Grade);
-
-        if(Field != null && Grade != null){
-
+        if(storage.getString(GUEST_FIELD) != null && storage.getString(GUEST_FIELD) != null)
+        {
             ThereIsGuest = true;
         }
     }
 
     public void saveGuest(Guest guest){
 
-        editor.putString(GUEST_FIELD, guest.getField()).apply();
-        editor.putString(GUEST_GRADE, guest.getGrade()).apply();
-
-        MainActivity.log("saved ! -> "+guest.getGrade());
-
+        storage.setString(GUEST_FIELD , guest.getField());
+        storage.setString(GUEST_GRADE , guest.getGrade());
     }
 
     public Guest loadGuest(){
-
-        String Field = save.getString(GUEST_FIELD,null);
-        String Grade = save.getString(GUEST_GRADE, null);
-
         if(ThereIsGuest){
-            return new Guest(Field, Grade);
+            return new Guest(storage.getString(GUEST_FIELD), storage.getString(GUEST_GRADE));
         }
         return null;
     }
 
     public String getField(){
-        return save.getString(GUEST_FIELD, null);
+        return storage.getString(GUEST_FIELD);
     }
 
     public String getGrade(){
-        return save.getString(GUEST_GRADE, null);
+        return storage.getString(GUEST_GRADE);
     }
 
 }
