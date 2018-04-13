@@ -23,7 +23,7 @@ public class Server {
         this.domain = domain;
     }
 
-    public void signIn(Context context){
+    public void test(Context context){
 
         String url;// = domain + "signup.php?...";
 
