@@ -18,6 +18,7 @@ public class StartUpManager extends Application
         if(!RSA.init(getApplicationContext()))// if there is no RSA Public Key Available
         {
             RSA.Is_Public_Key_Available = false;
+            RSA.loadKey();
             // TODO: 4/13/18  call the server in Loading Activity
         }
 

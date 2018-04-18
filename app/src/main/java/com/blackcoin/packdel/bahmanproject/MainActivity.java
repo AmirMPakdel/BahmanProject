@@ -4,6 +4,7 @@ package com.blackcoin.packdel.bahmanproject;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Security.Cryptography;
+import Security.KeyAndIV;
+import Security.RSA;
 import Server.Server;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
@@ -28,12 +31,14 @@ public class MainActivity extends AppCompatActivity {
     public static StorageLite storageLite;
 
     public static void log(String s) {
-        Log.i("Bahman!", s);
+        Log.i("FuckThisShit!", s);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //region MainCodes
 
         // Fullscreen the Activity then set the layout
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -59,6 +64,26 @@ public class MainActivity extends AppCompatActivity {
         ///Server server = new Server(null);
 
         //server.signIn(this);
+
+        //endregion
+
+
+        //region test codes
+
+        KeyAndIV keyAndIV = new KeyAndIV();
+        log("fuck");
+
+        log("Key Size : " + keyAndIV.getKey().length);
+        log("Key : " + Base64.encodeToString(keyAndIV.getKey(),Base64.DEFAULT));
+
+        log("IV Size : " + keyAndIV.getIv().length);
+        log("IV : " + Base64.encodeToString(keyAndIV.getIv(),Base64.DEFAULT));
+
+        String encryptedKeyAndIV = keyAndIV.combineAndEncrypt();
+        log("\n...");
+        log(encryptedKeyAndIV);
+
+        //endregion
 
 
 
