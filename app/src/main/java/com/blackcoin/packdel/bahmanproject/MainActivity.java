@@ -70,21 +70,42 @@ public class MainActivity extends AppCompatActivity {
 
         //region test codes
 
-        KeyAndIV keyAndIV = new KeyAndIV();
-        log("fuck");
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("dick", "Kir");
+            jsonObject.put("pussy", "kos");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        log("Key Size : " + keyAndIV.getKey().length);
-        log("Key : " + Base64.encodeToString(keyAndIV.getKey(),Base64.DEFAULT));
 
-        log("IV Size : " + keyAndIV.getIv().length);
-        log("IV : " + Base64.encodeToString(keyAndIV.getIv(),Base64.DEFAULT));
+        Volley.POST_Encrypted("http://192.168.43.114:8000/api/test/", jsonObject, new OnResponse() {
+            @Override
+            public void onResponse(JSONObject response) {
+                log("message : \n" + response.toString());
 
-        String encryptedKeyAndIV = keyAndIV.combineAndEncrypt();
-        log("\n...");
-        log(encryptedKeyAndIV);
+            }
+
+            @Override
+            public void onError(String error) {
+                log(error);
+            }
+        });
+
+//
+//        Volley.POST("http://192.168.43.114:8000/api/user/login/", jsonObject, new OnResponse() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                log(response.toString());
+//            }
+//
+//            @Override
+//            public void onError(String error) {
+//                log(error);
+//            }
+//        });
 
         //endregion
-
 
 
     }
