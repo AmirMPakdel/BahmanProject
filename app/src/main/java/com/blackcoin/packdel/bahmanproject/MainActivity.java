@@ -72,38 +72,54 @@ public class MainActivity extends AppCompatActivity {
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("dick", "Kir");
-            jsonObject.put("pussy", "kos");
+            jsonObject.put("username", "ali97");
+            jsonObject.put("password", "ali123456");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        Volley.POST_Encrypted("http://192.168.43.114:8000/api/test/", jsonObject, new OnResponse() {
+        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
             @Override
-            public void onResponse(JSONObject response) {
-                log("message : \n" + response.toString());
-
+            public void onResponse(JSONObject response, int resultCode)
+            {
+                log(String.valueOf(resultCode));
+                log(response.toString());
             }
 
             @Override
-            public void onError(String error) {
-                log(error);
+            public void onError(String error)
+            {
+                log("Error : " + error);
             }
         });
 
-//
-//        Volley.POST("http://192.168.43.114:8000/api/user/login/", jsonObject, new OnResponse() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                log(response.toString());
-//            }
-//
-//            @Override
-//            public void onError(String error) {
-//                log(error);
-//            }
-//        });
+        try {
+
+            jsonObject.put("username", "amir97");
+            jsonObject.put("password", "ali123456");
+        }
+        catch (Exception e){}
+
+
+        log("################################");
+
+
+        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
+            @Override
+            public void onResponse(JSONObject response, int resultCode)
+            {
+                log(String.valueOf(resultCode));
+                log(response.toString());
+            }
+
+            @Override
+            public void onError(String error)
+            {
+                log("Error : " + error);
+            }
+        });
+
 
         //endregion
 
