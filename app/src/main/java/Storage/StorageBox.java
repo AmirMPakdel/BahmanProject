@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import Models.Guest;
+import Utils.log;
 
 public class StorageBox {
 
@@ -16,19 +17,26 @@ public class StorageBox {
     private final String SHARED_PREFERENCES_NAME = "QGSP";
     private final String GUEST_FIELD = "Field";
     private final String GUEST_GRADE = "Grade";
+    private final String Token = "Token";
 
 
     public static boolean ThereIsGuest = false;
 
+    public static boolean ThereIsToken = false;
+
     private Storage storage;
 
-    public StorageBox(Context ctx)
-    {
+    public StorageBox(Context ctx) {
         storage = new Storage(ctx,SHARED_PREFERENCES_NAME);
 
         if(storage.getString(GUEST_FIELD) != null && storage.getString(GUEST_FIELD) != null)
         {
             ThereIsGuest = true;
+        }
+
+        if(storage.getString(Token) != null)
+        {
+            ThereIsToken = true;
         }
     }
 
@@ -53,4 +61,16 @@ public class StorageBox {
         return storage.getString(GUEST_GRADE);
     }
 
+    public void saveToken(String token) {
+        storage.setString(Token, token);
+    }
+
+    public String loadToken(){
+        if(ThereIsToken) {
+            return storage.getString(Token);
+        }else {
+            log.print("there is no token saved!");
+        }
+        return null;
+    }
 }

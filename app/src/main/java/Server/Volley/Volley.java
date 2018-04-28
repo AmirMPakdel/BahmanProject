@@ -1,6 +1,7 @@
 package Server.Volley;
 
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -103,8 +104,7 @@ public class Volley {
 
 
 
-    public static void POST(String url, final JSONObject object, final OnResponse serverResponse)
-    {
+    public static void POST(String url, final JSONObject object, final OnResponse serverResponse) {
         if (serverResponse == null)
         {
             throw new NullPointerException("OnResponse can not be null");
@@ -151,6 +151,42 @@ public class Volley {
                 return param;
             }
         };
+        //endregion
+
+        VolleySingleton.getInstance().addToRequestQueue(request);
+    }
+
+
+
+    public static void GET(String url, final OnResponse serverResponse){
+
+        if (serverResponse == null)
+        {
+            throw new NullPointerException("OnResponse can not be null");
+        }
+
+        //region create request
+        StringRequest request = new StringRequest(StringRequest.Method.GET,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject obj;
+
+                try {
+                    obj = new JSONObject(response);
+                    serverResponse.onResponse(obj.getJSONObject("message") , obj.getInt("result_code"));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+                , new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
+            }
+        });
         //endregion
 
         VolleySingleton.getInstance().addToRequestQueue(request);

@@ -25,6 +25,7 @@ import Models.Field;
 import Models.Grade;
 import Models.Guest;
 import Toolbar.MenuToolbar;
+import Utils.log;
 
 
 public class FieldChoosingDialog extends Dialog {
@@ -101,7 +102,7 @@ public class FieldChoosingDialog extends Dialog {
                 String grade = new Models.Grade().getGradesNameSpinner(gradeSpinner, getContext().getResources());
                 String field = new Models.Field().getFieldNameSpinner(fieldSpinner, getContext().getResources());
 
-                MainActivity.log("grade :"+grade+" field : "+field);
+                log.print("grade :"+grade+" field : "+field);
 
                 Guest guest = new Guest(field, grade);
 

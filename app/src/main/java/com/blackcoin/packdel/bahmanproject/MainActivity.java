@@ -4,23 +4,17 @@ package com.blackcoin.packdel.bahmanproject;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import Security.Cryptography;
-import Security.KeyAndIV;
-import Security.RSA;
-import Server.Server;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
 import Storage.StorageBox;
 import Storage.StorageLite;
+import Utils.log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,10 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static StorageBox storageBox;
 
     public static StorageLite storageLite;
-
-    public static void log(String s) {
-        Log.i("FuckThisShit!", s);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +48,7 @@ public class MainActivity extends AppCompatActivity {
          * Many important Things happen in SplashScreen
          */
         new SplashScreen(getSupportFragmentManager()).show();
-
-        // test ground
-
-        ///Server server = new Server(null);
-
-        //server.signIn(this);
-
         //endregion
-
 
         //region test codes
 
@@ -83,14 +65,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response, int resultCode)
             {
-                log(String.valueOf(resultCode));
-                log(response.toString());
+                log.print(String.valueOf(resultCode));
+                log.print(response.toString());
             }
 
             @Override
             public void onError(String error)
             {
-                log("Error : " + error);
+                log.print("Error : " + error);
             }
         });
 
@@ -102,27 +84,24 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e){}
 
 
-        log("################################");
+        log.print("################################");
 
 
         Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
             @Override
             public void onResponse(JSONObject response, int resultCode)
             {
-                log(String.valueOf(resultCode));
-                log(response.toString());
+                log.print(String.valueOf(resultCode));
+                log.print(response.toString());
             }
 
             @Override
             public void onError(String error)
             {
-                log("Error : " + error);
+                log.print("Error : " + error);
             }
         });
-
-
         //endregion
-
 
     }
 }

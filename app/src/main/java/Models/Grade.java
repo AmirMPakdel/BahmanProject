@@ -10,6 +10,8 @@ import com.blackcoin.packdel.bahmanproject.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import Utils.log;
+
 public class Grade {
 
     public static String FIRST_GRADE = "1st";
@@ -42,8 +44,8 @@ public class Grade {
 
         String s = "empty";
 
-        MainActivity.log("farsiString : "+farsiString);
-        MainActivity.log("resources : "+resources.getString(Strings.SECOND));
+        log.print("farsiString : "+farsiString);
+        log.print("resources : "+resources.getString(Strings.SECOND));
 
         if(farsiString.equals(resources.getString(Strings.FIRST))){
 
@@ -66,7 +68,7 @@ public class Grade {
 
         String si = spinner.getSelectedItem().toString();
 
-        MainActivity.log("getGradesNameSpinner : "+getGradeName(si, resources));
+        log.print("getGradesNameSpinner : "+getGradeName(si, resources));
 
         return getGradeName(si, resources);
     }

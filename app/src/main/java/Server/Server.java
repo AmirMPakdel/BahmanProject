@@ -17,6 +17,8 @@ import com.blackcoin.packdel.bahmanproject.MainActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Utils.log;
+
 public class Server {
 
     private String domain;
@@ -43,11 +45,11 @@ public class Server {
                 @Override
                 public void onResponse(JSONObject response) {
 
-                    MainActivity.log("respond!");
+                    log.print("respond!");
 
                     try {
 
-                        MainActivity.log(response.getString("respond"));
+                        log.print(response.getString("respond"));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -58,8 +60,8 @@ public class Server {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    MainActivity.log("error");
-                    MainActivity.log(error.toString());
+                    log.print("error");
+                    log.print(error.toString());
                 }
             });
 
