@@ -7,9 +7,7 @@ import com.blackcoin.packdel.bahmanproject.MainActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Authentication.interfaces.OnGuestSignUpResult;
-import Authentication.interfaces.OnSignInResult;
-import Authentication.interfaces.OnSignUpResult;
+import Authentication.interfaces.OnRegestrationResult;
 import Models.Guest;
 import Security.EmailValidation;
 import Server.Volley.Volley;
@@ -19,7 +17,7 @@ import Utils.log;
 
 public class Registration {
 
-    public void signUp_guest(final OnGuestSignUpResult onGuestSignUpSuccess){
+    public void signUp_guest(final OnRegestrationResult onRegestrationResult){
 
         //TODO:: send request -> GET method
         Volley.GET(Consts.Registration_signup_guest, new OnResponse() {
@@ -54,11 +52,11 @@ public class Registration {
                                 //TODO:: wait for ->{'result':'success'}
                                 if(resultCode == Consts.Success){
 
-                                    onGuestSignUpSuccess.onSuccess();
+                                    onRegestrationResult.onSuccess();
 
                                 }else{
 
-                                    onGuestSignUpSuccess.onFailure();
+                                    onRegestrationResult.onFailure();
                                 }
                             }
 
@@ -87,7 +85,7 @@ public class Registration {
 
 
 
-    public void signUp(String username, String password, String city_id, @Nullable String email, @Nullable String phone_number, final OnSignUpResult onSignUpResult) throws JSONException {
+    public void signUp(String username, String password, int city_id, @Nullable String email, @Nullable String phone_number, final OnRegestrationResult onRegestrationResult) throws JSONException {
 
         //region create the json object
         //TODO:: send json ->{'username':'...', 'password':'...', 'city_id':'...', 'email':'...', 'phone_number':'...'}
@@ -114,7 +112,9 @@ public class Registration {
 
                         MainActivity.storageBox.saveToken(token);
 
-                        onSignUpResult.onSuccess();
+                        log.print("token saved : "+token);
+
+                        onRegestrationResult.onSuccess();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -122,7 +122,7 @@ public class Registration {
 
                 }else{
 
-                    onSignUpResult.onFailure();
+                    onRegestrationResult.onFailure();
                 }
             }
 
@@ -140,7 +140,7 @@ public class Registration {
 
 
 
-    public void signIn(String username_or_email, String password, final OnSignInResult onSignInResult) throws JSONException {
+    public void signIn(String username_or_email, String password, final OnRegestrationResult onRegestrationResult) throws JSONException {
 
         //region create the json object
         boolean is_email = EmailValidation.isEmailValid(username_or_email);
@@ -173,7 +173,7 @@ public class Registration {
                     try {
                         MainActivity.storageBox.saveToken(response.getString(Consts.TOKEN));
 
-                        onSignInResult.onSuccess();
+                        onRegestrationResult.onSuccess();
 
 
                     } catch (JSONException e) {
@@ -182,7 +182,7 @@ public class Registration {
 
                 }else {
 
-                    onSignInResult.onFailure();
+                    onRegestrationResult.onFailure();
                 }
             }
 
@@ -194,4 +194,57 @@ public class Registration {
         });
         //endregion
     }
+
+
+
+    public void SignUp_Guest(final String grade, final String field, final OnRegestrationResult onRegestrationResult){
+
+        Volley.GET(Consts.Registration_signup_guest, new OnResponse() {
+            @Override
+            public void onResponse(JSONObject response, int resultCode) {
+
+
+                JSONObject jsonObject = new JSONObject();
+
+                try {
+                    String guest_id = response.getString("guest_id");
+                    jsonObject.put("guest_grade", grade);
+                    jsonObject.put("guest_field", field);
+                    jsonObject.put("guest_id", guest_id);
+
+                    Volley.POST_Encrypted(Consts.Registration_signup_guest, jsonObject, new OnResponse() {
+                        @Override
+                        public void onResponse(JSONObject response, int resultCode) {
+
+                            if(resultCode == Consts.Success){
+
+                                onRegestrationResult.onSuccess();
+
+                            }else {
+                                onRegestrationResult.onFailure();
+                            }
+                        }
+
+                        @Override
+                        public void onError(String error) {
+
+                            onRegestrationResult.onFailure();
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String error) {
+
+                onRegestrationResult.onFailure();
+
+            }
+        });
+    }
+
+
 }

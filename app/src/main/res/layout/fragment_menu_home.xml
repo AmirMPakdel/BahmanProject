@@ -15,23 +15,14 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/signup_btn"
+        android:id="@+id/registration_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="40dp"
         android:layout_marginTop="70dp"
-        android:text="sign up" />
-
-    <Button
-        android:id="@+id/signin_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/signup_btn"
-        android:layout_marginTop="150dp"
-        android:text="sign in" />
+        android:text="Registration" />
 
     <TextView
         android:layout_width="wrap_content"

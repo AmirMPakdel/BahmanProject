@@ -8,9 +8,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import Models.Guest;
+import Security.AES;
+import Security.Cryptography;
+import Security.KeyAndIV;
 import Utils.log;
 
 public class StorageBox {
+
+
 
     //// TODO: 4/13/18 Move this Constants into the Constants.Java file
     // constants
@@ -27,6 +32,7 @@ public class StorageBox {
     private Storage storage;
 
     public StorageBox(Context ctx) {
+
         storage = new Storage(ctx,SHARED_PREFERENCES_NAME);
 
         if(storage.getString(GUEST_FIELD) != null && storage.getString(GUEST_FIELD) != null)
@@ -38,6 +44,14 @@ public class StorageBox {
         {
             ThereIsToken = true;
         }
+    }
+
+    public void save(String key, String value){
+        storage.setString(key, value);
+    }
+
+    public String load(String key){
+        return storage.getString(key);
     }
 
     public void saveGuest(Guest guest){

@@ -9,9 +9,11 @@ import android.view.WindowManager;
 
 import org.json.JSONObject;
 
+import Security.Cryptography;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
+import Storage.Storage;
 import Storage.StorageBox;
 import Storage.StorageLite;
 import Utils.log;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         //region MainCodes
 

@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
@@ -21,6 +22,8 @@ import com.blackcoin.packdel.bahmanproject.R;
 import java.util.List;
 
 import Animation.ClickAnimation;
+import Authentication.Registration;
+import Authentication.interfaces.OnRegestrationResult;
 import Models.Field;
 import Models.Grade;
 import Models.Guest;
@@ -99,21 +102,52 @@ public class FieldChoosingDialog extends Dialog {
                 ClickAnimation.clickBounce(v);
 
                 // save the info and dismiss
-                String grade = new Models.Grade().getGradesNameSpinner(gradeSpinner, getContext().getResources());
-                String field = new Models.Field().getFieldNameSpinner(fieldSpinner, getContext().getResources());
+                final String grade = new Models.Grade().getGradesNameSpinner(gradeSpinner, getContext().getResources());
+                final String field = new Models.Field().getFieldNameSpinner(fieldSpinner, getContext().getResources());
 
                 log.print("grade :"+grade+" field : "+field);
 
-                Guest guest = new Guest(field, grade);
 
-                MainActivity.storageBox.saveGuest(guest);
+                Registration registration = new Registration();
+                registration.SignUp_Guest(grade, field, new OnRegestrationResult() {
+                    @Override
+                    public void onSuccess() {
 
-                MainActivity.storageLite.fillChestsTable();
+                        log.print("On Success !!!!!");
 
-                // Setup MenuToolbar
-                new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
+                        Guest guest = new Guest(field, grade);
 
-                dismiss();
+                        MainActivity.storageBox.saveGuest(guest);
+
+                        MainActivity.storageLite.fillChestsTable();
+
+                        // Setup MenuToolbar
+                        new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
+
+                        dismiss();
+                    }
+
+                    @Override
+                    public void onFailure() {
+
+                        Toast.makeText(getContext(), "Network Error!", Toast.LENGTH_LONG).show();
+
+                        //region delete if server is available
+                        Guest guest = new Guest(field, grade);
+
+                        MainActivity.storageBox.saveGuest(guest);
+
+                        MainActivity.storageLite.fillChestsTable();
+
+                        // Setup MenuToolbar
+                        new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
+
+                        dismiss();
+                        //endregion
+                    }
+                });
+
+
             }
         });
 

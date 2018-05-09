@@ -1,6 +1,6 @@
 package Authentication.interfaces;
 
-public interface OnSignUpResult {
+public interface OnRegestrationResult {
 
     void onSuccess();
 
