@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_arrow_back" />
-                            <entry key="sourceFile" value="C:\Users\Packdel" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_dsf" />
+                            <entry key="sourceFile" value="C:\Users\Packdel\Desktop\dsf.svg" />
                           </map>
                         </option>
                       </PersistentState>

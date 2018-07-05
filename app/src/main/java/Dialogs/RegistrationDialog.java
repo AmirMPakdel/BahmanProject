@@ -10,17 +10,31 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import Authentication.Registration;
 import Authentication.interfaces.OnRegestrationResult;
+import Server.Volley.Volley;
+import Server.Volley.interfaces.OnResponse;
+import Utils.Consts;
 import Utils.log;
 
 public class RegistrationDialog extends Dialog {
@@ -70,6 +84,12 @@ public class RegistrationDialog extends Dialog {
             }
         });
 
+        // sign-up city spinner
+        Spinner city_spinner = findViewById(R.id.city_spinner);
+
+        List<String> city_list = new ArrayList<>();
+
+
         // sign-up
         TextView signup_title = findViewById(R.id.signup_title);
         signup_title.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +120,80 @@ public class RegistrationDialog extends Dialog {
     }
 
     private void InSignUp(){
+
+        // sign-up state spinner
+        final Spinner state_spinner = findViewById(R.id.state_spinner);
+
+        List<String> states = new ArrayList<>();
+
+        for(String state : Consts.state_list){ states.add(state); }
+
+        ArrayAdapter<String> state_spinner_addapter = new ArrayAdapter<>(getContext(), R.layout.item_spinner, states);
+
+        state_spinner_addapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
+
+        state_spinner.setAdapter(state_spinner_addapter);
+
+        state_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(getContext(), state_spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                Toast.makeText(getContext(), state_spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        // sign-up city spinner
+        final Spinner city_spinner = findViewById(R.id.city_spinner);
+
+        final List<String> city_list = new ArrayList<>();
+
+        try {
+            Volley.POST(Consts.Registration_signup_city, new JSONObject().put("city", state_spinner.getSelectedItem().toString()), new OnResponse() {
+                @Override
+                public void onResponse(JSONObject response, int resultCode){
+
+                    try {
+                        JSONArray jsonArray = response.getJSONArray("city");
+
+                        for(int i=0; jsonArray.get(i) != null; i++){
+
+                            city_list.add(jsonArray.getString(i));
+
+                        }
+
+                        ArrayAdapter<String> city_spinner_adapter = new ArrayAdapter<>(getContext(),R.layout.item_spinner, city_list);
+
+                        city_spinner_adapter.setDropDownViewResource(R.layout.item_spinner_dropdown);
+
+                        city_spinner.setAdapter(city_spinner_adapter);
+
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+                @Override
+                public void onError(String error) {
+
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         // signup button
         CardView signun_btn = findViewById(R.id.registration_btn);
