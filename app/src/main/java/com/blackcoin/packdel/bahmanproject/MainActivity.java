@@ -4,24 +4,32 @@ package com.blackcoin.packdel.bahmanproject;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
-import Server.Server;
+import org.json.JSONObject;
+
+import Server.Volley.Volley;
+import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
-import Toolbar.MenuToolbar;
+import Storage.StorageBox1;
+import Storage.StorageLite1;
+import Utils.log;
 
 public class MainActivity extends AppCompatActivity {
 
     public static Typeface myFont;
 
-    public static void log(String s){Log.i("Bahman!",s);}
+    public static StorageBox1 storageBox1;
+
+    public static StorageLite1 storageLite1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        //region MainCodes
 
         // Fullscreen the Activity then set the layout
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -31,17 +39,70 @@ public class MainActivity extends AppCompatActivity {
         // Set the Font
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
-        // Show The Splash Screen
+        // Set the StorageBox1
+        storageBox1 = new StorageBox1(getApplicationContext());
+
+        // Set the StorageLite1
+        storageLite1 = new StorageLite1(this);
+
+        /* Show The Splash Screen
+         * Many important Things happen in SplashScreen
+         */
         new SplashScreen(getSupportFragmentManager()).show();
+        //endregion
 
-        // Setup MenuToolbar
-        new MenuToolbar(findViewById(R.id.relativeLayout), getSupportFragmentManager()).setup();
+        //region test codes
 
-        // test ground
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", "ali97");
+            jsonObject.put("password", "ali123456");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        Server server = new Server(null);
 
-        server.signIn(this);
+        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
+            @Override
+            public void onResponse(JSONObject response, int resultCode)
+            {
+                log.print(String.valueOf(resultCode));
+                log.print(response.toString());
+            }
+
+            @Override
+            public void onError(String error)
+            {
+                log.print("Error : " + error);
+            }
+        });
+
+        try {
+
+            jsonObject.put("username", "amir97");
+            jsonObject.put("password", "ali123456");
+        }
+        catch (Exception e){}
+
+
+        log.print("################################");
+
+
+        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
+            @Override
+            public void onResponse(JSONObject response, int resultCode)
+            {
+                log.print(String.valueOf(resultCode));
+                log.print(response.toString());
+            }
+
+            @Override
+            public void onError(String error)
+            {
+                log.print("Error : " + error);
+            }
+        });
+        //endregion
 
     }
 }

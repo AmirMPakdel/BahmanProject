@@ -5,15 +5,11 @@ package Storage;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import com.blackcoin.packdel.bahmanproject.MainActivity;
+
 import Models.Guest;
-import Security.AES;
-import Security.Cryptography;
-import Security.KeyAndIV;
 import Utils.log;
 
-public class StorageBox {
+public class StorageBox1 {
 
 
 
@@ -27,61 +23,61 @@ public class StorageBox {
 
     public static boolean ThereIsGuest = false;
 
-    public static boolean ThereIsToken = false;
+    private static boolean ThereIsToken = false;
 
-    private Storage storage;
+    private Storage1 storage1;
 
-    public StorageBox(Context ctx) {
+    public StorageBox1(Context ctx) {
 
-        storage = new Storage(ctx,SHARED_PREFERENCES_NAME);
+        storage1 = new Storage1(ctx,SHARED_PREFERENCES_NAME);
 
-        if(storage.getString(GUEST_FIELD) != null && storage.getString(GUEST_FIELD) != null)
+        if(storage1.getString(GUEST_FIELD) != null && storage1.getString(GUEST_FIELD) != null)
         {
             ThereIsGuest = true;
         }
 
-        if(storage.getString(Token) != null)
+        if(storage1.getString(Token) != null)
         {
             ThereIsToken = true;
         }
     }
 
     public void save(String key, String value){
-        storage.setString(key, value);
+        storage1.setString(key, value);
     }
 
     public String load(String key){
-        return storage.getString(key);
+        return storage1.getString(key);
     }
 
     public void saveGuest(Guest guest){
 
-        storage.setString(GUEST_FIELD , guest.getField());
-        storage.setString(GUEST_GRADE , guest.getGrade());
+        storage1.setString(GUEST_FIELD , guest.getField());
+        storage1.setString(GUEST_GRADE , guest.getGrade());
     }
 
     public Guest loadGuest(){
         if(ThereIsGuest){
-            return new Guest(storage.getString(GUEST_FIELD), storage.getString(GUEST_GRADE));
+            return new Guest(storage1.getString(GUEST_FIELD), storage1.getString(GUEST_GRADE));
         }
         return null;
     }
 
     public String getField(){
-        return storage.getString(GUEST_FIELD);
+        return storage1.getString(GUEST_FIELD);
     }
 
     public String getGrade(){
-        return storage.getString(GUEST_GRADE);
+        return storage1.getString(GUEST_GRADE);
     }
 
     public void saveToken(String token) {
-        storage.setString(Token, token);
+        storage1.setString(Token, token);
     }
 
     public String loadToken(){
         if(ThereIsToken) {
-            return storage.getString(Token);
+            return storage1.getString(Token);
         }else {
             log.print("there is no token saved!");
         }

@@ -13,16 +13,16 @@ import java.util.List;
 import Models.Book;
 import Models.Chest;
 
-public class StorageLite {
+public class StorageLite1 {
 
     private SQLiteDatabase db;
 
-    public StorageLite(Context context){
+    public StorageLite1(Context context){
 
         db = context.openOrCreateDatabase("QG", Context.MODE_PRIVATE, null);
 
         // check if it's the first time
-        if(!StorageBox.ThereIsGuest){
+        if(!StorageBox1.ThereIsGuest){
             db.execSQL("CREATE TABLE IF NOT EXISTS chests(field VARCHAR, capacity INT(4), load INT(4))");
         }
 
@@ -30,7 +30,7 @@ public class StorageLite {
 
     public void fillChestsTable(){
 
-        List<String> bookList = new Book().getBooksList(MainActivity.storageBox.getField());
+        List<String> bookList = new Book().getBooksList(MainActivity.storageBox1.getField());
         for(int i=0; i<bookList.size(); i++){
             db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+Chest.START_CAPACITY+", 0)");
         }
