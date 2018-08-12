@@ -37,7 +37,7 @@ public class FragmentArchives extends Fragment {
         title.setText("صندوق های تست من");
         title.setTypeface(MainActivity.myFont);
 
-        List<Chest> chests = MainActivity.storageLite.getChestsList();
+        List<Chest> chests = MainActivity.storageLite1.getChestsList();
 
         ChestRecycleViewAdapter chestRecycleViewAdapter = new ChestRecycleViewAdapter(getContext(), chests, getResources());
 

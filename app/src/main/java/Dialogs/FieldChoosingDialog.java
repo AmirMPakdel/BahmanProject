@@ -117,9 +117,9 @@ public class FieldChoosingDialog extends Dialog {
 
                         Guest guest = new Guest(field, grade);
 
-                        MainActivity.storageBox.saveGuest(guest);
+                        MainActivity.storageBox1.saveGuest(guest);
 
-                        MainActivity.storageLite.fillChestsTable();
+                        MainActivity.storageLite1.fillChestsTable();
 
                         // Setup MenuToolbar
                         new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
@@ -135,9 +135,9 @@ public class FieldChoosingDialog extends Dialog {
                         //region delete if server is available
                         Guest guest = new Guest(field, grade);
 
-                        MainActivity.storageBox.saveGuest(guest);
+                        MainActivity.storageBox1.saveGuest(guest);
 
-                        MainActivity.storageLite.fillChestsTable();
+                        MainActivity.storageLite1.fillChestsTable();
 
                         // Setup MenuToolbar
                         new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();

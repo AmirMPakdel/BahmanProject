@@ -9,22 +9,20 @@ import android.view.WindowManager;
 
 import org.json.JSONObject;
 
-import Security.Cryptography;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
-import Storage.Storage;
-import Storage.StorageBox;
-import Storage.StorageLite;
+import Storage.StorageBox1;
+import Storage.StorageLite1;
 import Utils.log;
 
 public class MainActivity extends AppCompatActivity {
 
     public static Typeface myFont;
 
-    public static StorageBox storageBox;
+    public static StorageBox1 storageBox1;
 
-    public static StorageLite storageLite;
+    public static StorageLite1 storageLite1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
         // Set the Font
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
-        // Set the StorageBox
-        storageBox = new StorageBox(getApplicationContext());
+        // Set the StorageBox1
+        storageBox1 = new StorageBox1(getApplicationContext());
 
-        // Set the StorageLite
-        storageLite = new StorageLite(this);
+        // Set the StorageLite1
+        storageLite1 = new StorageLite1(this);
 
         /* Show The Splash Screen
          * Many important Things happen in SplashScreen

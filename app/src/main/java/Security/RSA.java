@@ -3,25 +3,16 @@ package Security;
 import android.content.Context;
 import android.util.Base64;
 
-import java.security.InvalidKeyException;
 import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
-import Storage.Storage;
+import Storage.Storage1;
 import Utils.C;
-
-import static javax.crypto.Cipher.ENCRYPT_MODE;
 
 
 public class RSA {
@@ -36,8 +27,8 @@ public class RSA {
 
     public static boolean init(Context ctx)
     {
-        Storage storage = new Storage(ctx,C.StorageSH.PREFS_NAME_RSA);
-        PUBLIC_KEY = storage.getString(C.StorageSH.KEY_RSA_PUBLIC_KEY);
+        Storage1 storage1 = new Storage1(ctx,C.StorageSH.PREFS_NAME_RSA);
+        PUBLIC_KEY = storage1.getString(C.StorageSH.KEY_RSA_PUBLIC_KEY);
         return PUBLIC_KEY != null;
     }
 

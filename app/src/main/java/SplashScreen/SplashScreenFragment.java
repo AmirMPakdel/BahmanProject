@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import com.blackcoin.packdel.bahmanproject.R;
 
 import Dialogs.FieldChoosingDialog;
-import Storage.StorageBox;
+import Storage.StorageBox1;
 import Toolbar.MenuToolbar;
 
 
@@ -44,7 +44,7 @@ public class SplashScreenFragment extends Fragment {
 
 
         // check if it's the first time
-        if(StorageBox.ThereIsGuest){
+        if(StorageBox1.ThereIsGuest){
 
             // Setup MenuToolbar
             new MenuToolbar(getActivity().findViewById(R.id.relativeLayout), getActivity().getSupportFragmentManager()).setup();

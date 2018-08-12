@@ -14,9 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -261,8 +259,8 @@ public class RegistrationDialog extends Dialog {
             registration.signIn(username, password, new OnRegestrationResult() {
                 @Override
                 public void onSuccess() {
-                    MainActivity.storageBox.save("username", username);
-                    MainActivity.storageBox.save("password", password);
+                    MainActivity.storageBox1.save("username", username);
+                    MainActivity.storageBox1.save("password", password);
                     log.print("onSucces");
                 }
 
@@ -308,9 +306,9 @@ public class RegistrationDialog extends Dialog {
             registration.signUp(username, password, 123, email, "0911", new OnRegestrationResult() {
                 @Override
                 public void onSuccess() {
-                    MainActivity.storageBox.save("username", username);
-                    MainActivity.storageBox.save("password", password);
-                    MainActivity.storageBox.save("email", email);
+                    MainActivity.storageBox1.save("username", username);
+                    MainActivity.storageBox1.save("password", password);
+                    MainActivity.storageBox1.save("email", email);
                 }
 
                 @Override

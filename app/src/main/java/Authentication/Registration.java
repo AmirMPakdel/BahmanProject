@@ -32,11 +32,11 @@ public class Registration {
                         //TODO:: save -> GUEST_ID
                         String guest_id = response.getString(Consts.GUEST_ID);
 
-                        Guest guest = MainActivity.storageBox.loadGuest();
+                        Guest guest = MainActivity.storageBox1.loadGuest();
 
                         guest.setId(guest_id);
 
-                        MainActivity.storageBox.saveGuest(guest);
+                        MainActivity.storageBox1.saveGuest(guest);
 
 
                         //TODO:: send json ->{'GUEST_ID':'...', 'guest_field':'...', 'guest_grade':'...'}
@@ -110,7 +110,7 @@ public class Registration {
                         //TODO:: save -> token
                         String token = response.getString("token");
 
-                        MainActivity.storageBox.saveToken(token);
+                        MainActivity.storageBox1.saveToken(token);
 
                         log.print("token saved : "+token);
 
@@ -171,7 +171,7 @@ public class Registration {
                 if(resultCode == Consts.Success){
 
                     try {
-                        MainActivity.storageBox.saveToken(response.getString(Consts.TOKEN));
+                        MainActivity.storageBox1.saveToken(response.getString(Consts.TOKEN));
 
                         onRegestrationResult.onSuccess();
 

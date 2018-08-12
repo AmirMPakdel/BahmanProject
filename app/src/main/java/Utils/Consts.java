@@ -20,7 +20,7 @@ public class Consts {
     public static String GUEST_ID = "GUEST_ID";
     public static String TOKEN = "token";
 
-    // StorageBox AES Key
+    // StorageBox1 AES Key
     public static String StorageBoxKEY = "AWP";
 
     // state list
