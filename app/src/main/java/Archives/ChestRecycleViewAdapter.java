@@ -46,10 +46,10 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.fieldNameParent.setCardBackgroundColor(resources.getColor(Field.setFieldColor(chestList.get(position).getField())));
-        holder.fieldName.setText(resources.getString(Field.setFieldString(chestList.get(position).getField())));
+        holder.fieldNameParent.setCardBackgroundColor(resources.getColor(Field.setFieldColor(chestList.get(position).getBook())));
+        holder.fieldName.setText(resources.getString(Field.setFieldString(chestList.get(position).getBook())));
         holder.chestImg.setImageResource(R.drawable.ic_chest);
-        holder.chestImg.setColorFilter(resources.getColor(Field.setFieldColor(chestList.get(position).getField())));
+        holder.chestImg.setColorFilter(resources.getColor(Field.setFieldColor(chestList.get(position).getBook())));
         holder.loadNum.setText(String.valueOf(chestList.get(position).getLoad()));
         holder.capacity.setText(String.valueOf(chestList.get(position).getCapacity()));
 

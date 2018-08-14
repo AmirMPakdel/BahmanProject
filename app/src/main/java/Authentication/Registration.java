@@ -12,6 +12,7 @@ import Models.Guest;
 import Security.EmailValidation;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
+import Storage.StorageBox;
 import Utils.Consts;
 import Utils.log;
 
@@ -32,18 +33,13 @@ public class Registration {
                         //TODO:: save -> GUEST_ID
                         String guest_id = response.getString(Consts.GUEST_ID);
 
-                        Guest guest = MainActivity.storageBox1.loadGuest();
-
-                        guest.setId(guest_id);
-
-                        MainActivity.storageBox1.saveGuest(guest);
-
+                        StorageBox.getInstance().setId(guest_id);
 
                         //TODO:: send json ->{'GUEST_ID':'...', 'guest_field':'...', 'guest_grade':'...'}
                         JSONObject jsonObject = new JSONObject();
-                        jsonObject.put("GUEST_ID", guest.getId());
-                        jsonObject.put("guest_field", guest.getField());
-                        jsonObject.put("guest_grade", guest.getGrade());
+                        jsonObject.put("GUEST_ID", StorageBox.sharedPreferences.getId());
+                        jsonObject.put("guest_field", StorageBox.sharedPreferences.getField());
+                        jsonObject.put("guest_grade", StorageBox.sharedPreferences.getGrade());
 
                         Volley.POST_Encrypted(Consts.Registration_signup_guest, jsonObject, new OnResponse() {
                             @Override
@@ -51,6 +47,8 @@ public class Registration {
 
                                 //TODO:: wait for ->{'result':'success'}
                                 if(resultCode == Consts.Success){
+
+                                    StorageBox.getInstance().setIsGuest(true);
 
                                     onRegestrationResult.onSuccess();
 
@@ -110,7 +108,7 @@ public class Registration {
                         //TODO:: save -> token
                         String token = response.getString("token");
 
-                        MainActivity.storageBox1.saveToken(token);
+                        StorageBox.getInstance().setToken(token);
 
                         log.print("token saved : "+token);
 
@@ -171,7 +169,8 @@ public class Registration {
                 if(resultCode == Consts.Success){
 
                     try {
-                        MainActivity.storageBox1.saveToken(response.getString(Consts.TOKEN));
+
+                        StorageBox.getInstance().setToken(response.getString(Consts.TOKEN));
 
                         onRegestrationResult.onSuccess();
 

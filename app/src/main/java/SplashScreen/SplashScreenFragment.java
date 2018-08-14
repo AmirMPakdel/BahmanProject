@@ -9,10 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
 import Dialogs.FieldChoosingDialog;
-import Storage.StorageBox1;
+import Storage.StorageBox;
 import Toolbar.MenuToolbar;
 
 
@@ -44,7 +45,7 @@ public class SplashScreenFragment extends Fragment {
 
 
         // check if it's the first time
-        if(StorageBox1.ThereIsGuest){
+        if(StorageBox.sharedPreferences.isFirstTimeRun()){
 
             // Setup MenuToolbar
             new MenuToolbar(getActivity().findViewById(R.id.relativeLayout), getActivity().getSupportFragmentManager()).setup();

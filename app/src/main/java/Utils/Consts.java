@@ -28,11 +28,11 @@ public class Consts {
     public static String GUEST_ID = "GUEST_ID";
     public static String TOKEN = "token";
 
-    // StorageBox1 AES Key
+    // StorageBox AES Key
     public static String StorageBoxKEY = "AWP";
 
     // Chest Capacity
-    public static int CHEST_CAPACITY = 10;
+    public static int NEW_CHEST_CAPACITY = 10;
 
     // state list
     public static String[] state_list = {

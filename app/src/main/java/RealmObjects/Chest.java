@@ -1,7 +1,9 @@
-package Models;
+package RealmObjects;
 
+import Utils.Consts;
+import io.realm.RealmObject;
 
-public class Chest {
+public class Chest extends RealmObject{
 
     private String book;
 
@@ -9,10 +11,17 @@ public class Chest {
 
     private int load;
 
-    public Chest(String field, int capacity, int load) {
+    public Chest() {
+
+        this.capacity = Consts.NEW_CHEST_CAPACITY;
+        this.load = 0;
+    }
+
+    public Chest(String field) {
+
         this.book = field;
-        this.capacity = capacity;
-        this.load = load;
+        this.capacity = Consts.NEW_CHEST_CAPACITY;
+        this.load = 0;
     }
 
     public String getBook() {

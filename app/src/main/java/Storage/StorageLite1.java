@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,17 +21,16 @@ public class StorageLite1 {
         db = context.openOrCreateDatabase("QG", Context.MODE_PRIVATE, null);
 
         // check if it's the first time
-        if(!StorageBox1.ThereIsGuest){
+        if(StorageBox.sharedPreferences.isFirstTimeRun()){
             db.execSQL("CREATE TABLE IF NOT EXISTS chests(field VARCHAR, capacity INT(4), load INT(4))");
         }
-
     }
 
     public void fillChestsTable(){
 
-        List<String> bookList = new Book().getBooksList(MainActivity.storageBox1.getField());
+        List<String> bookList = new Book().getBooksList(StorageBox.sharedPreferences.getField());
         for(int i=0; i<bookList.size(); i++){
-            db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+ Consts.CHEST_CAPACITY+", 0)");
+            db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+ Consts.NEW_CHEST_CAPACITY +", 0)");
         }
     }
 

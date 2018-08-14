@@ -6,7 +6,7 @@ import com.blackcoin.packdel.bahmanproject.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book{
 
 
     public class Omoumi{
@@ -29,7 +29,6 @@ public class Book {
         public static final String SHIMI = "shimi";
     }
 
-
     public class Tajrobi{
 
         public static final String ZAMINSHENASI = "zaminshenasi";
@@ -42,7 +41,6 @@ public class Book {
 
         public static final String SHIMI = "shimi";
     }
-
 
     public class Ensani {
 
@@ -84,6 +82,7 @@ public class Book {
 
         public static final String KHAVASEMAVAD = "khavasemavad";
     }
+
 
     public class Colors{
 
@@ -183,6 +182,7 @@ public class Book {
 
         public static final int KHAVASEMAVAD = R.string.HonarKHAVASEMAVAD;
     }
+
 
     public static int setFieldColor(String field){
 

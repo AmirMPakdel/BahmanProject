@@ -27,6 +27,7 @@ import Authentication.interfaces.OnRegestrationResult;
 import Models.Field;
 import Models.Grade;
 import Models.Guest;
+import Storage.StorageBox;
 import Toolbar.MenuToolbar;
 import Utils.log;
 
@@ -115,9 +116,13 @@ public class FieldChoosingDialog extends Dialog {
 
                         log.print("On Success !!!!!");
 
-                        Guest guest = new Guest(field, grade);
+                        StorageBox.getInstance().setGrade(grade);
 
-                        MainActivity.storageBox1.saveGuest(guest);
+                        StorageBox.getInstance().setField(field);
+
+                        StorageBox.getInstance().setIsGuest(true);
+
+                        StorageBox.getInstance().setIsFirstTime(false);
 
                         MainActivity.storageLite1.fillChestsTable();
 
@@ -133,9 +138,13 @@ public class FieldChoosingDialog extends Dialog {
                         Toast.makeText(getContext(), "Network Error!", Toast.LENGTH_LONG).show();
 
                         //region delete if server is available
-                        Guest guest = new Guest(field, grade);
+                        StorageBox.getInstance().setField(field);
 
-                        MainActivity.storageBox1.saveGuest(guest);
+                        StorageBox.getInstance().setGrade(grade);
+
+                        StorageBox.getInstance().setIsFirstTime(false);
+
+                        StorageBox.getInstance().setIsGuest(true);
 
                         MainActivity.storageLite1.fillChestsTable();
 

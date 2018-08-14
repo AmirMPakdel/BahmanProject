@@ -3,6 +3,8 @@ package Security;
 import android.content.Context;
 import android.util.Base64;
 
+import com.blackcoin.packdel.bahmanproject.MainActivity;
+
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -11,8 +13,7 @@ import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
 
-import Storage.Storage1;
-import Utils.Consts;
+import Storage.StorageBox;
 
 
 public class RSA {
@@ -27,8 +28,8 @@ public class RSA {
 
     public static boolean init(Context ctx)
     {
-        Storage1 storage1 = new Storage1(ctx, Consts.StorageSH.PREFS_NAME_RSA);
-        PUBLIC_KEY = storage1.getString(Consts.StorageSH.KEY_RSA_PUBLIC_KEY);
+        PUBLIC_KEY = StorageBox.sharedPreferences.getKEY_RSA_PUBLIC_KEY();
+
         return PUBLIC_KEY != null;
     }
 

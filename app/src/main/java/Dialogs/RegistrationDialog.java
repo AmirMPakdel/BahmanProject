@@ -32,6 +32,7 @@ import Authentication.Registration;
 import Authentication.interfaces.OnRegestrationResult;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
+import Storage.StorageBox;
 import Utils.Consts;
 import Utils.log;
 
@@ -49,7 +50,6 @@ public class RegistrationDialog extends Dialog {
     protected RegistrationDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
     }
-
 
     public void setup() {
 
@@ -108,6 +108,7 @@ public class RegistrationDialog extends Dialog {
 
         // exit button
         ImageView exit_btn = findViewById(R.id.exit_btn);
+
         exit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -259,15 +260,15 @@ public class RegistrationDialog extends Dialog {
             registration.signIn(username, password, new OnRegestrationResult() {
                 @Override
                 public void onSuccess() {
-                    MainActivity.storageBox1.save("username", username);
-                    MainActivity.storageBox1.save("password", password);
-                    log.print("onSucces");
+
+                    StorageBox.getInstance().setUsername(username);
+
+                    StorageBox.getInstance().setPassword(password);
                 }
 
                 @Override
                 public void onFailure() {
 
-                    log.print("onFailure");
                     Toast.makeText(getContext(), "internet Problem!", Toast.LENGTH_SHORT).show();
                     netProblem[0] = true;
                 }
@@ -306,9 +307,10 @@ public class RegistrationDialog extends Dialog {
             registration.signUp(username, password, 123, email, "0911", new OnRegestrationResult() {
                 @Override
                 public void onSuccess() {
-                    MainActivity.storageBox1.save("username", username);
-                    MainActivity.storageBox1.save("password", password);
-                    MainActivity.storageBox1.save("email", email);
+
+                    StorageBox.getInstance().setUsername(username);
+                    StorageBox.getInstance().setPassword(password);
+                    StorageBox.getInstance().setEmail(email);
                 }
 
                 @Override

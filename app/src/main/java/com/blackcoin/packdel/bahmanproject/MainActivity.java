@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import Server.Volley.Volley;
 import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
-import Storage.StorageBox1;
+import Storage.StorageBox;
 import Storage.StorageLite1;
 import Utils.log;
 
@@ -20,14 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static Typeface myFont;
 
-    public static StorageBox1 storageBox1;
-
     public static StorageLite1 storageLite1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //region MainCodes
 
@@ -38,9 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the Font
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
-
-        // Set the StorageBox1
-        storageBox1 = new StorageBox1(getApplicationContext());
 
         // Set the StorageLite1
         storageLite1 = new StorageLite1(this);

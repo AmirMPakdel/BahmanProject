@@ -5,15 +5,21 @@ import android.app.Application;
 
 import Security.RSA;
 import Server.Volley.VolleySingleton;
+import Storage.StorageBox;
 import Utils.log;
+import io.realm.Realm;
 
 public class StartUpManager extends Application
 {
     @Override
     public void onCreate() {
         super.onCreate();
-        VolleySingleton.init(getApplicationContext());
 
+        Realm.init(getApplicationContext());
+
+        StorageBox.init();
+
+        VolleySingleton.init(getApplicationContext());
 
         if(!RSA.init(getApplicationContext()))// if there is no RSA Public Key Available
         {
