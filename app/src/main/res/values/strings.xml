@@ -51,12 +51,12 @@
 
     <!-- signing -->
     <string name="signup"><u>ثبت نام</u></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up_btn">ثبت نام</string>
+    <string name="password">رمز</string>
+    <string name="email">ایمیل</string>
+    <string name="username">شناسه کاربری</string>
+    <string name="city">شهر</string>
+    <string name="state">استان</string>
 
 
 </resources>

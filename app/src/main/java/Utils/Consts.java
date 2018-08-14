@@ -5,6 +5,14 @@ import java.util.List;
 
 public class Consts {
 
+    // storage build with Shared Preferences
+    public class StorageSH {
+
+        public static final String PREFS_NAME_RSA = "rsapk";
+        public static final String KEY_RSA_PUBLIC_KEY = "rsapublickey";
+        public static final String KEY_RSA_LAST_FETCH_DATE = "rsadate";
+    }
+
     // urls
     public static String Registration_signup_guest = "http://172.16.22.199:8000/api/guest/register/";
     public static String Registration_signup = "http://172.16.22.199:8000/api/user/register/";
@@ -22,6 +30,9 @@ public class Consts {
 
     // StorageBox1 AES Key
     public static String StorageBoxKEY = "AWP";
+
+    // Chest Capacity
+    public static int CHEST_CAPACITY = 10;
 
     // state list
     public static String[] state_list = {

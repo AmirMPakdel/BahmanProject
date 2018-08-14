@@ -12,6 +12,7 @@ import java.util.List;
 
 import Models.Book;
 import Models.Chest;
+import Utils.Consts;
 
 public class StorageLite1 {
 
@@ -32,7 +33,7 @@ public class StorageLite1 {
 
         List<String> bookList = new Book().getBooksList(MainActivity.storageBox1.getField());
         for(int i=0; i<bookList.size(); i++){
-            db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+Chest.START_CAPACITY+", 0)");
+            db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+ Consts.CHEST_CAPACITY+", 0)");
         }
     }
 

@@ -12,7 +12,7 @@ import java.security.spec.X509EncodedKeySpec;
 import javax.crypto.Cipher;
 
 import Storage.Storage1;
-import Utils.C;
+import Utils.Consts;
 
 
 public class RSA {
@@ -27,8 +27,8 @@ public class RSA {
 
     public static boolean init(Context ctx)
     {
-        Storage1 storage1 = new Storage1(ctx,C.StorageSH.PREFS_NAME_RSA);
-        PUBLIC_KEY = storage1.getString(C.StorageSH.KEY_RSA_PUBLIC_KEY);
+        Storage1 storage1 = new Storage1(ctx, Consts.StorageSH.PREFS_NAME_RSA);
+        PUBLIC_KEY = storage1.getString(Consts.StorageSH.KEY_RSA_PUBLIC_KEY);
         return PUBLIC_KEY != null;
     }
 

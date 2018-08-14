@@ -19,6 +19,17 @@ public class Field {
 
     public static String HONAR_FIELD = "honar";
 
+    public static int setFieldColor(String field) {
+
+        return 0;
+    }
+
+    public static int setFieldString(String field) {
+
+        return 0;
+
+    }
+
     static class Strings {
 
         public static int RIAZI = R.string.Riazi;
