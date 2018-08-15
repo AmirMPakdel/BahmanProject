@@ -8,15 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
+import Animation.ToolbarAnimation;
 import Dialogs.RegistrationDialog;
 
 
 public class FragmentHome extends Fragment {
 
+    boolean start = true;
 
     public FragmentHome() {}
 
@@ -25,6 +28,13 @@ public class FragmentHome extends Fragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
+
+        // TabLayout Animation
+        if(start){
+            LinearLayout TabLayout = view.findViewById(R.id.home_tabLayout);
+            ToolbarAnimation.TabLayoutAnimate(TabLayout);
+            start=false;
+        }
 
         // test ground
 
@@ -38,6 +48,7 @@ public class FragmentHome extends Fragment {
 
             }
         });
+
 
         final Button QuickGame_btn = view.findViewById(R.id.quick_match_btn);
 

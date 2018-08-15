@@ -22,6 +22,7 @@ import com.blackcoin.packdel.bahmanproject.TestActivity;
 import java.util.List;
 
 import Dialogs.ChestDialog;
+import Models.Book;
 import Models.Chest;
 import Models.Field;
 
@@ -46,10 +47,10 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.fieldNameParent.setCardBackgroundColor(resources.getColor(Field.setFieldColor(chestList.get(position).getBook())));
-        holder.fieldName.setText(resources.getString(Field.setFieldString(chestList.get(position).getBook())));
+        holder.fieldNameParent.setCardBackgroundColor(resources.getColor(Book.setFieldColor(chestList.get(position).getBook())));
+        holder.fieldName.setText(resources.getString(Book.setFieldString(chestList.get(position).getBook())));
         holder.chestImg.setImageResource(R.drawable.ic_chest);
-        holder.chestImg.setColorFilter(resources.getColor(Field.setFieldColor(chestList.get(position).getBook())));
+        holder.chestImg.setColorFilter(resources.getColor(Book.setFieldColor(chestList.get(position).getBook())));
         holder.loadNum.setText(String.valueOf(chestList.get(position).getLoad()));
         holder.capacity.setText(String.valueOf(chestList.get(position).getCapacity()));
 
@@ -86,13 +87,13 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
         public MyViewHolder(View itemView) {
             super(itemView);
             view = itemView;
-            fieldNameParent = (CardView) itemView.findViewById(R.id.card_field_name_parent);
-            fieldName = (TextView) itemView.findViewById(R.id.card_field_name);
+            fieldNameParent = itemView.findViewById(R.id.card_field_name_parent);
+            fieldName = itemView.findViewById(R.id.card_field_name);
             fieldName.setTypeface(MainActivity.myFont);
-            chestImg = (ImageView) itemView.findViewById(R.id.card_chest_img);
-            loadNum = (TextView) itemView.findViewById(R.id.card_test_number);
+            chestImg = itemView.findViewById(R.id.card_chest_img);
+            loadNum = itemView.findViewById(R.id.card_test_number);
             loadNum.setTypeface(MainActivity.myFont);
-            capacity = (TextView) itemView.findViewById(R.id.card_capacity);
+            capacity = itemView.findViewById(R.id.card_capacity);
             capacity.setTypeface(MainActivity.myFont);
         }
     }

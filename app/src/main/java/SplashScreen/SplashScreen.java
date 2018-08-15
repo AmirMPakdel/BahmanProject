@@ -6,7 +6,7 @@ import com.blackcoin.packdel.bahmanproject.R;
 
 public class SplashScreen {
 
-    static final int delay = 2000;
+    static public final int delay = 2000;
     static final int latency = 3000;
 
     private FragmentManager SupportFragmentManager;

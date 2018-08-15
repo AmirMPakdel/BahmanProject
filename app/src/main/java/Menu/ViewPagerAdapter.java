@@ -1,6 +1,7 @@
 package Menu;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,6 +17,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
+        fragmentList = new ArrayList<>();
+        fragmentTitleList = new ArrayList<>();
     }
 
     @Override
@@ -28,6 +31,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return fragmentList.size();
     }
 
+    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
         return fragmentTitleList.get(position);

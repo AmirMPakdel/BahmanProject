@@ -19,6 +19,7 @@ import com.blackcoin.packdel.bahmanproject.TestActivity;
 
 import java.util.List;
 
+import Models.Book;
 import Models.Field;
 import Models.Test;
 
@@ -58,12 +59,13 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Field.setFieldColor(testList.get(position).getField())));
-
+        // setting the color and font
+        holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(testList.get(position).getField())));
         holder.test_number.setText(String.valueOf(position+1));
-
         holder.test_number.setTypeface(MainActivity.myFont);
+        holder.test_name.setTypeface(MainActivity.myFont);
 
+        // TODO -> find a better way to show a brief sign of the test
         if(testList.get(position).getQuestion().length() >= 20){
 
             String s = testList.get(position).getQuestion().substring(0,20);
@@ -74,6 +76,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         }
         holder.test_name.setTypeface(MainActivity.myFont);
 
+        // TODO -> show the whole the test in a TestActivity
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +85,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
             }
         });
 
+        // TODO -> delete the selected test
         holder.delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +93,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
             }
         });
 
+        // TODO -> edit the selected test
         holder.edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,10 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.blackcoin.packdel.bahmanproject.R;
 
 import Animation.ClickAnimation;
+import Animation.ToolbarAnimation;
 import Menu.FragmentArchives;
 import Menu.FragmentCompetition;
 import Menu.FragmentHome;
@@ -24,6 +26,8 @@ public class MenuToolbar {
 
     private ViewPagerAdapter viewPagerAdapter;
 
+    boolean start = true;
+
     public MenuToolbar(View view, FragmentManager SupportFragmentManager) {
 
         this.view = view;
@@ -33,6 +37,13 @@ public class MenuToolbar {
 
 
     public void setup(){
+
+        // TabLayout Animation
+        if(start){
+            RelativeLayout RelLayout = view.findViewById(R.id.bottom_toolbar);
+            ToolbarAnimation.ToolbarAnimate(RelLayout);
+            start=false;
+        }
 
         final ImageView setting_btn = view.findViewById(R.id.setting_btn);
         final ImageView archives_btn = view.findViewById(R.id.archives_btn);
