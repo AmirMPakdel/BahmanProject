@@ -7,20 +7,11 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import org.json.JSONObject;
-
-import Server.Volley.Volley;
-import Server.Volley.interfaces.OnResponse;
 import SplashScreen.SplashScreen;
-import Storage.StorageBox;
-import Storage.StorageLite1;
-import Utils.log;
 
 public class MainActivity extends AppCompatActivity {
 
     public static Typeface myFont;
-
-    public static StorageLite1 storageLite1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         // Set the Font
         myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
-        // Set the StorageLite1
-        storageLite1 = new StorageLite1(this);
-
         /* Show The Splash Screen
          * Many important Things happen in SplashScreen
          */
@@ -47,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         //region test codes
 
+        /*
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("username", "ali97");
@@ -56,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
+        Volley.POST_Encrypted(Consts.Registration_signin, jsonObject, new OnResponse() {
             @Override
             public void onResponse(JSONObject response, int resultCode)
             {
@@ -97,6 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //endregion
-
+        */
     }
 }

@@ -17,7 +17,8 @@ import com.blackcoin.packdel.bahmanproject.R;
 import java.util.List;
 
 import Archives.*;
-import Models.Chest;
+import RealmObjects.Chest;
+import Storage.StorageBase;
 
 
 public class FragmentArchives extends Fragment {
@@ -37,7 +38,7 @@ public class FragmentArchives extends Fragment {
         title.setText("صندوق های تست من");
         title.setTypeface(MainActivity.myFont);
 
-        List<Chest> chests = MainActivity.storageLite1.getChestsList();
+        List<Chest> chests = StorageBase.getInstance().getChestsList();
 
         ChestRecycleViewAdapter chestRecycleViewAdapter = new ChestRecycleViewAdapter(getContext(), chests, getResources());
 

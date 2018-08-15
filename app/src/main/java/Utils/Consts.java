@@ -14,10 +14,13 @@ public class Consts {
     }
 
     // urls
-    public static String Registration_signup_guest = "http://172.16.22.199:8000/api/guest/register/";
-    public static String Registration_signup = "http://172.16.22.199:8000/api/user/register/";
-    public static String Registration_signin = "http://172.16.22.199:8000/api/user/login/";
-    public static String Registration_signup_city = "http://172.16.22.199:8000/api/user/register/city";
+    private static String ip = "http://192.168.8.100:8000/";
+
+    public static String SERVER_TEST = ip+"test/";
+    public static String Registration_signup_guest = ip+"api/guest/register/";
+    public static String Registration_signup = ip+"api/user/register/";
+    public static String Registration_signin = ip+"api/user/login/";
+    public static String Registration_signup_city = ip+"api/user/register/city/";
 
 
     // resultCodes

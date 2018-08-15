@@ -44,8 +44,8 @@ public class SplashScreenFragment extends Fragment {
 
 
 
-        // check if it's the first time
-        if(StorageBox.sharedPreferences.isFirstTimeRun()){
+        // check if it's not the first time
+        if(!StorageBox.sharedPreferences.isFirstTimeRun()){
 
             // Setup MenuToolbar
             new MenuToolbar(getActivity().findViewById(R.id.relativeLayout), getActivity().getSupportFragmentManager()).setup();

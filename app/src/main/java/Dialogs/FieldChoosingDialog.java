@@ -27,6 +27,7 @@ import Authentication.interfaces.OnRegestrationResult;
 import Models.Field;
 import Models.Grade;
 import Models.Guest;
+import Storage.StorageBase;
 import Storage.StorageBox;
 import Toolbar.MenuToolbar;
 import Utils.log;
@@ -124,10 +125,11 @@ public class FieldChoosingDialog extends Dialog {
 
                         StorageBox.getInstance().setIsFirstTime(false);
 
-                        MainActivity.storageLite1.fillChestsTable();
-
                         // Setup MenuToolbar
                         new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
+
+                        // setting the chests for this field
+                        StorageBase.getInstance().CreateChests();
 
                         dismiss();
                     }
@@ -146,10 +148,11 @@ public class FieldChoosingDialog extends Dialog {
 
                         StorageBox.getInstance().setIsGuest(true);
 
-                        MainActivity.storageLite1.fillChestsTable();
-
                         // Setup MenuToolbar
                         new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
+
+                        // setting the chests for this field
+                        StorageBase.getInstance().CreateChests();
 
                         dismiss();
                         //endregion

@@ -1,9 +1,7 @@
 package Archives;
 
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,14 +15,12 @@ import android.widget.TextView;
 
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
-import com.blackcoin.packdel.bahmanproject.TestActivity;
 
 import java.util.List;
 
 import Dialogs.ChestDialog;
 import Models.Book;
-import Models.Chest;
-import Models.Field;
+import RealmObjects.Chest;
 
 
 public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleViewAdapter.MyViewHolder> {

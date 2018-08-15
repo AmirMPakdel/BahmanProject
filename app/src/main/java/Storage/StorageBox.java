@@ -1,7 +1,9 @@
 package Storage;
 
+
 import RealmObjects.SharedPreferences;
 import io.realm.Realm;
+
 
 public class StorageBox {
 
@@ -208,4 +210,5 @@ public class StorageBox {
 
         realm.commitTransaction();
     }
+
 }

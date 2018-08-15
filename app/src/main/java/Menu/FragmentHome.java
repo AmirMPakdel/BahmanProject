@@ -15,11 +15,12 @@ import com.blackcoin.packdel.bahmanproject.R;
 
 import Animation.ToolbarAnimation;
 import Dialogs.RegistrationDialog;
+import Storage.StorageBox;
 
 
 public class FragmentHome extends Fragment {
 
-    boolean start = true;
+    private static boolean start = true;
 
     public FragmentHome() {}
 
@@ -32,7 +33,7 @@ public class FragmentHome extends Fragment {
         // TabLayout Animation
         if(start){
             LinearLayout TabLayout = view.findViewById(R.id.home_tabLayout);
-            ToolbarAnimation.TabLayoutAnimate(TabLayout);
+            ToolbarAnimation.TabLayoutAnimate(TabLayout, StorageBox.sharedPreferences.isFirstTimeRun());
             start=false;
         }
 

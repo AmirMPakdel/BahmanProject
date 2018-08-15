@@ -33,6 +33,8 @@ public class ChestDialog extends Dialog {
 
     public ChestDialog(@NonNull Context context) {
         super(context);
+        this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
     }
 
     public ChestDialog(@NonNull Context context, int themeResId) {
@@ -45,9 +47,7 @@ public class ChestDialog extends Dialog {
 
     public void setup(){
 
-        this.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.dialog_chest);
-        this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView orderBy_title = findViewById(R.id.title_orderBy);
         orderBy_title.setTypeface(MainActivity.myFont);

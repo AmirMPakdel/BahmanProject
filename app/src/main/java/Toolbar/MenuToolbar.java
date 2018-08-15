@@ -17,6 +17,7 @@ import Menu.FragmentHome;
 import Menu.FragmentSetting;
 import Menu.FragmentShop;
 import Menu.ViewPagerAdapter;
+import Storage.StorageBox;
 
 public class MenuToolbar {
 
@@ -26,7 +27,7 @@ public class MenuToolbar {
 
     private ViewPagerAdapter viewPagerAdapter;
 
-    boolean start = true;
+    private static boolean start = true;
 
     public MenuToolbar(View view, FragmentManager SupportFragmentManager) {
 
@@ -41,7 +42,7 @@ public class MenuToolbar {
         // TabLayout Animation
         if(start){
             RelativeLayout RelLayout = view.findViewById(R.id.bottom_toolbar);
-            ToolbarAnimation.ToolbarAnimate(RelLayout);
+            ToolbarAnimation.ToolbarAnimate(RelLayout, StorageBox.sharedPreferences.isFirstTimeRun());
             start=false;
         }
 
@@ -100,6 +101,5 @@ public class MenuToolbar {
                 ClickAnimation.clickBounce(shop_btn);
             }
         });
-
     }
 }

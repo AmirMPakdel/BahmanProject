@@ -56,7 +56,7 @@ public class Book{
 
         public static final String JOGHRAFIA = "joghrafia";
 
-        public static final String Ejtemaie = "ejtemaie";
+        public static final String EJTEMAIE = "ejtemaie";
 
         public static final String FALSAFE = "falsafe";
 
@@ -224,7 +224,7 @@ public class Book{
             case Ensani.EGHTESAD:
                 return Colors.EGHTESAD;
 
-            case Ensani.Ejtemaie:
+            case Ensani.EJTEMAIE:
                 return Colors.Ejtemaie;
 
             case Ensani.FALSAFE:
@@ -309,7 +309,7 @@ public class Book{
             case Ensani.EGHTESAD:
                 return Strings.EGHTESAD;
 
-            case Ensani.Ejtemaie:
+            case Ensani.EJTEMAIE:
                 return Strings.Ejtemaie;
 
             case Ensani.FALSAFE:
@@ -383,7 +383,7 @@ public class Book{
             bookList.add(Ensani.ADABIAT);
             bookList.add(Ensani.ARABI);
             bookList.add(Ensani.EGHTESAD);
-            bookList.add(Ensani.Ejtemaie);
+            bookList.add(Ensani.EJTEMAIE);
             bookList.add(Ensani.FALSAFE);
             bookList.add(Ensani.JOGHRAFIA);
             bookList.add(Ensani.MANTEGH);

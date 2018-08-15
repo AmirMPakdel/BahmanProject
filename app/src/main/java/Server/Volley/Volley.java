@@ -14,6 +14,7 @@ import Server.Volley.interfaces.OnResponse;
 
 
 public class Volley {
+
     public static void POST_Encrypted(String url, final JSONObject object, final OnResponse serverResponse) {
         if (serverResponse == null) {
             throw new NullPointerException("OnResponse can not be null");
@@ -85,7 +86,10 @@ public class Volley {
                 , new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
+
+                throw new NullPointerException(error.toString());
+
+                //serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
             }
         })
 
@@ -191,4 +195,6 @@ public class Volley {
 
         VolleySingleton.getInstance().addToRequestQueue(request);
     }
+
+
 }

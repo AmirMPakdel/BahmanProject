@@ -2,9 +2,11 @@ package RealmObjects;
 
 import Utils.Consts;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Chest extends RealmObject{
 
+    @PrimaryKey
     private String book;
 
     private int capacity;

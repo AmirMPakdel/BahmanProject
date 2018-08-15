@@ -1,15 +1,15 @@
 package Storage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 import Models.Book;
 import Models.Field;
 import RealmObjects.Chest;
-import Utils.Consts;
+import Utils.log;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class StorageBase {
 
@@ -20,11 +20,6 @@ public class StorageBase {
     private StorageBase(){
 
         realm = Database.getRealm();
-
-        if(StorageBox.sharedPreferences.isFirstTimeRun()){
-
-            CreateChests();
-        }
     }
 
     public static synchronized StorageBase init(){
@@ -79,10 +74,8 @@ public class StorageBase {
 
         }else if (field.equals(Field.ENSANI_FIELD)){
 
-            chestList.add(new Chest(Book.Ensani.ADABIAT));
-            chestList.add(new Chest(Book.Ensani.ARABI));
             chestList.add(new Chest(Book.Ensani.EGHTESAD));
-            chestList.add(new Chest(Book.Ensani.Ejtemaie));
+            chestList.add(new Chest(Book.Ensani.EJTEMAIE));
             chestList.add(new Chest(Book.Ensani.FALSAFE));
             chestList.add(new Chest(Book.Ensani.JOGHRAFIA));
             chestList.add(new Chest(Book.Ensani.MANTEGH));
@@ -108,19 +101,25 @@ public class StorageBase {
 
     public void CreateChests(){
 
-
         List<Chest> chestList = getChestList(StorageBox.sharedPreferences.getField());
 
-        realm.copyToRealm(chestList);
-
-        //List<String> bookList = new Book().getBooksList(StorageBox.sharedPreferences.getField());
-        /*for(int i=0; i<bookList.size(); i++){
-
-            realm.copyToRealm(new Book())
-
-            db.execSQL("INSERT INTO chests(field, capacity, load) VALUES('"+bookList.get(i)+"', "+ Consts.NEW_CHEST_CAPACITY +", 0)");
-        }*/
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(chestList);
+        realm.commitTransaction();
     }
 
+    public List<Chest> getChestsList(){
+
+        RealmResults<Chest> results = realm.where(Chest.class).findAll();
+
+        List<Chest> chestList = new ArrayList<>();
+
+        for(Chest chest : results){
+
+            chestList.add(chest);
+        }
+
+        return results;
+    }
 
 }

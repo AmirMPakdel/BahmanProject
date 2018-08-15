@@ -39,8 +39,6 @@ public class TestFaker {
 
         String question = faker.getFakeFarsiSentence(40,50); // "اگر در مدار مقابل کلید را روشن کنیم مقدار ولتاژ لامپ دوم چقدر است؟"
 
-        log.print(question);
-
         List<String> possibleAnswers = new ArrayList<>();
         possibleAnswers.add("1");
         possibleAnswers.add("2");
