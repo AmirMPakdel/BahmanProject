@@ -20,7 +20,7 @@ import Storage.StorageBox;
 
 public class FragmentHome extends Fragment {
 
-    private static boolean start = true;
+    private boolean start = true;
 
     public FragmentHome() {}
 
@@ -33,7 +33,7 @@ public class FragmentHome extends Fragment {
         // TabLayout Animation
         if(start){
             LinearLayout TabLayout = view.findViewById(R.id.home_tabLayout);
-            ToolbarAnimation.TabLayoutAnimate(TabLayout, StorageBox.sharedPreferences.isFirstTimeRun());
+            ToolbarAnimation.TabLayoutAnimate(TabLayout);
             start=false;
         }
 

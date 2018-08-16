@@ -1,7 +1,6 @@
 package Server.Volley;
 
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
@@ -16,6 +15,7 @@ import Server.Volley.interfaces.OnResponse;
 public class Volley {
 
     public static void POST_Encrypted(String url, final JSONObject object, final OnResponse serverResponse) {
+
         if (serverResponse == null) {
             throw new NullPointerException("OnResponse can not be null");
         }
@@ -51,33 +51,25 @@ public class Volley {
         //region create request
         StringRequest request = new StringRequest(StringRequest.Method.POST, url, new Response.Listener<String>() {
             @Override
-            public void onResponse(String response)
-            {
-                try
-                {
+            public void onResponse(String response) {
+                try {
                     JSONObject obj = new JSONObject(response);
 
 
-                    if(obj.getBoolean("is_encrypted"))
-                    {
+                    if (obj.getBoolean("is_encrypted")) {
                         String encryptedMessage = obj.getString("message");
                         byte[] decryptedData = AES.decryptFromBase64String(keyAndIV, encryptedMessage.substring(2, encryptedMessage.length() - 1));
-                        if (decryptedData == null)
-                        {
+                        if (decryptedData == null) {
                             throw new NullPointerException("****** failed to decrypt data coming from server *******");
                         }
                         response = new String(decryptedData, "utf-8");
                         serverResponse.onResponse(new JSONObject(response), obj.getInt("result_code"));
-                    }
-                    else
-                    {
+                    } else {
                         serverResponse.onResponse(new JSONObject(obj.getString("message")), obj.getInt("result_code"));
                     }
 
 
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -87,9 +79,7 @@ public class Volley {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                throw new NullPointerException(error.toString());
-
-                //serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
+                serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
             }
         })
 
@@ -104,6 +94,7 @@ public class Volley {
         //endregion
 
         VolleySingleton.getInstance().addToRequestQueue(request);
+
     }
 
 

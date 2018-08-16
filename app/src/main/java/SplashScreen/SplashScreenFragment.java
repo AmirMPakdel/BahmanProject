@@ -32,6 +32,10 @@ public class SplashScreenFragment extends Fragment {
 
         showSplashScreenAnimation(relativeLayout);
 
+        // hide the toolbar
+        RelativeLayout layout = getActivity().findViewById(R.id.relativeLayout);
+        View toolbar = layout.findViewById(R.id.bottom_toolbar);
+        toolbar.setTranslationY(400f);
 
         Runnable runnable1 = new Runnable() {
             @Override

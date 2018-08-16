@@ -1,5 +1,8 @@
 package Server;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,7 +13,9 @@ import Utils.log;
 
 public class Server {
 
-    public static void ServerTest(){
+    public static Boolean offline_mode = false;
+
+    public static void ServerTest(final Context context){
 
         try {
             Volley.POST(Consts.SERVER_TEST,
@@ -27,7 +32,8 @@ public class Server {
                         @Override
                         public void onError(String error) {
 
-                            throw new NullPointerException("No way to reach the server! : "+error);
+                            Toast.makeText(context, "Cannot reach server!!!",Toast.LENGTH_LONG).show();
+                            offline_mode =  true;
                         }
                     });
 

@@ -36,8 +36,7 @@ public class StartUpManager extends Application
             // TODO: 4/13/18  call the server in Loading Activity
         }
 
-
-        Server.ServerTest();
+        Server.ServerTest(getApplicationContext());
 
         log.print("StartUp Manager Finished!");
 

@@ -12,38 +12,34 @@ public class ToolbarAnimation {
 
     public static void ToolbarAnimate(final View toolbar, boolean firstTimeRun){
 
-        if(!firstTimeRun) {
-            ObjectAnimator.ofFloat(toolbar, View.TRANSLATION_Y, 400f).setDuration(1000).start();
+        Handler handler = new Handler();
 
-            Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
 
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    ObjectAnimator.ofFloat(toolbar, View.TRANSLATION_Y, 0f).setDuration(1500).start();
-                }
-            };
+                ObjectAnimator.ofFloat(toolbar, View.TRANSLATION_Y, 0f).setDuration(1000).start();
+            }
+        };
 
-            handler.postDelayed(runnable, SplashScreen.delay);
-        }
+        handler.postDelayed(runnable, SplashScreen.delay);
     }
 
-    public static void TabLayoutAnimate(final View tablayout, boolean firstTimeRun){
+    public static void TabLayoutAnimate(final View tablayout){
 
-        if(!firstTimeRun) {
-            ObjectAnimator.ofFloat(tablayout, View.TRANSLATION_Y, -400f).setDuration(1000).start();
+        // hide the tabLayout
+        tablayout.setTranslationY(-400f);
 
-            Handler handler = new Handler();
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
 
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    ObjectAnimator.ofFloat(tablayout, View.TRANSLATION_Y, 0f).setDuration(1500).start();
-                }
-            };
+                ObjectAnimator.ofFloat(tablayout, View.TRANSLATION_Y, 0f).setDuration(1000).start();
+            }
+        };
 
-            handler.postDelayed(runnable, SplashScreen.delay);
-        }
+        handler.postDelayed(runnable, SplashScreen.delay);
     }
 
 }

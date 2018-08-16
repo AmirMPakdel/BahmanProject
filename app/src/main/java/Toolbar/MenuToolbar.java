@@ -27,7 +27,7 @@ public class MenuToolbar {
 
     private ViewPagerAdapter viewPagerAdapter;
 
-    private static boolean start = true;
+    private boolean start = true;
 
     public MenuToolbar(View view, FragmentManager SupportFragmentManager) {
 
