@@ -7,6 +7,8 @@
     <color name="colorMainTheme">#42c197</color>
     <color name="colorMainDark">#329675</color>
     <color name="mainTextColor">#eeeeee</color>
+    <color name="borderGeneral">#bebebe</color>
+    <color name="loadingColor">#37a322</color>
 
 
     <!-- Book colors-->

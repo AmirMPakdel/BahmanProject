@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import Animation.ToolbarAnimation;
 import Dialogs.RegistrationDialog;
@@ -21,27 +23,59 @@ import Storage.StorageBox;
 public class FragmentHome extends Fragment {
 
     private boolean start = true;
+    private Button btn_start_match, btn_cancel_match, btn_registration;
+    private TextView tv_match_status;
+    private AVLoadingIndicatorView loading;
 
-    public FragmentHome() {}
+    public FragmentHome() {
+    }
 
+    private void initViews(View view) {
+        btn_registration = view.findViewById(R.id.registration_btn);
+
+        btn_start_match = view.findViewById(R.id.quick_match_btn);
+        btn_cancel_match = view.findViewById(R.id.cancel_quick_match_btn);
+        tv_match_status = view.findViewById(R.id.tv_match_loading_status);
+        loading = view.findViewById(R.id.match_loading_view);
+
+
+        btn_start_match.setVisibility(View.VISIBLE);
+        btn_start_match.setEnabled(true);
+        btn_cancel_match.setVisibility(View.INVISIBLE);
+        btn_cancel_match.setEnabled(false);
+        tv_match_status.setVisibility(View.INVISIBLE);
+        loading.setVisibility(View.INVISIBLE);
+
+    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
 
-        // TabLayout Animation
-        if(start){
+        initViews(view);
+
+
+        //region TabLayout Animation
+        if (start) {
             LinearLayout TabLayout = view.findViewById(R.id.home_tabLayout);
             ToolbarAnimation.TabLayoutAnimate(TabLayout);
-            start=false;
+            start = false;
         }
 
-        // test ground
+        //endregion
 
-        Button Registration_btn = view.findViewById(R.id.registration_btn);
 
-        Registration_btn.setOnClickListener(new View.OnClickListener() {
+        btn_cancel_match.setOnClickListener(v -> {
+            btn_start_match.setVisibility(View.VISIBLE);
+            btn_start_match.setEnabled(true);
+            btn_cancel_match.setVisibility(View.INVISIBLE);
+            btn_cancel_match.setEnabled(false);
+            tv_match_status.setVisibility(View.INVISIBLE);
+            loading.setVisibility(View.INVISIBLE);
+        });
+
+        btn_registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -51,17 +85,22 @@ public class FragmentHome extends Fragment {
         });
 
 
-        final Button QuickGame_btn = view.findViewById(R.id.quick_match_btn);
-
-        QuickGame_btn.setOnClickListener(new View.OnClickListener() {
+        btn_start_match.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                btn_start_match.setVisibility(View.INVISIBLE);
+                btn_start_match.setEnabled(false);
+                btn_cancel_match.setVisibility(View.VISIBLE);
+                btn_cancel_match.setEnabled(true);
+                tv_match_status.setVisibility(View.VISIBLE);
+                loading.setVisibility(View.VISIBLE);
 
                 Intent intent = new Intent(getContext(), QuickGameActivity.class);
 
                 startActivity(intent);
 
-                getActivity().overridePendingTransition(R.anim.enter_slide,R.anim.exit_silde);
+                getActivity().overridePendingTransition(R.anim.enter_slide, R.anim.exit_silde);
 
             }
         });
