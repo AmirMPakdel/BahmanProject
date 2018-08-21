@@ -22,6 +22,7 @@ import java.util.List;
 import Models.Book;
 import Models.Field;
 import Models.Test;
+import Utils.Font;
 
 
 public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerViewAdapter.MyViewHolder>{
@@ -62,8 +63,8 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         // setting the color and font
         holder.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(testList.get(position).getField())));
         holder.test_number.setText(String.valueOf(position+1));
-        holder.test_number.setTypeface(MainActivity.myFont);
-        holder.test_name.setTypeface(MainActivity.myFont);
+        holder.test_number.setTypeface(Font.myFont);
+        holder.test_name.setTypeface(Font.myFont);
 
         // TODO -> find a better way to show a brief sign of the test
         if(testList.get(position).getQuestion().length() >= 20){
@@ -74,7 +75,7 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<TestRecyclerVi
         }else{
             holder.test_name.setText(testList.get(position).getQuestion());
         }
-        holder.test_name.setTypeface(MainActivity.myFont);
+        holder.test_name.setTypeface(Font.myFont);
 
         // TODO -> show the whole the test in a TestActivity
         view.setOnClickListener(new View.OnClickListener() {

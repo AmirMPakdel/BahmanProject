@@ -20,6 +20,7 @@ import java.util.List;
 
 import Models.Book;
 import Models.Test;
+import Utils.Font;
 
 public class Test2RecyclerViewAdapter extends BaseItemDraggableAdapter<Test, Test2RecyclerViewAdapter.MyBaseViewHolder> {
 
@@ -45,8 +46,8 @@ public class Test2RecyclerViewAdapter extends BaseItemDraggableAdapter<Test, Tes
         // setting the color and font
         helper.test_number_paernt.setCardBackgroundColor(resources.getColor(Book.setFieldColor(item.getField())));
         helper.test_number.setText(String.valueOf(position+1));
-        helper.test_number.setTypeface(MainActivity.myFont);
-        helper.test_name.setTypeface(MainActivity.myFont);
+        helper.test_number.setTypeface(Font.myFont);
+        helper.test_name.setTypeface(Font.myFont);
 
         // TODO -> find a better way to show a brief sign of the test
         if(item.getQuestion().length() >= 20){

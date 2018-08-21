@@ -19,6 +19,7 @@ import java.util.List;
 import Archives.*;
 import RealmObjects.Chest;
 import Storage.StorageBase;
+import Utils.Font;
 
 
 public class FragmentArchives extends Fragment {
@@ -36,7 +37,7 @@ public class FragmentArchives extends Fragment {
         // set the title
         TextView title = view.findViewById(R.id.toolbar_title);
         title.setText("صندوق های تست من");
-        title.setTypeface(MainActivity.myFont);
+        title.setTypeface(Font.myFont);
 
         List<Chest> chests = StorageBase.getInstance().getChestsList();
 

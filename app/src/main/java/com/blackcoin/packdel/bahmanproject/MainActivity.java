@@ -8,10 +8,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import SplashScreen.SplashScreen;
+import Utils.Font;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static Typeface myFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Set the Font
-        myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
+        Font.myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
         /* Show The Splash Screen
          * Many important Things happen in SplashScreen

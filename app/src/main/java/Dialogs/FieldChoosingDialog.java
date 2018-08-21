@@ -30,6 +30,7 @@ import Models.Guest;
 import Storage.StorageBase;
 import Storage.StorageBox;
 import Toolbar.MenuToolbar;
+import Utils.Font;
 import Utils.log;
 
 
@@ -67,10 +68,10 @@ public class FieldChoosingDialog extends Dialog {
         TextView grade_txt = findViewById(R.id.grade_txt);
         TextView accept_txt = findViewById(R.id.accept_txt);
 
-        dialog_title.setTypeface(MainActivity.myFont);
-        field_txt.setTypeface(MainActivity.myFont);
-        grade_txt.setTypeface(MainActivity.myFont);
-        accept_txt.setTypeface(MainActivity.myFont);
+        dialog_title.setTypeface(Font.myFont);
+        field_txt.setTypeface(Font.myFont);
+        grade_txt.setTypeface(Font.myFont);
+        accept_txt.setTypeface(Font.myFont);
 
 
         // Setup the Field Spinner

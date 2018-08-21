@@ -21,6 +21,7 @@ import java.util.List;
 import Dialogs.ChestDialog;
 import Models.Book;
 import RealmObjects.Chest;
+import Utils.Font;
 
 
 public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleViewAdapter.MyViewHolder> {
@@ -77,7 +78,6 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
         ImageView chestImg;
         TextView loadNum;
         TextView capacity;
-
         View view;
 
         public MyViewHolder(View itemView) {
@@ -85,12 +85,12 @@ public class ChestRecycleViewAdapter extends RecyclerView.Adapter<ChestRecycleVi
             view = itemView;
             fieldNameParent = itemView.findViewById(R.id.card_field_name_parent);
             fieldName = itemView.findViewById(R.id.card_field_name);
-            fieldName.setTypeface(MainActivity.myFont);
+            fieldName.setTypeface(Font.myFont);
             chestImg = itemView.findViewById(R.id.card_chest_img);
             loadNum = itemView.findViewById(R.id.card_test_number);
-            loadNum.setTypeface(MainActivity.myFont);
+            loadNum.setTypeface(Font.myFont);
             capacity = itemView.findViewById(R.id.card_capacity);
-            capacity.setTypeface(MainActivity.myFont);
+            capacity.setTypeface(Font.myFont);
         }
     }
 }

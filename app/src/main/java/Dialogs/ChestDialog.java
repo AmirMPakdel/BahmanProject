@@ -27,6 +27,7 @@ import java.util.List;
 import Archives.Test2RecyclerViewAdapter;
 import Archives.TestRecyclerViewAdapter;
 import DataFaker.TestFaker;
+import Utils.Font;
 
 
 public class ChestDialog extends Dialog {
@@ -50,7 +51,7 @@ public class ChestDialog extends Dialog {
         this.setContentView(R.layout.dialog_chest);
 
         TextView orderBy_title = findViewById(R.id.title_orderBy);
-        orderBy_title.setTypeface(MainActivity.myFont);
+        orderBy_title.setTypeface(Font.myFont);
         orderBy_title.setText("ترتیب :");
 
         Spinner orderBy_spinner = findViewById(R.id.tartib_spinner);

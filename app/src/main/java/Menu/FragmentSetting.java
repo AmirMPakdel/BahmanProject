@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
+import Utils.Font;
+
 
 public class FragmentSetting extends Fragment {
 
@@ -26,7 +28,7 @@ public class FragmentSetting extends Fragment {
         // set the title
         TextView title = view.findViewById(R.id.toolbar_title);
         title.setText("تنظیمات");
-        title.setTypeface(MainActivity.myFont);
+        title.setTypeface(Font.myFont);
 
         return view;
     }

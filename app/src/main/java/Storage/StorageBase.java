@@ -7,6 +7,7 @@ import java.util.List;
 import Models.Book;
 import Models.Field;
 import RealmObjects.Chest;
+import RealmObjects.Match;
 import Utils.log;
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -120,6 +121,12 @@ public class StorageBase {
         }
 
         return results;
+    }
+
+    public List<Match> getMatchList(){
+
+        //TODO:: create Match database
+        return new ArrayList<>();
     }
 
 }
