@@ -45,6 +45,7 @@ public class FragmentHome extends Fragment {
         btn_cancel_match.setEnabled(false);
         tv_match_status.setVisibility(View.INVISIBLE);
         loading.setVisibility(View.INVISIBLE);
+        loading.show();
 
     }
 
