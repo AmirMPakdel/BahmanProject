@@ -62,9 +62,9 @@ public class FragmentHome extends Fragment {
                 startActivity(intent);
 
                 getActivity().overridePendingTransition(R.anim.enter_slide,R.anim.exit_silde);
-
             }
         });
+
 
 
         return view;
