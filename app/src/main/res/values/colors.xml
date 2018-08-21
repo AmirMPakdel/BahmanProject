@@ -6,6 +6,7 @@
     <color name="colorAccent">#42c197</color>
     <color name="colorMainTheme">#42c197</color>
     <color name="colorMainDark">#329675</color>
+    <color name="mainTextColor">#eeeeee</color>
 
 
     <!-- Book colors-->

@@ -4,9 +4,12 @@ package Server.Volley;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import Security.AES;
 import Security.KeyAndIV;
 import Server.Volley.interfaces.OnResponse;
@@ -34,7 +37,7 @@ public class Volley {
         }
         //endregion
 
-        //region encrypt Key and IV with AES
+        //region encrypt Key and IV with RSA public key
         base64EncryptedKeyAndIV = keyAndIV.combineAndEncrypt();
         //endregion
 
@@ -49,39 +52,32 @@ public class Volley {
         //endregion
 
         //region create request
-        StringRequest request = new StringRequest(StringRequest.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject obj = new JSONObject(response);
+        StringRequest request = new StringRequest(StringRequest.Method.POST, url, response -> {
+            //region Handle Request
+            try {
+                JSONObject obj = new JSONObject(response);
 
 
-                    if (obj.getBoolean("is_encrypted")) {
-                        String encryptedMessage = obj.getString("message");
-                        byte[] decryptedData = AES.decryptFromBase64String(keyAndIV, encryptedMessage.substring(2, encryptedMessage.length() - 1));
-                        if (decryptedData == null) {
-                            throw new NullPointerException("****** failed to decrypt data coming from server *******");
-                        }
-                        response = new String(decryptedData, "utf-8");
-                        serverResponse.onResponse(new JSONObject(response), obj.getInt("result_code"));
-                    } else {
-                        serverResponse.onResponse(new JSONObject(obj.getString("message")), obj.getInt("result_code"));
+                if (obj.getBoolean("is_encrypted")) {
+                    String encryptedMessage = obj.getString("message");
+                    // we need a hack string here, becuz python sends something like this: b'sdkfjsdkfjbjsdbfjbdsfjhf=='
+                    byte[] decryptedData = AES.decryptFromBase64String(keyAndIV, encryptedMessage.substring(2, encryptedMessage.length() - 1));
+                    if (decryptedData == null) {
+                        throw new NullPointerException("****** failed to decrypt data coming from server *******");
                     }
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    response = new String(decryptedData, "utf-8");
+                    serverResponse.onResponse(new JSONObject(response), obj.getInt("result_code"));
+                } else {
+                    serverResponse.onResponse(new JSONObject(obj.getString("message")), obj.getInt("result_code"));
                 }
 
-            }
-        }
-                , new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-                serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause());
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        })
+            //endregion
+        }, error -> serverResponse.onError("VolleyError : \n" + error.toString() + "\n" + error.getMessage() + "\n" + error.getCause()))
 
         {
             @Override
@@ -98,10 +94,8 @@ public class Volley {
     }
 
 
-
     public static void POST(String url, final JSONObject object, final OnResponse serverResponse) {
-        if (serverResponse == null)
-        {
+        if (serverResponse == null) {
             throw new NullPointerException("OnResponse can not be null");
         }
 
@@ -123,7 +117,7 @@ public class Volley {
 
                 try {
                     obj = new JSONObject(response);
-                    serverResponse.onResponse(obj.getJSONObject("message") , obj.getInt("result_code"));
+                    serverResponse.onResponse(obj.getJSONObject("message"), obj.getInt("result_code"));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -152,23 +146,21 @@ public class Volley {
     }
 
 
+    public static void GET(String url, final OnResponse serverResponse) {
 
-    public static void GET(String url, final OnResponse serverResponse){
-
-        if (serverResponse == null)
-        {
+        if (serverResponse == null) {
             throw new NullPointerException("OnResponse can not be null");
         }
 
         //region create request
-        StringRequest request = new StringRequest(StringRequest.Method.GET,url, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(StringRequest.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject obj;
 
                 try {
                     obj = new JSONObject(response);
-                    serverResponse.onResponse(obj.getJSONObject("message") , obj.getInt("result_code"));
+                    serverResponse.onResponse(obj.getJSONObject("message"), obj.getInt("result_code"));
 
                 } catch (Exception e) {
                     e.printStackTrace();
