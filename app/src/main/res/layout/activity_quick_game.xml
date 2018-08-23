@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuickGameActivity">
-    
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/quick_match_frame">
-
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

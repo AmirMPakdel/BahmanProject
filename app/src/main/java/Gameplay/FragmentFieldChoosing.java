@@ -12,19 +12,18 @@ import com.blackcoin.packdel.bahmanproject.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Chat extends Fragment {
+public class FragmentFieldChoosing extends Fragment {
 
 
-    public Chat() {
+    public FragmentFieldChoosing() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        return inflater.inflate(R.layout.fragment_field_choosing, container, false);
     }
 
 }

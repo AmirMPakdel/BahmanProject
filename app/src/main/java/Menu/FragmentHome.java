@@ -99,9 +99,11 @@ public class FragmentHome extends Fragment {
 
                 Intent intent = new Intent(getContext(), QuickGameActivity.class);
 
+                intent.putExtra("Contest_id", "HELOOOOOOOW");
+
                 startActivity(intent);
 
-                getActivity().overridePendingTransition(R.anim.enter_slide, R.anim.exit_silde);
+                getActivity().overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
 
             }
         });

@@ -129,4 +129,7 @@ public class StorageBase {
         return new ArrayList<>();
     }
 
+    public Match getMatch(String contest_id) {
+        return null;
+    }
 }

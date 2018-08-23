@@ -4,6 +4,9 @@ import io.realm.RealmObject;
 
 public class Match extends RealmObject {
 
+
+    private String state;
+
     private String MyName;
 
     private String opponentName;
@@ -12,11 +15,6 @@ public class Match extends RealmObject {
 
     private byte[] OpponentPic;
 
-    /* insert the image in database
-
-
-
-     */
 
     public byte[] getMyPic() {
         return MyPic;
@@ -48,5 +46,13 @@ public class Match extends RealmObject {
 
     public void setOpponentName(String opponentName) {
         this.opponentName = opponentName;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }

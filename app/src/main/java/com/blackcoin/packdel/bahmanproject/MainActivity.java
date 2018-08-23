@@ -26,65 +26,16 @@ public class MainActivity extends AppCompatActivity {
         // Set the Font
         Font.myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
 
-        /* Show The Splash Screen
-         * Many important Things happen in SplashScreen
-         */
+        // Splash Screen and Loading data
         new SplashScreen(getSupportFragmentManager()).show();
         //endregion
 
         //region test codes
 
-        /*
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("username", "ali97");
-            jsonObject.put("password", "ali123456");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        Volley.POST_Encrypted(Consts.Registration_signin, jsonObject, new OnResponse() {
-            @Override
-            public void onResponse(JSONObject response, int resultCode)
-            {
-                log.print(String.valueOf(resultCode));
-                log.print(response.toString());
-            }
-
-            @Override
-            public void onError(String error)
-            {
-                log.print("Error : " + error);
-            }
-        });
-
-        try {
-
-            jsonObject.put("username", "amir97");
-            jsonObject.put("password", "ali123456");
-        }
-        catch (Exception e){}
-
-
-        log.print("################################");
-
-
-        Volley.POST_Encrypted("http://172.16.205.19:8000/api/user/login/", jsonObject, new OnResponse() {
-            @Override
-            public void onResponse(JSONObject response, int resultCode)
-            {
-                log.print(String.valueOf(resultCode));
-                log.print(response.toString());
-            }
-
-            @Override
-            public void onError(String error)
-            {
-                log.print("Error : " + error);
-            }
-        });
         //endregion
-        */
+    }
+
+    public void createFakeContest(){
+
     }
 }

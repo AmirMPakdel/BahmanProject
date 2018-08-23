@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import com.blackcoin.packdel.bahmanproject.R;
 
 
-public class Test extends Fragment {
+public class FragmentTest extends Fragment {
 
-    public Test() {
+    public FragmentTest() {
         // Required empty public constructor
     }
 

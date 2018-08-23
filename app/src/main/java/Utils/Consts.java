@@ -6,11 +6,19 @@ import java.util.List;
 public class Consts {
 
     // storage build with Shared Preferences
-    public class StorageSH {
+    public static class StorageSH {
 
         public static final String PREFS_NAME_RSA = "rsapk";
         public static final String KEY_RSA_PUBLIC_KEY = "rsapublickey";
         public static final String KEY_RSA_LAST_FETCH_DATE = "rsadate";
+    }
+
+
+    public static class Match{
+
+        public static final String STATE_BOOK_CHOOSING = "bookChoosing";
+        public static final String STATE_ANSWERING = "answering";
+        public static final String STATE_FINISHED = "finished";
     }
 
     // urls

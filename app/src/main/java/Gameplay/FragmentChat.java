@@ -12,10 +12,10 @@ import com.blackcoin.packdel.bahmanproject.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Rounds extends Fragment {
+public class FragmentChat extends Fragment {
 
 
-    public Rounds() {
+    public FragmentChat() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Rounds extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rounds, container, false);
+        return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 
 }
