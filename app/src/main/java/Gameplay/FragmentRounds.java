@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
 import Views.RoundedCornerLayout;
@@ -85,6 +86,7 @@ public class FragmentRounds extends Fragment {
 
         RoundedCornerLayout r4_op_2 = view.findViewById(R.id.round_4_test_op_2);
         //endregion
+
 
         return view;
     }
