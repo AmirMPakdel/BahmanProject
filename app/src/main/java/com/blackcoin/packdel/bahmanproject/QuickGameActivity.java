@@ -33,10 +33,9 @@ public class QuickGameActivity extends AppCompatActivity {
         match = StorageBase.getInstance().getMatch(contest_id);
         //endregion
 
-
         // check contest's state
 
-        switch (match.getState()){
+        switch (/*match.getState()*/Consts.Match.STATE_ANSWERING){
 
             case Consts.Match.STATE_ANSWERING:
 
@@ -59,7 +58,6 @@ public class QuickGameActivity extends AppCompatActivity {
                 //TODO: ge the match fixed by syncing it with server
                 break;
         }
-
     }
 
     @Override

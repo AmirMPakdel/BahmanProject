@@ -49,7 +49,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/background_rounded_green"
             android:padding="15dp"
-            android:text="بیخیال"
+            android:text="لغو"
             android:textColor="@color/mainTextColor"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -84,23 +84,15 @@
 
     </android.support.constraint.ConstraintLayout>
 
-
     <Button
         android:id="@+id/registration_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Registration"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
-
+        android:layout_marginTop="2dp"
+        android:text="Registration"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/match_recycleView"
@@ -112,9 +104,9 @@
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-
+        app:layout_constraintStart_toStartOf="parent">
     </android.support.v7.widget.RecyclerView>
+
+
 
 </android.support.constraint.ConstraintLayout>

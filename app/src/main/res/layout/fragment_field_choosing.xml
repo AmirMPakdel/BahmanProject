@@ -5,354 +5,177 @@
     android:layout_height="match_parent"
     tools:context="Gameplay.FragmentFieldChoosing">
 
-    <View
-        android:id="@+id/middle_line"
-        android:layout_width="10dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/item_match_vertical_separator"
-        app:layout_constraintBottom_toBottomOf="@+id/my_container"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/opponent_container"
-        android:layout_width="0dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_rounded_green"
+        android:id="@+id/constraintLayout"
+        android:layout_width="356dp"
+        android:layout_height="188dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_rounded"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/middle_line"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/opponent_first_book"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/opponent_container" />
+
+        <TextView
+            android:id="@+id/opponent_second_book"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="57dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/opponent_container" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/opponent_container"
+            android:layout_width="0dp"
+            android:layout_height="59dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_rounded_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/opponent_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/opponent_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/opponent_pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/my_container"
-        android:layout_width="0dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_rounded_green"
-        app:layout_constraintEnd_toStartOf="@+id/middle_line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="356dp"
+        android:layout_height="341dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/border_rounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middle_line"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/Round_1_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:id="@+id/my_container"
+            android:layout_width="0dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/background_rounded_green"
-            app:layout_constraintBottom_toTopOf="@+id/Round_2_container"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/my_pic"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/roundedCornerLayout3"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout3"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/roundedCornerLayout"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/round_book"
+                android:id="@+id/my_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded_white"
-                android:paddingEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_10"
-                android:text="انگلیسی"
-                android:textColor="@color/colorMainTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/my_pic"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
         </android.support.constraint.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/Round_2_container"
-            android:layout_width="292dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/background_rounded_green"
-            app:layout_constraintBottom_toTopOf="@+id/Round_3_container"
+        <TextView
+            android:id="@+id/my_first_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:padding="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_container" />
+
+        <TextView
+            android:id="@+id/my_second_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/my_first_book"
+            app:layout_constraintTop_toTopOf="@+id/my_first_book" />
 
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/roundedCornerLayout3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout3"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/roundedCornerLayout"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/round_4_book"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded_white"
-                android:paddingEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_10"
-                android:text="انگلیسی"
-                android:textColor="@color/colorMainTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/Round_3_container"
-            android:layout_width="292dp"
+        <RadioGroup
+            android:id="@+id/books_radio_group"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/background_rounded_green"
-            app:layout_constraintBottom_toTopOf="@+id/Round_4_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/roundedCornerLayout3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout3"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/roundedCornerLayout"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/round_book"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded_white"
-                android:paddingEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_10"
-                android:text="انگلیسی"
-                android:textColor="@color/colorMainTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/Round_4_container"
-            android:layout_width="292dp"
-            android:layout_height="170dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/background_rounded_green"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_second_book"
+            android:padding="20dp">
 
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/roundedCornerLayout3"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout3"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/roundedCornerLayout"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/round_book"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_rounded_white"
-                android:paddingEnd="@dimen/dp_10"
-                android:paddingStart="@dimen/dp_10"
-                android:text="انگلیسی"
-                android:textColor="@color/colorMainTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Views.RoundedCornerLayout
-                android:id="@+id/roundedCornerLayout"
-                android:layout_width="22dp"
-                android:layout_height="21dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
+        </RadioGroup>
 
     </android.support.constraint.ConstraintLayout>
+
 
 </android.support.constraint.ConstraintLayout>
