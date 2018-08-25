@@ -3,8 +3,10 @@ package Server;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -32,8 +34,6 @@ public class SocketIO {
     private OkHttpClient client;
     private Handler incomingMessageHandler;
     private Handler requestTimeoutHandler;
-    private OnMatchUpdate onMatchUpdate;
-
     //endregion
 
 
@@ -200,15 +200,15 @@ public class SocketIO {
 
     //region Constructors
 
-    public static void init(){
+    public static void init() {
 
-        if(socketIO != null){
+        if (socketIO != null) {
 
             socketIO = new SocketIO(Consts.SOCKET_URL);
         }
     }
 
-    public static SocketIO getInstance(){
+    public static SocketIO getInstance() {
         return socketIO;
     }
 
@@ -244,7 +244,7 @@ public class SocketIO {
         this.registeredEvents.put(event, callback);
     }
 
-    public void off(String event){
+    public void off(String event) {
         if (event == null) throw new NullPointerException("event can not be Null");
         this.registeredEvents.remove(event);
     }
@@ -416,25 +416,5 @@ public class SocketIO {
 
     //endregion
 
-    //region test
 
-    void onEVENT(JSONObject object){
-
-        Match match = null;
-
-        // TODO:: get the match data from server
-
-        onMatchUpdate.onUpdate(match);
-
-    }
-
-    public void setOnUpdateListener(OnMatchUpdate onMatchUpdate){
-
-        // TODO :: get the match object from server
-
-        this.onMatchUpdate = onMatchUpdate;
-
-    }
-
-    //end
 }
