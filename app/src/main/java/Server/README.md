@@ -1,3 +1,7 @@
+# NOTE: 
+**implement auto encryption/decryption and KEY switching in onConnect Event and onDisconnect**
+
+
 # Replicated SocketIO: 
 
 This class handles all communication between Client and Server. 

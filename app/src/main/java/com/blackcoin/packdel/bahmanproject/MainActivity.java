@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import Server.SocketIO;
 import SplashScreen.SplashScreen;
+import Storage.Database;
 import Utils.Font;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +37,16 @@ public class MainActivity extends AppCompatActivity {
         //endregion
     }
 
-    public void createFakeContest(){
+    public void createFakeContest() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // release All resources
+        SocketIO.getInstance().release();
+        Database.getRealm().close();
     }
 }

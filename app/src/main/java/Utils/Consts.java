@@ -1,9 +1,8 @@
 package Utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Consts {
+
+    public static final String DEBUG_TAG = "APP_DEBUG";
 
     // storage build with Shared Preferences
     public static class StorageSH {
@@ -13,8 +12,14 @@ public class Consts {
         public static final String KEY_RSA_LAST_FETCH_DATE = "rsadate";
     }
 
+    public static class socketEvents {
 
-    public static class Match{
+        public static final String CONNECTED = "connected";
+        public static final String UPDATE_USER_INFO_splashScrren = "updateUserInfo_splash";
+        public static final String CURRENT_PLAYING_MATCH_home = "currentPlayingMatches_home";
+    }
+
+    public static class Match {
 
         public static final String STATE_BOOK_CHOOSING = "bookChoosing";
         public static final String STATE_ANSWERING = "answering";
@@ -34,11 +39,11 @@ public class Consts {
 
     public static String SOCKET_URL = "";
 
-    public static String SERVER_TEST = ip+"test/";
-    public static String Registration_signup_guest = ip+"api/guest/register/";
-    public static String Registration_signup = ip+"api/user/register/";
-    public static String Registration_signin = ip+"api/user/login/";
-    public static String Registration_signup_city = ip+"api/user/register/city/";
+    public static String SERVER_TEST = ip + "test/";
+    public static String Registration_signup_guest = ip + "api/guest/register/";
+    public static String Registration_signup = ip + "api/user/register/";
+    public static String Registration_signin = ip + "api/user/login/";
+    public static String Registration_signup_city = ip + "api/user/register/city/";
 
 
     // resultCodes

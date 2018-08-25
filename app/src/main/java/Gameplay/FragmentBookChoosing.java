@@ -68,19 +68,7 @@ public class FragmentBookChoosing extends Fragment {
 
         opponent_second_book.setText(match.getOpponent_2_book());
 
-        SocketIO.getInstance().setOnUpdateListener(new OnMatchUpdate() {
-            @Override
-            public void onUpdate(Match match) {
-
-                my_first_book.setText(match.getMy_1_book());
-
-                my_second_book.setText(match.getMy_2_book());
-
-                opponent_fist_book.setText(match.getOpponent_1_book());
-
-                opponent_second_book.setText(match.getOpponent_2_book());
-            }
-        });
+        //todo update the match here
 
         return view;
 

@@ -209,6 +209,9 @@ public class SocketIO {
     }
 
     public static SocketIO getInstance() {
+        if(socketIO == null){
+            throw new NullPointerException("You Must Initialize the SocketIO");
+        }
         return socketIO;
     }
 
