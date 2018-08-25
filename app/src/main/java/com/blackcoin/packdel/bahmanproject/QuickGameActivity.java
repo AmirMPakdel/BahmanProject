@@ -5,18 +5,16 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import Gameplay.FragmentChat;
-import Gameplay.FragmentFieldChoosing;
+import Gameplay.FragmentBookChoosing;
 import Gameplay.FragmentRounds;
 import RealmObjects.Match;
 import Storage.StorageBase;
 import Utils.Consts;
-import Utils.log;
 
 public class QuickGameActivity extends AppCompatActivity {
 
 
-    public Match match;
+    public static Match match;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +45,9 @@ public class QuickGameActivity extends AppCompatActivity {
 
             case Consts.Match.STATE_BOOK_CHOOSING:
 
-                FragmentFieldChoosing fragmentFieldChoosing = new FragmentFieldChoosing();
+                FragmentBookChoosing fragmentBookChoosing = new FragmentBookChoosing();
 
-                getSupportFragmentManager().beginTransaction().add(R.id.quick_match_frame, fragmentFieldChoosing);
+                getSupportFragmentManager().beginTransaction().add(R.id.quick_match_frame, fragmentBookChoosing);
 
                 break;
 

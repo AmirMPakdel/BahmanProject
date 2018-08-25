@@ -87,7 +87,6 @@ public class FragmentRounds extends Fragment {
         RoundedCornerLayout r4_op_2 = view.findViewById(R.id.round_4_test_op_2);
         //endregion
 
-
         return view;
     }
 

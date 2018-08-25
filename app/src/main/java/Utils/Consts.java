@@ -19,10 +19,20 @@ public class Consts {
         public static final String STATE_BOOK_CHOOSING = "bookChoosing";
         public static final String STATE_ANSWERING = "answering";
         public static final String STATE_FINISHED = "finished";
+
+        public static final String BOOK_UNSET = "  ???  ";
+
+        public static final String BOOK_ME_1 = "my_1_book";
+        public static final String BOOK_ME_2 = "my_2_book";
+        public static final String BOOK_OP_1 = "op_1_book";
+        public static final String BOOK_OP_2 = "op_2_book";
+
     }
 
     // urls
     private static String ip = "http://192.168.8.100:8000/";
+
+    public static String SOCKET_URL = "";
 
     public static String SERVER_TEST = ip+"test/";
     public static String Registration_signup_guest = ip+"api/guest/register/";

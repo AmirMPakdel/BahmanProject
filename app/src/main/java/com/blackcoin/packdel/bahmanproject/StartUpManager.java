@@ -5,6 +5,7 @@ import android.app.Application;
 
 import Security.RSA;
 import Server.Server;
+import Server.SocketIO;
 import Server.Volley.VolleySingleton;
 import Storage.StorageBase;
 import Storage.StorageBox;
@@ -17,15 +18,17 @@ public class StartUpManager extends Application
     public void onCreate() {
         super.onCreate();
 
-        Realm.init(getApplicationContext());
-
-        StorageBox.init();
-
         log.print("StartUP Manger started!");
 
         log.print("First time Run : "+StorageBox.sharedPreferences.isFirstTimeRun());
 
+        Realm.init(getApplicationContext());
+
+        StorageBox.init();
+
         StorageBase.init();
+
+        SocketIO.init();
 
         VolleySingleton.init(getApplicationContext());
 

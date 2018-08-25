@@ -8,6 +8,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import Gameplay.FragmentBookChoosing;
+import RealmObjects.Match;
+import Utils.Consts;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -28,11 +32,14 @@ public class SocketIO {
     private OkHttpClient client;
     private Handler incomingMessageHandler;
     private Handler requestTimeoutHandler;
+    private OnMatchUpdate onMatchUpdate;
 
     //endregion
 
 
     //region Public static variables
+
+    public static SocketIO socketIO;
 
     public static final boolean LOG = false;
 
@@ -193,7 +200,19 @@ public class SocketIO {
 
     //region Constructors
 
-    public SocketIO(String server_url) {
+    public static void init(){
+
+        if(socketIO != null){
+
+            socketIO = new SocketIO(Consts.SOCKET_URL);
+        }
+    }
+
+    public static SocketIO getInstance(){
+        return socketIO;
+    }
+
+    private SocketIO(String server_url) {
         this.registeredEvents = new HashMap<>();
         this.httpResponseStack = new HashMap<>();
         this.timeouts = new HashMap<>();
@@ -396,4 +415,26 @@ public class SocketIO {
     }
 
     //endregion
+
+    //region test
+
+    void onEVENT(JSONObject object){
+
+        Match match = null;
+
+        // TODO:: get the match data from server
+
+        onMatchUpdate.onUpdate(match);
+
+    }
+
+    public void setOnUpdateListener(OnMatchUpdate onMatchUpdate){
+
+        // TODO :: get the match object from server
+
+        this.onMatchUpdate = onMatchUpdate;
+
+    }
+
+    //end
 }

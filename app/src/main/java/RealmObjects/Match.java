@@ -1,9 +1,12 @@
 package RealmObjects;
 
+import Utils.Consts;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 public class Match extends RealmObject {
 
+    private String id;
 
     private String state;
 
@@ -15,6 +18,15 @@ public class Match extends RealmObject {
 
     private byte[] OpponentPic;
 
+    private String my_1_book = Consts.Match.BOOK_UNSET;
+
+    private String my_2_book = Consts.Match.BOOK_UNSET;
+
+    private String opponent_1_book = Consts.Match.BOOK_UNSET;
+
+    private String opponent_2_book = Consts.Match.BOOK_UNSET;
+
+    private RealmList<String> books_order;
 
     public byte[] getMyPic() {
         return MyPic;
@@ -54,5 +66,53 @@ public class Match extends RealmObject {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMy_1_book() {
+        return my_1_book;
+    }
+
+    public void setMy_1_book(String my_1_book) {
+        this.my_1_book = my_1_book;
+    }
+
+    public String getMy_2_book() {
+        return my_2_book;
+    }
+
+    public void setMy_2_book(String my_2_book) {
+        this.my_2_book = my_2_book;
+    }
+
+    public String getOpponent_1_book() {
+        return opponent_1_book;
+    }
+
+    public void setOpponent_1_book(String opponent_1_book) {
+        this.opponent_1_book = opponent_1_book;
+    }
+
+    public String getOpponent_2_book() {
+        return opponent_2_book;
+    }
+
+    public void setOpponent_2_book(String opponent_2_book) {
+        this.opponent_2_book = opponent_2_book;
+    }
+
+    public RealmList<String> getBooks_order() {
+        return books_order;
+    }
+
+    public void setBooks_order(RealmList<String> books_order) {
+        this.books_order = books_order;
     }
 }
