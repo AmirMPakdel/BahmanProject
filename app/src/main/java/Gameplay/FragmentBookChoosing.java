@@ -6,8 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
@@ -15,9 +18,13 @@ import com.blackcoin.packdel.bahmanproject.R;
 import RealmObjects.Match;
 import Server.OnMatchUpdate;
 import Server.SocketIO;
+import Storage.Database;
 import Storage.StorageBase;
+import Utils.Consts;
 import Utils.Converter;
+import Utils.log;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.realm.Realm;
 
 public class FragmentBookChoosing extends Fragment {
 
@@ -82,10 +89,110 @@ public class FragmentBookChoosing extends Fragment {
 
                 opponent_second_book.setText(match.getOpponent_2_book());
 
+                Button choose_btn = view.findViewById(R.id.choose);
 
+                choose_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(my_first_book.equals(Consts.Match.BOOK_UNSET)) {
+
+                            int selected_rb_id = radioGroup.getCheckedRadioButtonId();
+
+                            RadioButton radioButton = radioGroup.findViewById(selected_rb_id);
+
+                            String book = radioButton.getText().toString();
+
+                            Realm realm = Database.getRealm();
+
+                            realm.beginTransaction();
+
+                            match.setMy_1_book(book);
+
+                            realm.commitTransaction();
+
+                            Toast.makeText(getContext(), book, Toast.LENGTH_SHORT).show();
+
+                            my_first_book.setText(match.getMy_1_book());
+
+                            // TODO:: ARG -> get the book_2_choice from server real time fucking algorithm :(
+
+                            setBook_2_radioButton(choose_btn, match, radioGroup);
+
+                        }else {
+
+                            int selected_rb_id = radioGroup.getCheckedRadioButtonId();
+
+                            RadioButton radioButton = radioGroup.findViewById(selected_rb_id);
+
+                            String book = radioButton.getText().toString();
+
+                            Realm realm = Database.getRealm();
+
+                            realm.beginTransaction();
+
+                            match.setMy_2_book(book);
+
+                            realm.commitTransaction();
+
+                            Toast.makeText(getContext(), book, Toast.LENGTH_SHORT).show();
+
+                            my_first_book.setText(match.getMy_2_book());
+
+                        }
+                    }
+                });
+
+                if(match.getMy_1_book().equals(Consts.Match.BOOK_UNSET)){
+
+                    setBook_1_radioButton(choose_btn, match, radioGroup);
+
+                }
             }
         });
 
+    }
+
+    private void setBook_1_radioButton(Button choose_btn, Match match, RadioGroup radioGroup){
+
+        choose_btn.setVisibility(View.VISIBLE);
+
+        int id = 21340;
+        for (String choice : match.getBook_1_choices()){
+
+            RadioButton radioButton = new RadioButton(getContext());
+
+            radioButton.setId(id);
+
+            id +=1;
+
+            radioButton.setText(choice);
+
+            radioGroup.addView(radioButton);
+
+            log.print("radio btn added!");
+        }
+    }
+
+    private void setBook_2_radioButton(Button choose_btn, Match match, RadioGroup radioGroup){
+
+        choose_btn.setVisibility(View.VISIBLE);
+
+        int id = 21340;
+        for (String choice : match.getBook_2_choices()){
+
+            RadioButton radioButton = new RadioButton(getContext());
+
+            radioButton.setId(id);
+
+            id +=1;
+
+            radioButton.setText(choice);
+
+            radioGroup.addView(radioButton);
+
+            log.print("radio btn added!");
+        }
     }
 
 }

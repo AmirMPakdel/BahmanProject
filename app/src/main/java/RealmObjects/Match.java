@@ -26,6 +26,10 @@ public class Match extends RealmObject {
 
     private String my_2_book = Consts.Match.BOOK_UNSET;
 
+    private RealmList<String> book_1_choices = new RealmList<>();
+
+    private RealmList<String> book_2_choices = new RealmList<>();
+
     private String opponent_1_book = Consts.Match.BOOK_UNSET;
 
     private String opponent_2_book = Consts.Match.BOOK_UNSET;
@@ -120,5 +124,21 @@ public class Match extends RealmObject {
 
     public void setOpponent_2_book(String opponent_2_book) {
         this.opponent_2_book = opponent_2_book;
+    }
+
+    public RealmList<String> getBook_1_choices() {
+        return book_1_choices;
+    }
+
+    public void setBook_1_choices(RealmList<String> book_1_choices) {
+        this.book_1_choices = book_1_choices;
+    }
+
+    public RealmList<String> getBook_2_choices() {
+        return book_2_choices;
+    }
+
+    public void setBook_2_choices(RealmList<String> book_2_choices) {
+        this.book_2_choices = book_2_choices;
     }
 }

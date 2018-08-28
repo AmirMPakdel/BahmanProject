@@ -18,6 +18,7 @@ import Storage.StorageBase;
 import Utils.Consts;
 import Utils.Converter;
 import Utils.log;
+import io.realm.RealmList;
 
 public class QuickGameActivity extends AppCompatActivity {
 
@@ -40,7 +41,7 @@ public class QuickGameActivity extends AppCompatActivity {
         //endregion
 
         //region test
-        /*Match myMatch = new Match();
+        Match myMatch = new Match();
 
         try {
 
@@ -73,8 +74,22 @@ public class QuickGameActivity extends AppCompatActivity {
         myMatch.setMyName("امیرعلی");
         myMatch.setOpponentName("امیرحسین");
 
+        RealmList<String> books_1 = new RealmList<>();
+        books_1.add(Book.Omoumi.ADABIAT);
+        books_1.add(Book.Omoumi.DINI);
+        books_1.add(Book.Omoumi.ENGELISI);
+
+        myMatch.setBook_1_choices(books_1);
+
+        RealmList<String> books_2 = new RealmList<>();
+        books_2.add(Book.Riazi.FIZIK);
+        books_2.add(Book.Riazi.RIAZI);
+        books_2.add(Book.Riazi.SHIMI);
+
+        myMatch.setBook_2_choices(books_2);
+
         StorageBase.getInstance().createMatch(myMatch);
-        StorageBase.getInstance().setMatch_rounds("1");*/
+        StorageBase.getInstance().setMatch_rounds("1");
 
 
         //endregion
