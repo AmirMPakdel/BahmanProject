@@ -31,13 +31,13 @@ public class FragmentHome extends Fragment {
     }
 
     private void initViews(View view) {
+
         btn_registration = view.findViewById(R.id.registration_btn);
 
         btn_start_match = view.findViewById(R.id.quick_match_btn);
         btn_cancel_match = view.findViewById(R.id.cancel_quick_match_btn);
         tv_match_status = view.findViewById(R.id.tv_match_loading_status);
         loading = view.findViewById(R.id.match_loading_view);
-
 
         btn_start_match.setVisibility(View.VISIBLE);
         btn_start_match.setEnabled(true);
@@ -99,7 +99,7 @@ public class FragmentHome extends Fragment {
 
                 Intent intent = new Intent(getContext(), QuickGameActivity.class);
 
-                intent.putExtra("Contest_id", "HELOOOOOOOW");
+                intent.putExtra("match_id", "HELOOOOOOOW");
 
                 startActivity(intent);
 

@@ -1,5 +1,7 @@
 package Storage;
 
+import com.blackcoin.packdel.bahmanproject.StartUpManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import Models.Book;
 import Models.Field;
 import RealmObjects.Chest;
 import RealmObjects.Match;
+import RealmObjects.Round;
 import Utils.log;
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -129,7 +132,37 @@ public class StorageBase {
         return new ArrayList<>();
     }
 
-    public Match getMatch(String contest_id) {
-        return null;
+    public void createMatch(Match match){
+
+        realm.beginTransaction();
+
+        for (int i=1; i<= 4; i++){
+
+            Round round = new Round();
+
+            round.setNumber(i);
+
+            match.roundsList.add(round);
+        }
+        realm.copyToRealmOrUpdate(match);
+        realm.commitTransaction();
     }
+
+    public void setMatch_rounds(String id){
+
+        Match myMatch = getMatch(id);
+        realm.beginTransaction();
+        myMatch.getRoundsList().get(0).setBook(StartUpManager.resources.getString(Book.setFieldString((Book.Riazi.FIZIK))));
+        myMatch.getRoundsList().get(1).setBook(StartUpManager.resources.getString(Book.setFieldString((Book.Omoumi.DINI))));
+        myMatch.getRoundsList().get(2).setBook(StartUpManager.resources.getString(Book.setFieldString((Book.Riazi.SHIMI))));
+        myMatch.getRoundsList().get(3).setBook(StartUpManager.resources.getString(Book.setFieldString((Book.Omoumi.ADABIAT))));
+
+        realm.commitTransaction();
+    }
+
+    public Match getMatch(String id) {
+
+        return realm.where(Match.class).equalTo("id",id).findFirst();
+    }
+
 }

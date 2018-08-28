@@ -1,5 +1,10 @@
 package Utils;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Consts {
 
     public static final String DEBUG_TAG = "APP_DEBUG";
@@ -18,6 +23,17 @@ public class Consts {
         public static final String UPDATE_USER_INFO_splashScrren = "updateUserInfo_splash";
         public static final String CURRENT_PLAYING_MATCH_home = "currentPlayingMatches_home";
     }
+    public static class Test{
+
+        public static final int TEST_NOT_ANSWERED = 0;
+        public static final int TEST_CORRECT_ANSWER = 1;
+        public static final int TEST_WRONG_ANSWER = 2;
+
+        public static final int TEST_NOT_ANSWERED_COLOR = Color.WHITE;
+        public static final int TEST_CORRECT_ANSWER_COLOR = Color.GREEN;
+        public static final int TEST_WRONG_ANSWER_COLOR = Color.RED;
+    }
+
 
     public static class Match {
 

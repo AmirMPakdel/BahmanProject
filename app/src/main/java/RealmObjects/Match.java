@@ -3,12 +3,14 @@ package RealmObjects;
 import Utils.Consts;
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Match extends RealmObject {
 
+    @PrimaryKey
     private String id;
 
-    private String state;
+    private String state = Consts.Match.STATE_BOOK_CHOOSING;
 
     private String MyName;
 
@@ -18,6 +20,8 @@ public class Match extends RealmObject {
 
     private byte[] OpponentPic;
 
+    public RealmList<Round> roundsList = new RealmList<>();
+
     private String my_1_book = Consts.Match.BOOK_UNSET;
 
     private String my_2_book = Consts.Match.BOOK_UNSET;
@@ -26,7 +30,17 @@ public class Match extends RealmObject {
 
     private String opponent_2_book = Consts.Match.BOOK_UNSET;
 
-    private RealmList<String> books_order;
+    public Match() {
+
+    }
+
+    public RealmList<Round> getRoundsList() {
+        return roundsList;
+    }
+
+    public void setRoundsList(RealmList<Round> roundsList) {
+        this.roundsList = roundsList;
+    }
 
     public byte[] getMyPic() {
         return MyPic;
@@ -106,13 +120,5 @@ public class Match extends RealmObject {
 
     public void setOpponent_2_book(String opponent_2_book) {
         this.opponent_2_book = opponent_2_book;
-    }
-
-    public RealmList<String> getBooks_order() {
-        return books_order;
-    }
-
-    public void setBooks_order(RealmList<String> books_order) {
-        this.books_order = books_order;
     }
 }

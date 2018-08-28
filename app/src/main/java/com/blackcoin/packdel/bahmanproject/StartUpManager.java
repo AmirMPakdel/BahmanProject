@@ -2,6 +2,7 @@ package com.blackcoin.packdel.bahmanproject;
 
 
 import android.app.Application;
+import android.content.res.Resources;
 
 import Security.RSA;
 import Server.Server;
@@ -14,17 +15,20 @@ import io.realm.Realm;
 
 public class StartUpManager extends Application
 {
+
+    public static Resources resources;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         log.print("StartUP Manger started!");
 
-        log.print("First time Run : "+StorageBox.sharedPreferences.isFirstTimeRun());
-
         Realm.init(getApplicationContext());
 
         StorageBox.init();
+
+        log.print("First time Run : "+StorageBox.sharedPreferences.isFirstTimeRun());
 
         StorageBase.init();
 
@@ -40,6 +44,8 @@ public class StartUpManager extends Application
         }
 
         Server.ServerTest(getApplicationContext());
+
+        resources = getResources();
 
         log.print("StartUp Manager Finished!");
 
