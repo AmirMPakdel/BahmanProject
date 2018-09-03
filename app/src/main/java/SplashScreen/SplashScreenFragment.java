@@ -40,7 +40,9 @@ public class SplashScreenFragment extends Fragment {
         // connect to server and fetch info
         initSocket();
 
-        // hide the toolbar
+
+        //region splash animations
+        //hide the bar
         RelativeLayout layout = getActivity().findViewById(R.id.relativeLayout);
         View toolbar = layout.findViewById(R.id.bottom_toolbar);
         toolbar.setTranslationY(400f);
@@ -64,7 +66,9 @@ public class SplashScreenFragment extends Fragment {
         }
 
         return view;
+        //endregion
     }
+
 
     private void initSocket() {
         try {
