@@ -9,6 +9,7 @@ public class Consts {
 
     public static final String DEBUG_TAG = "APP_DEBUG";
 
+
     // storage build with Shared Preferences
     public static class StorageSH {
 
@@ -53,7 +54,7 @@ public class Consts {
     // urls
     private static String ip = "http://192.168.8.100:8000/";
 
-    public static String SOCKET_URL = "";
+    public static String SOCKET_URL = "ws://192.168.8.100:8000/api/chat/alireza";
 
     public static String SERVER_TEST = ip + "test/";
     public static String Registration_signup_guest = ip + "api/guest/register/";

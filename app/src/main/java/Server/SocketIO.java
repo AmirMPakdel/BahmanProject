@@ -11,9 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import Gameplay.FragmentBookChoosing;
-import RealmObjects.Match;
 import Utils.Consts;
+import Utils.log;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -24,8 +23,6 @@ public class SocketIO {
     //region Private Variables
 
     private Map<String, Callback> registeredEvents;
-    private Map<Long, Response> httpResponseStack;
-    private Map<Long, Runnable> timeouts;
     private String server_url;
 
 
@@ -33,15 +30,14 @@ public class SocketIO {
     private WebSocket webSocket;
     private OkHttpClient client;
     private Handler incomingMessageHandler;
-    private Handler requestTimeoutHandler;
     //endregion
 
 
     //region Public static variables
 
-    public static SocketIO socketIO;
+    public static SocketIO socketIO = null;
 
-    public static final boolean LOG = false;
+    public static final boolean LOG = true;
 
     public static final int NORMAL_CLOSURE = 1000;
     public static final int GOING_AWAY = 1001;
@@ -63,7 +59,7 @@ public class SocketIO {
 
     private static void log(String text) {
         if (!LOG) return;
-        Log.d("FuckThisShit", text);
+        Log.d(Consts.DEBUG_TAG, text);
     }
 
     public interface Callback {
@@ -77,15 +73,26 @@ public class SocketIO {
     private class SocketListener extends WebSocketListener {
         @Override
         public void onOpen(WebSocket webSocket, okhttp3.Response response) {
-
+            log("Connection Stablished");
             isConnected = true;
             incomingMessageHandler.post(() -> {
                 if (registeredEvents.containsKey("connected")) {
                     Callback cb = registeredEvents.get("connected");
 
-                    if (cb != null) {
-                        cb.onCall(null);
+                    try {
+                        JSONObject userInfo = new JSONObject();
+                        userInfo.put("username", "alireza");
+                        userInfo.put("token", "673fe3b39c7346e89ce6d17c18956596");
+                        SocketIO.getInstance().send("ONCONNECT", userInfo);
+                        log("onOpen(): user info message send");
+                        if (cb != null) {
+                            cb.onCall(null);
+                        }
+                    } catch (Exception e) {
+                        log("onOpen(): " + e.getMessage());
                     }
+
+
                 }
             });
 
@@ -97,21 +104,10 @@ public class SocketIO {
             incomingMessageHandler.post(() -> {
                 try {
                     JSONObject obj = new JSONObject(text);
+                    obj = obj.getJSONObject("message"); //todo the decryption stuff goes here!!!
                     String event = obj.getString("event");
 
-                    if (event.equals("POST")) {
-                        JSONObject header = obj.getJSONObject("header");
-                        JSONObject body = obj.getJSONObject("body");
-                        int status = header.getInt("status");
-                        long httpID = header.getLong("http_id");
-
-                        Response resp = httpResponseStack.remove(httpID);
-                        if (resp != null) {
-                            detachTimeoutForRequest(httpID);
-                            resp.onResponse(status, body);
-                        }
-
-                    } else if (registeredEvents.containsKey(event)) {
+                    if (registeredEvents.containsKey(event)) {
                         Callback cb = registeredEvents.get(event);
 
                         if (cb != null) {
@@ -191,7 +187,7 @@ public class SocketIO {
                     log(e.getMessage());
                 }
             });
-            log("onFailure: " + webSocket.toString() + " - " + response);
+            log("onFailure: " + webSocket.toString() + " - " + response + " - " + t.getMessage());
         }
     }
 
@@ -201,15 +197,13 @@ public class SocketIO {
     //region Constructors
 
     public static void init() {
-
-        if (socketIO != null) {
-
+        if (socketIO == null) {
             socketIO = new SocketIO(Consts.SOCKET_URL);
         }
     }
 
     public static SocketIO getInstance() {
-        if(socketIO == null){
+        if (socketIO == null) {
             throw new NullPointerException("You Must Initialize the SocketIO");
         }
         return socketIO;
@@ -217,8 +211,6 @@ public class SocketIO {
 
     private SocketIO(String server_url) {
         this.registeredEvents = new HashMap<>();
-        this.httpResponseStack = new HashMap<>();
-        this.timeouts = new HashMap<>();
         this.server_url = server_url;
         client = new OkHttpClient.Builder()
                 .readTimeout(5, TimeUnit.SECONDS)
@@ -238,7 +230,6 @@ public class SocketIO {
                 .url(this.server_url)
                 .build();
         incomingMessageHandler = new Handler(Looper.getMainLooper());
-        requestTimeoutHandler = new Handler();
         webSocket = client.newWebSocket(request, new SocketListener());
     }
 
@@ -254,10 +245,13 @@ public class SocketIO {
 
     public void send(String event, JSONObject message) {
         try {
-            JSONObject data = new JSONObject();
+            JSONObject data = new JSONObject(), wrapper = new JSONObject();
             data.put("event", event);
             data.put("data", message);
-            webSocket.send(data.toString());
+
+            wrapper.put("message", data);
+
+            webSocket.send(wrapper.toString());
 
         } catch (JSONException e) {
             log(e.getMessage());
@@ -303,121 +297,16 @@ public class SocketIO {
                 disconnect(NORMAL_CLOSURE);
             }
             incomingMessageHandler.removeCallbacksAndMessages(null);
-            requestTimeoutHandler.removeCallbacksAndMessages(null);
             client.dispatcher().executorService().shutdown();
 
         } catch (Exception e) {
             log(e.getMessage());
         } finally {
-            httpResponseStack.clear();
-            httpResponseStack = null;
             registeredEvents.clear();
             registeredEvents = null;
-            timeouts.clear();
-            timeouts = null;
             webSocket = null;
         }
     }
 
-    public void post(String token, String url, JSONObject body, int timeout, Response resp) {
-
-        //// TODO: 8/17/18 read Token (user_id) instead of getting it from function arguments
-        //region POST data structure
-        /*  ===>
-         *  {
-         *      event : "POST",
-         *      header : {
-         *          token: "XJudl=65S5d1ad5gJapka3113fsgLh==",
-         *          http_id: 5462135746,
-         *          url: "/user/profile",
-         *          timeout: 3000
-         *      },
-         *      body: {}
-         *  }
-         *
-         *
-         *
-         *  <===
-         *    {
-         *      event : "POST",
-         *      header : {
-         *          http_id: 5462135746,
-         *          url: "/user/profile",
-         *          timeout: 3000,
-         *          status: 200
-         *      },
-         *      body: {}
-         *  }
-         */
-        //endregion
-
-        try {
-            JSONObject data = new JSONObject();
-
-            long httpID = System.currentTimeMillis();
-            JSONObject header = new JSONObject()
-                    .put("http_id", httpID)
-                    .put("url", url)
-                    .put("timeout", timeout)
-                    .put("token", token);
-
-
-            data.put("event", "POST");
-            data.put("header", header);
-            data.put("body", body);
-
-            if (isConnected) {
-
-                httpResponseStack.put(httpID, resp);
-                webSocket.send(data.toString());
-                attachTimeoutToRequest(httpID, timeout);
-            } else {
-                throw new RuntimeException("Socket is not connected to server to sent a POST request");
-            }
-
-
-        } catch (Exception e) {
-            log(e.getMessage());
-        }
-
-    }
-
     //endregion
-
-
-    //region Private Methods
-
-    /**
-     * this method attached a runnable to a Specific HTTP_ID and handle the timeout with an Handler.
-     * the timeoutRunnable will be stored in a map, so in case of receiving the response we can cancel the timeoutRunnable
-     */
-    private void attachTimeoutToRequest(long http_id, int timeout) {
-
-        Runnable runnable = () -> {
-            if (httpResponseStack.containsKey(http_id)) {
-                Response r = httpResponseStack.remove(http_id);
-                if (r != null) {
-                    r.onResponse(HTTP_REQUEST_TIMEOUT, null);
-                    timeouts.remove(http_id);
-                }
-            }
-        };
-
-        timeouts.put(http_id, runnable);
-        requestTimeoutHandler.postDelayed(runnable, timeout);
-
-    }
-
-    private void detachTimeoutForRequest(long http_id) {
-
-        Runnable timeoutRunnable = timeouts.remove(http_id);
-        if (timeoutRunnable != null) {
-            requestTimeoutHandler.removeCallbacks(timeoutRunnable);
-        }
-
-    }
-
-    //endregion
-
-
 }

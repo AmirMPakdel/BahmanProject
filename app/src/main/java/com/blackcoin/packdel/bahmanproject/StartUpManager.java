@@ -13,8 +13,7 @@ import Storage.StorageBox;
 import Utils.log;
 import io.realm.Realm;
 
-public class StartUpManager extends Application
-{
+public class StartUpManager extends Application {
 
     public static Resources resources;
 
@@ -24,19 +23,22 @@ public class StartUpManager extends Application
 
         log.print("StartUP Manger started!");
 
+
+        SocketIO.init();
+
+
         Realm.init(getApplicationContext());
 
         StorageBox.init();
 
-        log.print("First time Run : "+StorageBox.sharedPreferences.isFirstTimeRun());
+        log.print("First time Run : " + StorageBox.sharedPreferences.isFirstTimeRun());
 
         StorageBase.init();
 
-        SocketIO.init();
 
         VolleySingleton.init(getApplicationContext());
 
-        if(!RSA.init(getApplicationContext()))// if there is no RSA Public Key Available
+        if (!RSA.init(getApplicationContext()))// if there is no RSA Public Key Available
         {
             RSA.Is_Public_Key_Available = false;
             RSA.loadKey();
