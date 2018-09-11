@@ -74,48 +74,50 @@ public class SplashScreenFragment extends Fragment {
 
 
     private void initSocket() {
+        Log.d("FuckThisShit", "initSocket: Connecting");
+
         try {
             SocketIO tempSoc = SocketIO.getInstance();
             tempSoc.connect();
-            tempSoc.on(Consts.socketEvents.CONNECTED, (nullObject) -> {
-                //todo #amp : do something when socket connected if you want
-            });
-            tempSoc.on(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, (jsonData) -> {
-
-                /*  Incoming data Structure
-                 * {
-                 *   isTokenValid: bool,
-                 *   restrictionInfo: {
-                 *     isGuest: bool,
-                 *     unbanDate: DateObject or null
-                 *   },
-                 *   notifs: {
-                 *     appUpdate: String = critical, optional, null
-                 *     serverMessage: String
-                 *   }
-                 * }
-                 */
-
-            });
-
-
-            JSONObject userInfo = new JSONObject();
-            // todo #amp : get user token and user_name and put in the object below and current app version
-            /*  outGoing data structure
-             * {
-             *    event: updateUserInfo_splash,
-             *    data: {
-             *      token: string,
-             *      username: string,
-             *      appVersion: Integer
-             *    }
-             *
-             */
-            userInfo.put("appVersion", null);
-            userInfo.put("token", null);
-            userInfo.put("username", null);
-
-            tempSoc.send(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, userInfo);
+//            tempSoc.on(Consts.socketEvents.CONNECTED, (nullObject) -> {
+//                //todo #amp : do something when socket connected if you want
+//            });
+//            tempSoc.on(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, (jsonData) -> {
+//
+//                /*  Incoming data Structure
+//                 * {
+//                 *   isTokenValid: bool,
+//                 *   restrictionInfo: {
+//                 *     isGuest: bool,
+//                 *     unbanDate: DateObject or null
+//                 *   },
+//                 *   notifs: {
+//                 *     appUpdate: String = critical, optional, null
+//                 *     serverMessage: String
+//                 *   }
+//                 * }
+//                 */
+//
+//            });
+//
+//
+//            JSONObject userInfo = new JSONObject();
+//            // todo #amp : get user token and user_name and put in the object below and current app version
+//            /*  outGoing data structure
+//             * {
+//             *    event: updateUserInfo_splash,
+//             *    data: {
+//             *      token: string,
+//             *      username: string,
+//             *      appVersion: Integer
+//             *    }
+//             *
+//             */
+//            userInfo.put("appVersion", null);
+//            userInfo.put("token", null);
+//            userInfo.put("username", null);
+//
+//            tempSoc.send(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, userInfo);
 
         } catch (Exception err) {
             Toast.makeText(getContext(), "initSocket: " + err.getMessage(), Toast.LENGTH_SHORT);
