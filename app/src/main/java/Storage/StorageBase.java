@@ -11,6 +11,7 @@ import Models.Field;
 import RealmObjects.Chest;
 import RealmObjects.Match;
 import RealmObjects.Round;
+import Utils.Consts;
 import Utils.log;
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -126,10 +127,11 @@ public class StorageBase {
         return results;
     }
 
-    public List<Match> getMatchList(){
+    public List<Match> getRunningMatchList(){
 
-        //TODO:: create Match database
-        return new ArrayList<>();
+        List<Match> matches = realm.where(Match.class).notEqualTo("state", Consts.Match.STATE_FINISHED).findAll();
+
+        return matches;
     }
 
     public void createMatch(Match match){

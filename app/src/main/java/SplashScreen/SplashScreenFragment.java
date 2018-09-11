@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
@@ -36,6 +37,8 @@ public class SplashScreenFragment extends Fragment {
         final RelativeLayout relativeLayout = view.findViewById(R.id.relativeLayout);
 
         showSplashScreenAnimation(relativeLayout);
+
+        SocketIO.init();
 
         // connect to server and fetch info
         initSocket();
@@ -115,6 +118,7 @@ public class SplashScreenFragment extends Fragment {
             tempSoc.send(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, userInfo);
 
         } catch (Exception err) {
+            Toast.makeText(getContext(), "initSocket: " + err.getMessage(), Toast.LENGTH_SHORT);
             Log.d(Consts.DEBUG_TAG, "initSocket: " + err.getMessage());
         }
     }

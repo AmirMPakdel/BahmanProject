@@ -1,11 +1,10 @@
 package RecycleViews;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.blackcoin.packdel.bahmanproject.R;
 
@@ -27,13 +26,13 @@ public class MatchRecyclerView {
     public void setup(View view){
 
 
-        List<Match> matches = StorageBase.getInstance().getMatchList();
+        List<Match> matches = StorageBase.getInstance().getRunningMatchList();
 
         MatchRecycleViewAdapter matchRecycleViewAdapter = new MatchRecycleViewAdapter(matches);
 
         RecyclerView recyclerView = view.findViewById(R.id.match_recycleView);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.context));
 
         recyclerView.setAdapter(matchRecycleViewAdapter);
 

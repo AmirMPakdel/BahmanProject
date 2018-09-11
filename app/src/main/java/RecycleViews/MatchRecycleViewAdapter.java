@@ -2,6 +2,7 @@ package RecycleViews;
 
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.blackcoin.packdel.bahmanproject.R;
 
 import java.util.List;
 
+import Animation.ClickAnimation;
 import RealmObjects.Match;
 import Utils.Converter;
 import Utils.Font;
@@ -26,10 +28,11 @@ public class MatchRecycleViewAdapter extends RecyclerView.Adapter<MatchRecycleVi
         this.matchList = matchList;
     }
 
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_cardview_archives_chest, viewGroup, false));
+        return new MyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_recyclerview_match, viewGroup, false));
     }
 
     @Override
@@ -48,6 +51,16 @@ public class MatchRecycleViewAdapter extends RecyclerView.Adapter<MatchRecycleVi
         myViewHolder.MyPic.setImageBitmap(Converter.byteArray2Bitmap(match.getMyPic()));
 
         myViewHolder.OpponentPic.setImageBitmap(Converter.byteArray2Bitmap(match.getOpponentPic()));
+
+
+        myViewHolder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ClickAnimation.clickBounce(myViewHolder.container);
+                //TODO:: go to the match's activity
+            }
+        });
     }
 
     @Override
@@ -56,6 +69,8 @@ public class MatchRecycleViewAdapter extends RecyclerView.Adapter<MatchRecycleVi
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
+
+        ConstraintLayout container;
 
         TextView MyName;
 
@@ -67,6 +82,8 @@ public class MatchRecycleViewAdapter extends RecyclerView.Adapter<MatchRecycleVi
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            container = itemView.findViewById(R.id.match_item_container);
 
             MyName = itemView.findViewById(R.id.myname_tv);
 

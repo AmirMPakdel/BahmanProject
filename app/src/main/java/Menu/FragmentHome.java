@@ -4,6 +4,7 @@ package Menu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,14 @@ import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
+import java.util.List;
+
 import Animation.ToolbarAnimation;
 import Dialogs.RegistrationDialog;
+import RealmObjects.Match;
+import RecycleViews.MatchRecycleViewAdapter;
+import RecycleViews.MatchRecyclerView;
+import Storage.StorageBase;
 import Storage.StorageBox;
 
 
@@ -66,6 +73,21 @@ public class FragmentHome extends Fragment {
 
         //endregion
 
+        //region match recyclerView
+
+        MatchRecyclerView matchRecyclerView = new MatchRecyclerView(getContext());
+
+        matchRecyclerView.setup(view);
+
+        //endregion
+
+
+        //region setting the initial visibility
+        btn_cancel_match.setVisibility(View.INVISIBLE);
+        btn_cancel_match.setEnabled(false);
+        tv_match_status.setVisibility(View.INVISIBLE);
+        loading.setVisibility(View.GONE);
+        //endregion
 
         btn_cancel_match.setOnClickListener(v -> {
             btn_start_match.setVisibility(View.VISIBLE);
@@ -74,15 +96,6 @@ public class FragmentHome extends Fragment {
             btn_cancel_match.setEnabled(false);
             tv_match_status.setVisibility(View.INVISIBLE);
             loading.setVisibility(View.INVISIBLE);
-        });
-
-        btn_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                new RegistrationDialog(getContext()).setup();
-
-            }
         });
 
 
@@ -108,6 +121,14 @@ public class FragmentHome extends Fragment {
             }
         });
 
+        btn_registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new RegistrationDialog(getContext()).setup();
+
+            }
+        });
 
         return view;
     }

@@ -53,7 +53,7 @@ public class Consts {
     // urls
     private static String ip = "http://192.168.8.100:8000/";
 
-    public static String SOCKET_URL = "";
+    public static String SOCKET_URL = "http://192.168.8.111:8000/api/chat/amp";
 
     public static String SERVER_TEST = ip + "test/";
     public static String Registration_signup_guest = ip + "api/guest/register/";

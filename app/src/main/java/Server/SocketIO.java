@@ -202,9 +202,9 @@ public class SocketIO {
 
     public static void init() {
 
-        if (socketIO != null) {
+        if (socketIO == null) {
 
-            socketIO = new SocketIO(Consts.SOCKET_URL);
+            socketIO = new SocketIO("http://192.168.8.101:8000/api/chat/amp");
         }
     }
 
@@ -235,7 +235,7 @@ public class SocketIO {
 
     public void connect() {
         Request request = new Request.Builder()
-                .url(this.server_url)
+                .url("http://192.168.8.101:8000/api/chat/amp"/*this.server_url*/)
                 .build();
         incomingMessageHandler = new Handler(Looper.getMainLooper());
         requestTimeoutHandler = new Handler();
