@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background_rounded_green"
     android:padding="10dp"
-    android:layout_margin="15dp"
+    android:layout_margin="5dp"
     android:elevation="5dp"
     android:id="@+id/match_item_container">
 
@@ -25,14 +25,15 @@
 
     <TextView
         android:id="@+id/myname_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:textDirection="ltr"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="10dp"
         android:maxLength="15"
         android:text="رضا"
         android:textColor="@color/mainTextColor"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/view2"
         app:layout_constraintHorizontal_bias="0.08"
@@ -69,14 +70,14 @@
 
     <TextView
         android:id="@+id/opponentName_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="8dp"
         android:maxLength="15"
         android:text="آرمان"
         android:textColor="@color/mainTextColor"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/opponentpic_civ"
         app:layout_constraintHorizontal_bias="0.88"

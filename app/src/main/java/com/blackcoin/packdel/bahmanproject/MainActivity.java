@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Set the Font
-        Font.myFont = Typeface.createFromAsset(this.getAssets(), "fonts/zak.ttf");
+        Font.myFont = Typeface.createFromAsset(this.getAssets(), "fonts/ampsans.ttf");
 
         // Splash Screen and Loading data
         new SplashScreen(getSupportFragmentManager()).show();
