@@ -20,9 +20,10 @@ public class Consts {
 
     public static class socketEvents {
 
-        public static final String CONNECTED = "connected";
+        public static final String ONCONNECT = "ONCONNECT"; // when server receives the socket and tries to accept
+        public static final String CONNECTED = "connected"; // when server accepted the socket and established the connection
         public static final String UPDATE_USER_INFO_splashScrren = "updateUserInfo_splash";
-        public static final String CURRENT_PLAYING_MATCH_home = "currentPlayingMatches_home";
+        public static final String CURRENT_PLAYING_MATCH_home = "currentPlayingMatches_home"; // for updating the currently playing matches
     }
     public static class Test{
 
@@ -54,7 +55,8 @@ public class Consts {
     // urls
     private static String ip = "http://192.168.8.100:8000/";
 
-    public static String SOCKET_URL = "ws://192.168.8.100:8000/api/chat/alireza";
+    public static String SOCKET_URL = "ws://192.168.8.101:8000/api/chat/alireza";
+//    public static String SOCKET_URL = "ws://echo.websocket.org";
 
     public static String SERVER_TEST = ip + "test/";
     public static String Registration_signup_guest = ip + "api/guest/register/";

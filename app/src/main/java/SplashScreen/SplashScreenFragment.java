@@ -20,6 +20,7 @@ import Server.SocketIO;
 import Storage.StorageBox;
 import Toolbar.MenuToolbar;
 import Utils.Consts;
+import Utils.log;
 
 
 public class SplashScreenFragment extends Fragment {
@@ -71,50 +72,20 @@ public class SplashScreenFragment extends Fragment {
 
 
     private void initSocket() {
-        Log.d("FuckThisShit", "initSocket: Connecting");
-
         try {
             SocketIO tempSoc = SocketIO.getInstance();
+            SocketIO.LOG = false;
+
+            tempSoc.on(Consts.socketEvents.ONCONNECT, obj -> log.print(obj.toString()));
+            tempSoc.on(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, obj -> log.print("CALLBACK Splash => " + obj.toString()));
+
             tempSoc.connect();
-//            tempSoc.on(Consts.socketEvents.CONNECTED, (nullObject) -> {
-//                //todo #amp : do something when socket connected if you want
-//            });
-//            tempSoc.on(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, (jsonData) -> {
-//
-//                /*  Incoming data Structure
-//                 * {
-//                 *   isTokenValid: bool,
-//                 *   restrictionInfo: {
-//                 *     isGuest: bool,
-//                 *     unbanDate: DateObject or null
-//                 *   },
-//                 *   notifs: {
-//                 *     appUpdate: String = critical, optional, null
-//                 *     serverMessage: String
-//                 *   }
-//                 * }
-//                 */
-//
-//            });
-//
-//
-//            JSONObject userInfo = new JSONObject();
-//            // todo #amp : get user token and user_name and put in the object below and current app version
-//            /*  outGoing data structure
-//             * {
-//             *    event: updateUserInfo_splash,
-//             *    data: {
-//             *      token: string,
-//             *      username: string,
-//             *      appVersion: Integer
-//             *    }
-//             *
-//             */
-//            userInfo.put("appVersion", null);
-//            userInfo.put("token", null);
-//            userInfo.put("username", null);
-//
-//            tempSoc.send(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, userInfo);
+
+            JSONObject userInfo = new JSONObject();
+            userInfo.put("appVersion", 22);
+
+            tempSoc.send(Consts.socketEvents.UPDATE_USER_INFO_splashScrren, userInfo);
+
 
         } catch (Exception err) {
             Log.d(Consts.DEBUG_TAG, "initSocket: " + err.getMessage());
