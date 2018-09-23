@@ -3,16 +3,12 @@ package Server;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import Utils.Consts;
-import Utils.log;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -37,7 +33,7 @@ public class SocketIO {
 
     public static SocketIO socketIO = null;
 
-    public static final boolean LOG = true;
+    public static boolean LOG = true;
 
     public static final int NORMAL_CLOSURE = 1000;
     public static final int GOING_AWAY = 1001;
@@ -80,10 +76,7 @@ public class SocketIO {
                     Callback cb = registeredEvents.get("connected");
 
                     try {
-                        JSONObject userInfo = new JSONObject();
-                        userInfo.put("username", "alireza");
-                        userInfo.put("token", "673fe3b39c7346e89ce6d17c18956596");
-                        SocketIO.getInstance().send("ONCONNECT", userInfo);
+
                         log("onOpen(): user info message send");
                         if (cb != null) {
                             cb.onCall(null);
@@ -96,7 +89,7 @@ public class SocketIO {
                 }
             });
 
-            log("onOpen: " + webSocket.toString() + " - " + response.toString());
+            log("onOpen(): " + " - " + response.toString());
         }
 
         @Override
@@ -106,9 +99,12 @@ public class SocketIO {
                     JSONObject obj = new JSONObject(text);
                     obj = obj.getJSONObject("message"); //todo the decryption stuff goes here!!!
                     String event = obj.getString("event");
+                    log("onMessage => EVENT => " + event);
 
                     if (registeredEvents.containsKey(event)) {
                         Callback cb = registeredEvents.get(event);
+                        log("onMessage => FOUND_REGISTERED_EVENT => " + event);
+
 
                         if (cb != null) {
                             cb.onCall(obj.getJSONObject("data"));
@@ -121,7 +117,7 @@ public class SocketIO {
             });
 
 
-            log("onMessage: " + webSocket.toString() + " - " + text);
+            log("onMessage: " + " - " + text);
         }
 
         @Override
@@ -164,7 +160,7 @@ public class SocketIO {
                     log(e.getMessage());
                 }
             });
-            log("onClosed: " + webSocket.toString() + " - " + reason);
+            log("onClosed: " + " - " + reason);
 
         }
 
@@ -187,7 +183,7 @@ public class SocketIO {
                     log(e.getMessage());
                 }
             });
-            log("onFailure: " + webSocket.toString() + " - " + response + " - " + t.getMessage());
+            log("onFailure: " + " - " + response + " - " + t.toString());
         }
     }
 
@@ -219,7 +215,6 @@ public class SocketIO {
 
         this.isConnected = false;
     }
-
     //endregion
 
 
@@ -231,6 +226,17 @@ public class SocketIO {
                 .build();
         incomingMessageHandler = new Handler(Looper.getMainLooper());
         webSocket = client.newWebSocket(request, new SocketListener());
+
+
+        try {
+            //todo #AMP change this and fetch user info from database dynamically
+            JSONObject userInfo = new JSONObject();
+            userInfo.put("username", "alireza");
+            userInfo.put("token", "145d13c20f764327b6db58b0adbf1c19");
+            send(Consts.socketEvents.ONCONNECT, userInfo);
+        } catch (Exception e) {
+            log("connect() => ERROR => " + e.toString());
+        }
     }
 
     public void on(String event, Callback callback) {
@@ -248,9 +254,8 @@ public class SocketIO {
             JSONObject data = new JSONObject(), wrapper = new JSONObject();
             data.put("event", event);
             data.put("data", message);
-
             wrapper.put("message", data);
-
+            log("Send() => MESSAGE => " + wrapper.toString());
             webSocket.send(wrapper.toString());
 
         } catch (JSONException e) {
