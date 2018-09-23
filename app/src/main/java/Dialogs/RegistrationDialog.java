@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class RegistrationDialog extends Dialog {
     private void InSignIn(){
 
         // signin button
-        CardView signin_btn = findViewById(R.id.signin_btn);
+        FrameLayout signin_btn = findViewById(R.id.signin_btn);
         signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +90,7 @@ public class RegistrationDialog extends Dialog {
 
 
         // sign-up
-        TextView signup_title = findViewById(R.id.signup_title);
+        FrameLayout signup_title = findViewById(R.id.signup_btn);
         signup_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

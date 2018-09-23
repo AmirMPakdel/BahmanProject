@@ -49,6 +49,8 @@ public class StartUpManager extends Application {
 
         resources = getResources();
 
+        StorageBase.getInstance().createShop();
+
         log.print("StartUp Manager Finished!");
 
     }

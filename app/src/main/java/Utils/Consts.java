@@ -9,7 +9,6 @@ public class Consts {
 
     public static final String DEBUG_TAG = "APP_DEBUG";
 
-
     // storage build with Shared Preferences
     public static class StorageSH {
 

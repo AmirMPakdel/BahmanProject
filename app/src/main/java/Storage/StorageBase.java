@@ -11,8 +11,12 @@ import Models.Field;
 import RealmObjects.Chest;
 import RealmObjects.Match;
 import RealmObjects.Round;
+import RealmObjects.Shop;
+import RealmObjects.ShopItem;
+import Utils.Consts;
 import Utils.log;
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class StorageBase {
@@ -126,10 +130,11 @@ public class StorageBase {
         return results;
     }
 
-    public List<Match> getMatchList(){
+    public List<Match> getRunningMatchList(){
 
-        //TODO:: create Match database
-        return new ArrayList<>();
+        List<Match> matches = realm.where(Match.class).notEqualTo("state", Consts.Match.STATE_FINISHED).findAll();
+
+        return matches;
     }
 
     public void createMatch(Match match){
@@ -165,4 +170,54 @@ public class StorageBase {
         return realm.where(Match.class).equalTo("id",id).findFirst();
     }
 
+
+
+    //region shop
+    public void createShop(){
+
+        RealmResults<Shop> shops = realm.where(Shop.class).findAll();
+
+        if(shops.size() > 1){
+
+            throw new NullPointerException("there should be shop in database !!! :: number:"+shops.size());
+
+        } else if(shops.size() == 0){
+
+            Shop shop = new Shop();
+            realm.beginTransaction();
+            realm.copyToRealm(shop);
+            realm.commitTransaction();
+
+            log.print("shop has been created :D");
+
+        }else{
+
+            log.print("shop is ready :)");
+        }
+    }
+
+    public Shop getShop(){
+
+        return realm.where(Shop.class).findFirst();
+    }
+
+    public int getShopVersion(){
+
+        return this.getShop().getVersion();
+    }
+
+    public void updateShop(Shop shop) {
+
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(shop);
+        realm.commitTransaction();
+    }
+
+    public void updateShopItemList(RealmList<ShopItem> shopItems){
+
+        realm.beginTransaction();
+        getShop().setShopItemList(shopItems);
+        realm.commitTransaction();
+    }
+    //endregion
 }

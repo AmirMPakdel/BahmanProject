@@ -5,64 +5,101 @@
     android:layout_height="match_parent"
     tools:context="Menu.FragmentHome">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/home_tabLayout"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@color/colorMainTheme"
-        android:layoutDirection="ltr"
-        android:orientation="horizontal">
+        android:layoutDirection="ltr">
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:text="خونه"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
-        android:layout_height="222dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="190dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/border_rounded"
-        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_tabLayout">
 
-        <Button
+        <FrameLayout
             android:id="@+id/quick_match_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_rounded_green"
             android:padding="15dp"
-            android:text="بازی جدید"
-            android:textColor="@color/mainTextColor"
-            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+            <TextView
+                android:id="@+id/quick_match_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="بازی جدید"
+                android:layout_gravity="center"
+                android:textColor="@color/mainTextColor"
+                android:textSize="24sp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/cancel_quick_match_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
             android:background="@drawable/background_rounded_green"
-            android:padding="15dp"
-            android:text="لغو"
-            android:textColor="@color/mainTextColor"
-            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_match_loading_status">
+
+            <TextView
+                android:id="@+id/cancel_quick_match_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:layout_gravity="center"
+                android:text="لغو"
+                android:textColor="@color/mainTextColor"
+                android:textSize="24sp" />
+
+        </FrameLayout>
+
 
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/match_loading_view"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_margin="32dp"
-            app:indicatorColor="@color/loadingColor"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"
+            app:indicatorColor="@color/colorPrimary"
             app:indicatorName="BallTrianglePathIndicator"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -75,8 +112,9 @@
             android:layout_marginStart="8dp"
             android:text="در حال جستجو 3:06 "
             android:textSize="26sp"
+            android:textColor="@color/colorMainDark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,29 +122,26 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/registration_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="2dp"
-        android:text="Registration"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/match_recycleView"
+    <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="50dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/border_rounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </android.support.v7.widget.RecyclerView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/match_recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp" />
 
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

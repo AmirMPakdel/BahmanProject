@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="justForTest">#afffffff</color>
+    <color name="colorPrimary">#a45de9</color>
+    <color name="colorPrimaryDark">#8f41dc</color>
     <color name="colorAccent">#42c197</color>
     <color name="colorMainTheme">#42c197</color>
+    <color name="colorMainGlass">#bc42c197</color>
     <color name="colorMainDark">#329675</color>
     <color name="mainTextColor">#eeeeee</color>
     <color name="borderGeneral">#bebebe</color>
     <color name="loadingColor">#37a322</color>
+    <color name="glass">#40ffffff</color>
 
 
     <!-- Book colors-->

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_anim">155dp</dimen>
+    <dimen name="toolbar_anim_objects">175dp</dimen>
+</resources>

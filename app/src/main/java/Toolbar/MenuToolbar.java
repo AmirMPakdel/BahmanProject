@@ -65,7 +65,7 @@ public class MenuToolbar {
         setting_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(0, true);
+                viewPager.setCurrentItem(0, false);
                 ClickAnimation.clickBounce(setting_btn);
             }
         });
@@ -73,7 +73,7 @@ public class MenuToolbar {
         archives_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(1, true);
+                viewPager.setCurrentItem(1, false);
                 ClickAnimation.clickBounce(archives_btn);
             }
         });
@@ -81,7 +81,7 @@ public class MenuToolbar {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(2, true);
+                viewPager.setCurrentItem(2, false);
                 ClickAnimation.clickBounce(home_btn);
             }
         });
@@ -89,7 +89,7 @@ public class MenuToolbar {
         competition_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(3, true);
+                viewPager.setCurrentItem(3, false);
                 ClickAnimation.clickBounce(competition_btn);
             }
         });
@@ -97,7 +97,7 @@ public class MenuToolbar {
         shop_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewPager.setCurrentItem(4, true);
+                viewPager.setCurrentItem(4, false);
                 ClickAnimation.clickBounce(shop_btn);
             }
         });
