@@ -22,9 +22,15 @@ import java.util.Set;
  */
 public class Downloader {
 
+    public static String path;
+
     private OnImageLoaderListener mImageLoaderListener;
     private Set<String> mUrlsInProgress = new HashSet<>();
     private final String TAG = this.getClass().getSimpleName();
+
+    public static void DownloaderSetPath(String path){
+        Downloader.path = path;
+    }
 
     public Downloader(@NonNull OnImageLoaderListener listener) {
         this.mImageLoaderListener = listener;

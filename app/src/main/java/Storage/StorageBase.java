@@ -209,7 +209,8 @@ public class StorageBase {
     public void updateShop(Shop shop) {
 
         realm.beginTransaction();
-        realm.copyToRealmOrUpdate(shop);
+        realm.where(Shop.class).findAll().deleteAllFromRealm();
+        realm.copyToRealm(shop);
         realm.commitTransaction();
     }
 

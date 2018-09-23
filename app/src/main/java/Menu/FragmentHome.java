@@ -2,35 +2,22 @@ package Menu;
 
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.blackcoin.packdel.bahmanproject.QuickGameActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
-import java.util.List;
-
 import Animation.ToolbarAnimation;
-import AsyncWorks.LoadQuickGameActivity;
-import Dialogs.RegistrationDialog;
-import RealmObjects.Match;
-import RecycleViews.MatchRecycleViewAdapter;
 import RecycleViews.MatchRecyclerView;
-import Storage.StorageBase;
-import Storage.StorageBox;
 import Utils.Font;
-import Utils.log;
 
 
 public class FragmentHome extends Fragment {

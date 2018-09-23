@@ -4,9 +4,9 @@ package com.blackcoin.packdel.bahmanproject;
 import android.app.Application;
 import android.content.res.Resources;
 
+import Utils.Consts;
 import Security.RSA;
 import Server.Server;
-import Server.SocketIO;
 import Server.Volley.VolleySingleton;
 import Storage.StorageBase;
 import Storage.StorageBox;
@@ -17,15 +17,16 @@ public class StartUpManager extends Application {
 
     public static Resources resources;
 
+    public static boolean online = false;
+
     @Override
     public void onCreate() {
+
         super.onCreate();
 
         log.print("StartUP Manger started!");
 
-
-        SocketIO.init();
-
+        Consts.Dirs.AppFilesFolder = getExternalCacheDir().getAbsolutePath();
 
         Realm.init(getApplicationContext());
 
@@ -34,7 +35,6 @@ public class StartUpManager extends Application {
         log.print("First time Run : " + StorageBox.sharedPreferences.isFirstTimeRun());
 
         StorageBase.init();
-
 
         VolleySingleton.init(getApplicationContext());
 
@@ -45,13 +45,10 @@ public class StartUpManager extends Application {
             // TODO: 4/13/18  call the server in Loading Activity
         }
 
-        Server.ServerTest(getApplicationContext());
-
         resources = getResources();
 
         StorageBase.getInstance().createShop();
 
         log.print("StartUp Manager Finished!");
-
     }
 }

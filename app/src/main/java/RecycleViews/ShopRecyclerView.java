@@ -26,7 +26,8 @@ public class ShopRecyclerView {
 
         this.view = view;
 
-        FakeShopItem.createFakeShopItem(12);
+
+        //FakeShopItem.createFakeShopItem(12);
     }
 
     public void setup(){

@@ -1,16 +1,25 @@
 package com.blackcoin.packdel.bahmanproject;
 
 
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.io.File;
+import java.io.IOException;
+
 import Server.SocketIO;
+import Server.Volley.Volley;
+import Server.Volley.interfaces.OnBitmapReceived;
 import SplashScreen.SplashScreen;
 import Storage.Database;
+import Utils.Converter;
+import Utils.Downloader;
 import Utils.Font;
+import Utils.log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
         //region test codes
 
         //endregion
-    }
-
-    public void createFakeContest() {
 
     }
 

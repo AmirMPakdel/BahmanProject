@@ -7,7 +7,24 @@ import java.util.List;
 
 public class Consts {
 
+    private static String ip = "http://192.168.8.106:8000/";
+
     public static final String DEBUG_TAG = "APP_DEBUG";
+    public static final String TEST_TAG = "APP_TEST";
+
+    public static class Dirs{
+
+        public static String AppFilesFolder = "";//will be filled in StartUpManager
+        public static String ShopImagesFolder = AppFilesFolder + "/shop/";
+    }
+
+    public static class ShopUrls{
+
+        public static final String getVersion = ip+"api/shop/version/";
+        public static final String getShop = ip+"api/shop/getshop/";
+        public static final String getImage = ip+"";
+
+    }
 
     // storage build with Shared Preferences
     public static class StorageSH {
@@ -17,12 +34,15 @@ public class Consts {
         public static final String KEY_RSA_LAST_FETCH_DATE = "rsadate";
     }
 
+
     public static class socketEvents {
 
         public static final String CONNECTED = "connected";
         public static final String UPDATE_USER_INFO_splashScrren = "updateUserInfo_splash";
         public static final String CURRENT_PLAYING_MATCH_home = "currentPlayingMatches_home";
     }
+
+
     public static class Test{
 
         public static final int TEST_NOT_ANSWERED = 0;
@@ -51,7 +71,6 @@ public class Consts {
     }
 
     // urls
-    private static String ip = "http://192.168.8.100:8000/";
 
     public static String SOCKET_URL = "http://192.168.8.111:8000/api/chat/amp";
 

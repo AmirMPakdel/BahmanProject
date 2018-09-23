@@ -16,6 +16,7 @@ import java.util.List;
 
 import Animation.ClickAnimation;
 import RealmObjects.ShopItem;
+import Server.Volley.Volley;
 import Utils.Font;
 import Utils.log;
 
@@ -50,6 +51,7 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
         viewHolder.info.setText(shopItemList.get(i).getInfo());
         viewHolder.price.setText(String.valueOf(shopItemList.get(i).getPrice()));
         //viewHolder.lastPrice.setText(String.valueOf(shopItemList.get(i).getLastPrice()));
+
 
         viewHolder.pic.setImageResource(R.drawable.android_logo);
         //TODO::download the image from url

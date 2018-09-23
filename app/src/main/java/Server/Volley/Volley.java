@@ -1,8 +1,14 @@
 package Server.Volley;
 
 
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONObject;
@@ -12,7 +18,9 @@ import java.util.Map;
 
 import Security.AES;
 import Security.KeyAndIV;
+import Server.Volley.interfaces.OnBitmapReceived;
 import Server.Volley.interfaces.OnResponse;
+import Utils.log;
 
 
 public class Volley {
@@ -145,6 +153,26 @@ public class Volley {
         VolleySingleton.getInstance().addToRequestQueue(request);
     }
 
+    public static void GetImage(String url, @NonNull final OnBitmapReceived onBitmapReceived){
+
+        ImageRequest request = new ImageRequest(url,
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap bitmap) {
+
+                        onBitmapReceived.onResponse(bitmap);
+
+                    }
+                }, 5000, 5000, null,
+                new Response.ErrorListener() {
+                    public void onErrorResponse(VolleyError error) {
+
+                        onBitmapReceived.onError(error.getLocalizedMessage());
+                    }
+                });
+
+        VolleySingleton.getInstance().addToRequestQueue(request);
+    }
 
     public static void GET(String url, final OnResponse serverResponse) {
 
@@ -164,6 +192,7 @@ public class Volley {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    log.print("Volley Error on parsing Json");
                 }
 
             }
