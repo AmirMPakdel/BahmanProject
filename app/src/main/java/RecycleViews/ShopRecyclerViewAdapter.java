@@ -1,6 +1,7 @@
 package RecycleViews;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +13,14 @@ import android.widget.TextView;
 
 import com.blackcoin.packdel.bahmanproject.R;
 
+import java.io.File;
 import java.util.List;
 
 import Animation.ClickAnimation;
 import RealmObjects.ShopItem;
 import Server.Volley.Volley;
+import Utils.Consts;
+import Utils.Downloader;
 import Utils.Font;
 import Utils.log;
 
@@ -52,10 +56,14 @@ public class ShopRecyclerViewAdapter extends RecyclerView.Adapter<ShopRecyclerVi
         viewHolder.price.setText(String.valueOf(shopItemList.get(i).getPrice()));
         //viewHolder.lastPrice.setText(String.valueOf(shopItemList.get(i).getLastPrice()));
 
+        //read the image file and show it as pic of the item
+        Bitmap bitmap = Downloader.readFromDisk(new File(Consts.Dirs.AppFilesFolder +"/"+shopItemList.get(i).getId()+ ".jpg"));
 
-        viewHolder.pic.setImageResource(R.drawable.android_logo);
-        //TODO::download the image from url
-        String url = shopItemList.get(i).getPic_url();
+        if(bitmap != null) {
+            viewHolder.pic.setImageBitmap(bitmap);
+        }else {
+            viewHolder.pic.setImageResource(R.drawable.android_logo);
+        }
 
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
 

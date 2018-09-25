@@ -106,6 +106,9 @@ public class SplashScreenFragment extends Fragment {
 
     private void offlineJobs(ProgressBar progressBar) {
 
+        // for test
+        new LoadShop().init(progressBar); // 40% percent for shop loading
+
         //TODO :: other offline jobs
 
         SplashScreenSlidAway(progressBar);

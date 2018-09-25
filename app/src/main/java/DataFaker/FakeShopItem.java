@@ -14,8 +14,6 @@ public class FakeShopItem {
 
     public static void createFakeShopItem(int number){
 
-        RealmList<ShopItem> shopItems = new RealmList<>();
-
         Shop shop = StorageBase.getInstance().getShop();
 
         Realm realm = Database.getRealm();
@@ -24,7 +22,7 @@ public class FakeShopItem {
         realm.where(ShopItem.class).findAll().deleteAllFromRealm();
         realm.commitTransaction();
 
-        for (int i=2010; i<2030; i++) {
+        for (int i=2010; i<2010+number; i++) {
 
             realm.beginTransaction();
             ShopItem  shopItem = realm.createObject(ShopItem.class);
@@ -32,7 +30,7 @@ public class FakeShopItem {
             shopItem.setTitle("یه کیسه انرژی");
             shopItem.setLastPrice(4000);
             shopItem.setPrice(2000);
-            shopItem.setPic_url("...");
+            shopItem.setPic_url("http://www.dlfox.com/wp-content/uploads/2018/05/Ancestors-Legac.jpg");
             shopItem.setInfo("یه کیسه با 100 واحد انرژی");
 
             shop.getShopItemList().add(shopItem);

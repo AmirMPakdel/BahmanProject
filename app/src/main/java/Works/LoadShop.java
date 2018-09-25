@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 
+import DataFaker.FakeShopItem;
 import RealmObjects.Shop;
 import RealmObjects.ShopItem;
 import Server.Volley.Volley;
@@ -212,7 +213,7 @@ public class LoadShop{
 
             int progress = Math.round(200 / shop.getShopItemList().size());
 
-            String filePath = Consts.Dirs.ShopImagesFolder + item.getId() + ".png";
+            String filePath = Consts.Dirs.AppFilesFolder +"/"+ item.getId() + ".jpg";
 
             File imageFile = new File(filePath);
 
@@ -224,7 +225,7 @@ public class LoadShop{
                     @Override
                     public void onResponse(Bitmap response) {
 
-                        String filePath = Consts.Dirs.ShopImagesFolder + item.getId() + ".png";
+                        String filePath = Consts.Dirs.AppFilesFolder +"/"+ item.getId() + ".jpg";
 
                         File img = new File(filePath);
 
@@ -242,7 +243,7 @@ public class LoadShop{
                             }
                         };
 
-                        Downloader.writeToDisk(img, response, listener, Bitmap.CompressFormat.PNG, true);
+                        Downloader.writeToDisk(img, response, listener, Bitmap.CompressFormat.JPEG, true);
 
                         progressBar.incrementProgressBy(progress);
                         ShopLoadingProgress += progress;
