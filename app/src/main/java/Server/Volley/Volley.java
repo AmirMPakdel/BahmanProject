@@ -207,6 +207,4 @@ public class Volley {
 
         VolleySingleton.getInstance().addToRequestQueue(request);
     }
-
-
 }

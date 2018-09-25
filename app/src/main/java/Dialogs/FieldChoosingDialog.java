@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
 import java.util.List;
@@ -26,7 +25,6 @@ import Authentication.Registration;
 import Authentication.interfaces.OnRegestrationResult;
 import Models.Field;
 import Models.Grade;
-import Models.Guest;
 import Storage.StorageBase;
 import Storage.StorageBox;
 import Toolbar.MenuToolbar;
@@ -110,11 +108,12 @@ public class FieldChoosingDialog extends Dialog {
 
                 log.print("grade :"+grade+" field : "+field);
 
-
                 Registration registration = new Registration();
                 registration.SignUp_Guest(grade, field, new OnRegestrationResult() {
                     @Override
                     public void onSuccess() {
+
+                        //TODO:: ARG -> init the socket and connect to the server
 
                         log.print("On Success !!!!!");
 
@@ -138,16 +137,15 @@ public class FieldChoosingDialog extends Dialog {
                     @Override
                     public void onFailure() {
 
-                        Toast.makeText(getContext(), "Network Error!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Couldn't register as guest!", Toast.LENGTH_LONG).show();
 
                         //region delete if server is available
-                        StorageBox.getInstance().setField(field);
 
-                        StorageBox.getInstance().setGrade(grade);
+                        RealmObjects.SharedPreferences sp = new RealmObjects.SharedPreferences(true);
 
-                        StorageBox.getInstance().setIsFirstTime(false);
-
-                        StorageBox.getInstance().setIsGuest(true);
+                        sp.setField(field);
+                        sp.setGrade(grade);
+                        StorageBox.getInstance().updateSharedPreferences(sp, false, true);
 
                         // Setup MenuToolbar
                         new MenuToolbar(activity.findViewById(R.id.relativeLayout), fragmentManager).setup();
@@ -159,11 +157,8 @@ public class FieldChoosingDialog extends Dialog {
                         //endregion
                     }
                 });
-
-
             }
         });
-
 
         // Show the Dialog
         show();

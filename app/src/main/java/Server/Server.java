@@ -1,47 +1,49 @@
 package Server;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.widget.Toast;
+
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import Server.Volley.Volley;
+import Server.Volley.VolleySingleton;
+import Server.Volley.interfaces.OnHttpConnected;
 import Server.Volley.interfaces.OnResponse;
 import Utils.Consts;
 import Utils.log;
 
 public class Server {
 
-    public static Boolean offline_mode = false;
+    public static Boolean online = false;
 
-    public static void ServerTest(final Context context){
+    public static void checkConnection(final Context context, OnHttpConnected onHttpConnected) {
 
-        try {
-            Volley.POST(Consts.SERVER_TEST,
+        StringRequest request = new StringRequest(Consts.SERVER_TEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-                    new JSONObject("{data:{hello:'hello'}}"),
+                online = true;
 
-                    new OnResponse() {
-                        @Override
-                        public void onResponse(JSONObject response, int resultCode) {
+                onHttpConnected.onConnect();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
 
-                            log.print("Reached the sever!");
-                        }
+                onHttpConnected.onError();
+            }
+        });
 
-                        @Override
-                        public void onError(String error) {
-
-                            Toast.makeText(context, "Cannot reach server!!!",Toast.LENGTH_LONG).show();
-                            offline_mode =  true;
-                        }
-                    });
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
+        VolleySingleton.getInstance().addToRequestQueue(request);
     }
-
 }

@@ -24,17 +24,20 @@ public class SharedPreferences extends RealmObject{
 
     private String schoolName;
 
-    private long score;
+    private double score;
 
-    private long phoneNumber;
+    private double phoneNumber;
 
     private String email;
 
     private String KEY_RSA_PUBLIC_KEY;
 
     public SharedPreferences(){
+    }
 
-        firstTimeRun = true;
+    public SharedPreferences(boolean firstTimeRun){
+
+        this.firstTimeRun = firstTimeRun;
     }
 
     public boolean isFirstTimeRun() {
@@ -117,19 +120,19 @@ public class SharedPreferences extends RealmObject{
         this.schoolName = schoolName;
     }
 
-    public long getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(long score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
-    public long getPhoneNumber() {
+    public double getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(double phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

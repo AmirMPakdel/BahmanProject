@@ -1,6 +1,7 @@
 package Works;
 
 import android.graphics.Bitmap;
+import android.widget.ProgressBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,9 +23,11 @@ import io.realm.RealmList;
 
 public class LoadShop{
 
-    public static int shopVersion = 0;
+    private static int shopVersion = 0;
 
-    public void init(){
+    private int ShopLoadingProgress = 0;
+
+    public void init(ProgressBar progressBar){
 
         log.print("Shop init :::: ");
 
@@ -79,6 +82,9 @@ public class LoadShop{
 
                                 ShopItem shopItem = new ShopItem();
 
+                                // for progress bar
+                                int progress = Math.round(160 / items.length());
+
                                 for(int i=0; i<items.length(); i++){
 
                                     JSONObject item = new JSONObject(items.get(i).toString());
@@ -91,13 +97,25 @@ public class LoadShop{
                                     shopItem.setLastPrice(item.getInt("lastprice"));
 
                                     realmItems.add(shopItem);
+
+                                    progressBar.incrementProgressBy(progress);
+                                    ShopLoadingProgress += progress;
                                 }
+
+                                progressBar.incrementProgressBy(10);
+                                ShopLoadingProgress += 10;
 
                                 shop.setShopItemList(realmItems);
 
+                                progressBar.incrementProgressBy(10);
+                                ShopLoadingProgress += 10;
+
                                 StorageBase.getInstance().updateShop(shop);
 
-                                downloadAndSaveImages();
+                                progressBar.incrementProgressBy(10);
+                                ShopLoadingProgress += 10;
+
+                                downloadAndSaveImages(progressBar);
 
                             }catch (Exception e){
 
@@ -115,9 +133,14 @@ public class LoadShop{
 
                 }else { // if db shop version is equal
 
+                    while(ShopLoadingProgress < 200 ){
+
+                        progressBar.incrementProgressBy(1);
+                        ShopLoadingProgress += 1;
+                    }
                     log.print("LoadShop :: version is the same");
 
-                    checkSavedImages();
+                    checkSavedImages(progressBar);
                 }
 
             }
@@ -130,9 +153,11 @@ public class LoadShop{
         });
     }
 
-    private void downloadAndSaveImages(){
+    private void downloadAndSaveImages(ProgressBar progressBar){
 
         Shop shop = StorageBase.getInstance().getShop();
+
+        int progress = Math.round(220 / shop.getShopItemList().size());
 
         for (ShopItem item : shop.getShopItemList()){
 
@@ -149,6 +174,9 @@ public class LoadShop{
                         public void onBitmapSaved() {
 
                             log.test("Image saved ::: "+ filePath);
+
+                            progressBar.incrementProgressBy(progress);
+                            ShopLoadingProgress += progress;
                         }
 
                         @Override
@@ -168,13 +196,21 @@ public class LoadShop{
                 }
             });
         }
+
+        while(ShopLoadingProgress < 400 ){
+
+            progressBar.incrementProgressBy(1);
+            ShopLoadingProgress += 1;
+        }
     }
 
-    private void checkSavedImages(){
+    private void checkSavedImages(ProgressBar progressBar){
 
         Shop shop = StorageBase.getInstance().getShop();
 
         for(ShopItem item : shop.getShopItemList()){
+
+            int progress = Math.round(200 / shop.getShopItemList().size());
 
             String filePath = Consts.Dirs.ShopImagesFolder + item.getId() + ".png";
 
@@ -207,6 +243,9 @@ public class LoadShop{
                         };
 
                         Downloader.writeToDisk(img, response, listener, Bitmap.CompressFormat.PNG, true);
+
+                        progressBar.incrementProgressBy(progress);
+                        ShopLoadingProgress += progress;
                     }
 
                     @Override
@@ -218,8 +257,15 @@ public class LoadShop{
 
             }else{
 
+                progressBar.incrementProgressBy(progress);
                 log.print("Image file exist ::: "+filePath);
             }
+        }
+
+        while(ShopLoadingProgress < 400 ){
+
+            progressBar.incrementProgressBy(1);
+            ShopLoadingProgress += 1;
         }
     }
 }

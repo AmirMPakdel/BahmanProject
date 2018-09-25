@@ -2,6 +2,8 @@ package Storage;
 
 
 import RealmObjects.SharedPreferences;
+import Utils.Consts;
+import Utils.log;
 import io.realm.Realm;
 
 
@@ -21,7 +23,9 @@ public class StorageBox {
 
         if(sharedPreferences == null){
 
-            SharedPreferences sp = new SharedPreferences();
+            SharedPreferences sp = new SharedPreferences(true);
+
+            Consts.AppFirstTimeRun = true;
 
             realm.beginTransaction();
             realm.copyToRealm(sp);
@@ -29,6 +33,8 @@ public class StorageBox {
 
             sharedPreferences = sp;
         }
+
+        log.print("App First Time Run : "+Consts.AppFirstTimeRun);
     }
 
     public static synchronized StorageBox init(){
@@ -50,6 +56,39 @@ public class StorageBox {
 
         return storageBox;
     }
+
+    public SharedPreferences getSharedPreferences(){
+
+        return realm.where(SharedPreferences.class).findFirst();
+    }
+
+    public void updateSharedPreferences(SharedPreferences sp, boolean fistTimeRun, boolean isGuest){
+
+        SharedPreferences dbSp = realm.where(SharedPreferences.class).findFirst();
+
+        realm.beginTransaction();
+
+        dbSp.setFirstTimeRun(fistTimeRun);
+        dbSp.setGuest(isGuest);
+
+        if(sp.getId() != null){dbSp.setId(sp.getId());}
+        if(sp.getUsername() != null){dbSp.setUsername(sp.getUsername());}
+        if(sp.getField() != null){dbSp.setField(sp.getField());}
+        if(sp.getCity() != null){dbSp.setCity(sp.getCity());}
+        if(sp.getEmail() != null){dbSp.setEmail(sp.getEmail());}
+        if(sp.getGrade() != null){dbSp.setGrade(sp.getGrade());}
+        if(sp.getPassword() != null){dbSp.setPassword(sp.getPassword());}
+        if(sp.getSchoolName() != null){dbSp.setSchoolName(sp.getSchoolName());}
+        if(sp.getToken() != null){dbSp.setToken(sp.getToken());}
+        if(sp.getScore() == 0.0){dbSp.setScore(sp.getScore());}
+        if(sp.getPhoneNumber() == 0.0){dbSp.setPhoneNumber(sp.getPhoneNumber());}
+        if(sp.getKEY_RSA_PUBLIC_KEY() != null){dbSp.setKEY_RSA_PUBLIC_KEY(sp.getKEY_RSA_PUBLIC_KEY());}
+
+        realm.commitTransaction();
+
+        sharedPreferences = dbSp;
+    }
+
 
     public void setIsFirstTime(boolean isFirstTime){
 

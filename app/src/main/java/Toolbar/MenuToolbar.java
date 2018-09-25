@@ -18,6 +18,7 @@ import Menu.FragmentSetting;
 import Menu.FragmentShop;
 import Menu.ViewPagerAdapter;
 import Storage.StorageBox;
+import Utils.Consts;
 
 public class MenuToolbar {
 
@@ -42,7 +43,7 @@ public class MenuToolbar {
         // TabLayout Animation
         if(start){
             RelativeLayout RelLayout = view.findViewById(R.id.bottom_toolbar);
-            ToolbarAnimation.ToolbarAnimate(RelLayout, StorageBox.sharedPreferences.isFirstTimeRun());
+            ToolbarAnimation.ToolbarAnimate(RelLayout, Consts.AppFirstTimeRun);
             start=false;
         }
 

@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Consts {
 
+    public static  boolean AppFirstTimeRun = false;
+
     private static String ip = "http://192.168.8.106:8000/";
 
     public static final String DEBUG_TAG = "APP_DEBUG";

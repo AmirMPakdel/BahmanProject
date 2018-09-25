@@ -33,6 +33,7 @@ public class Registration {
                         //TODO:: save -> GUEST_ID
                         String guest_id = response.getString(Consts.GUEST_ID);
 
+
                         StorageBox.getInstance().setId(guest_id);
 
                         //TODO:: send json ->{'GUEST_ID':'...', 'guest_field':'...', 'guest_grade':'...'}

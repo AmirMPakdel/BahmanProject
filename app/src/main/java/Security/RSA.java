@@ -69,12 +69,10 @@ public class RSA {
         }
         else
         {
-            try
-            {
+            try {
                 PKCS8EncodedKeySpec publicSpec = new PKCS8EncodedKeySpec(Base64.decode(PRIVATE_KEY, Base64.DEFAULT));
                 KeyFactory keyFactory = KeyFactory.getInstance("RSA");
                 PrivateKey privateKey = keyFactory.generatePrivate(publicSpec);
-
 
                 Cipher cipher = Cipher.getInstance("RSA");
                 cipher.init(Cipher.DECRYPT_MODE, privateKey);

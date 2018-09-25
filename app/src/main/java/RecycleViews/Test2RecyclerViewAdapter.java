@@ -1,4 +1,4 @@
-package Archives;
+package RecycleViews;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 import com.blackcoin.packdel.bahmanproject.TestActivity;
 import com.chad.library.adapter.base.BaseItemDraggableAdapter;

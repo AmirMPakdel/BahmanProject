@@ -1,4 +1,4 @@
-package Archives;
+package RecycleViews;
 
 
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 
 import java.util.List;

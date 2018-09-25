@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.blackcoin.packdel.bahmanproject.MainActivity;
 import com.blackcoin.packdel.bahmanproject.R;
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.chad.library.adapter.base.listener.OnItemDragListener;
@@ -24,8 +23,7 @@ import com.chad.library.adapter.base.listener.OnItemSwipeListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import Archives.Test2RecyclerViewAdapter;
-import Archives.TestRecyclerViewAdapter;
+import RecycleViews.Test2RecyclerViewAdapter;
 import DataFaker.TestFaker;
 import Utils.Font;
 
